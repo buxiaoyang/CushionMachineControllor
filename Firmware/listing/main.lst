@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   MAIN                                                                  04/03/2016 15:05:47 PAGE 1   
+C51 COMPILER V7.50   MAIN                                                                  04/03/2016 15:10:46 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   52   2              }
   53   1              //初始位置传感器2
   54   1              if(sensorStartPosi2 == 0)
-C51 COMPILER V7.50   MAIN                                                                  04/03/2016 15:05:47 PAGE 2   
+C51 COMPILER V7.50   MAIN                                                                  04/03/2016 15:10:46 PAGE 2   
 
   55   1              {
   56   2                      if(isStartPosition2 == 0)
@@ -126,7 +126,7 @@ line level    source
  114   2                      {
  115   3                              timer_count = 1;        
  116   3                      }
-C51 COMPILER V7.50   MAIN                                                                  04/03/2016 15:05:47 PAGE 3   
+C51 COMPILER V7.50   MAIN                                                                  04/03/2016 15:10:46 PAGE 3   
 
  117   2                      else if(timer_count > 50)
  118   2                      {
@@ -190,7 +190,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----       6
    PDATA SIZE       =   ----    ----
-C51 COMPILER V7.50   MAIN                                                                  04/03/2016 15:05:47 PAGE 4   
+C51 COMPILER V7.50   MAIN                                                                  04/03/2016 15:10:46 PAGE 4   
 
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
