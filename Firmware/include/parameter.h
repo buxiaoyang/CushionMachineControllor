@@ -22,14 +22,15 @@
 //输入
 sbit sensorStartPosi1 = P0^0; //初始位置传感器1
 sbit sensorStartPosi2 = P0^1; //初始位置传感器2
-sbit keyMotorForward = P0^2; //电机向前信号
-sbit keyMotorBackward = P0^3; //电机向后信号
-sbit electromagnetIn = P0^4; //电磁铁输入
+sbit keyMotor1Forward = P0^2; //电机1向前信号
+sbit keyMotor1Backward = P0^3; //电机1向后信号
+sbit keyMotor2Operation = P0^4; //电机2动作信号
 
 //输出
-sbit motorDirection = P1^0; //电机方向
-sbit electromagnetOut = P1^1; //电磁铁输出
-sbit motorPWM = P2^6; //电机脉冲
+sbit ioMotor1Direction = P1^0; //电机1方向
+sbit ioMmotor1PWM = P2^6; //电机1脉冲
+sbit ioMmotor2Direction = P2^0; //电机2方向
+sbit ioMmotor2PWM = P2^1; //电机2脉冲
 
 sbit testOut = P3^7;
 
@@ -39,19 +40,19 @@ sbit testOut = P3^7;
 void parameter_init();
 unsigned char parameter_save();
 
-extern unsigned char currentPosition; //当前位置 1~20
-extern unsigned int pulseSettingNum; //脉冲个数
-extern unsigned int pulseSettingFreq; //脉冲频率
-extern unsigned int motorStepAngle; //电机步进角
-extern unsigned int screwPitch; //丝杆丝距
-extern unsigned int motorReducGearRatio; //电机减速比
-extern unsigned int ballScrew; //丝杆导程
-extern unsigned int motorRotationAngle; //电机旋转角
-extern unsigned char isStartPosition; //初始位置
-extern unsigned char isStartPosition1; //初始位置
-extern unsigned char isStartPosition2; //初始位置
 
+extern unsigned char runMode; //运行模式 0：停止 1：运行
+extern unsigned char motor1Position; //电机1当前位置 0~39
+extern unsigned char motor2Position; //电机2当前位置 0~39
+extern unsigned char motor1Direction; //电机1运行方向
+extern unsigned char motor2Direction; //电机2运行方向
+extern unsigned char isStartPosition1; //电机1是否在初始位置标志位
+extern unsigned char isStartPosition2; //电机2是否在初始位置标志位
+extern unsigned long stepTotalPWMs; //单步总脉冲数
+extern unsigned long stepRemainPWMs; //单步剩余脉冲数
+extern unsigned long totalPWMs; //运行总脉冲数
+extern unsigned int motorRotationAngle[6][40]; //电机旋转角 6组数据，每组40个
+extern unsigned int currentStage; //当前运行数据组0~5
 extern unsigned char refreshDisplay; //刷新屏幕标志位 0 不刷新 1刷新
 
-extern unsigned char initFlag; //初始化标志位
 #endif

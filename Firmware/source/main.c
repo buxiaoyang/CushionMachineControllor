@@ -20,6 +20,7 @@
 
 void parameter_send_screen()
 {
+	/*
 	SendDataToScreen(0x0010, currentPosition);
 	SendDataToScreen(0x0000, pulseSettingNum);
 	SendDataToScreen(0x0002, pulseSettingFreq);
@@ -29,52 +30,28 @@ void parameter_send_screen()
 	SendDataToScreen(0x000A, ballScrew);
 	SendDataToScreen(0x000C, motorRotationAngle);
 	SendDataToScreen(0x0012, isStartPosition);
+	*/
 }
 
 void getSensorStatus()
 {
-	//初始位置传感器
+	//初始位置传感器1
 	if(sensorStartPosi1 == 0)
 	{
-		if(isStartPosition1 == 0)
-		{
-			refreshDisplay = 1;
-		}
 		isStartPosition1 = 1;
 	}
 	if(sensorStartPosi1 == 1)
 	{
-		if(isStartPosition1 == 1)
-		{
-			refreshDisplay = 1;
-		}
 		isStartPosition1 = 0;
 	}
 	//初始位置传感器2
 	if(sensorStartPosi2 == 0)
 	{
-		if(isStartPosition2 == 0)
-		{
-			refreshDisplay = 1;
-		}
 		isStartPosition2 = 1;
 	}
 	if(sensorStartPosi2 == 1)
 	{
-		if(isStartPosition2 == 1)
-		{
-			refreshDisplay = 1;
-		}
 		isStartPosition2 = 0;
-	}
-	//电磁铁输入
-	if(electromagnetIn == 0)
-	{
-		electromagnetOut = 0;
-	}
-	else
-	{
-		electromagnetOut = 1;
 	}
 }
 
@@ -93,6 +70,7 @@ void main()
 	timer_init();
 	while(1)
 	{
+		/*
 		delay_us(100);
 		//按键扫描
 		count10ms++;
@@ -159,6 +137,7 @@ void main()
 			parameter_send_screen();
 			refreshDisplay = 0;
 		}
+		*/
 	}   
 }
 

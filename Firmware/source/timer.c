@@ -39,9 +39,11 @@ void tm0_isr() interrupt 1 using 1
     {
 		if(pulseSettingNumCount >0)
 		{
+			/*
 			motorPWM = 1;
 			pulseSettingNumCount --;
 			motorPWM = ~motorPWM;
+			*/
 		}
 		count = timer_count;               //reset counter
     }

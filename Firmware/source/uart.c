@@ -201,6 +201,7 @@ void anyData()
 {
 	WORD dat = ((uartBuffer[4]<<8) | uartBuffer[5]);
 	
+	/*
 	if(uartBuffer[2] == 0x00)//Âö³å¸öÊý
 	{
 		pulseSettingNum =  dat;
@@ -260,5 +261,6 @@ void anyData()
 		timer_count = 50;
 		refreshDisplay = 1;
 	}
+	*/
 	uartReceiveOK = 1;	
 }

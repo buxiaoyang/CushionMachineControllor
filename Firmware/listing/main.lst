@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   MAIN                                                                  04/03/2016 15:10:46 PAGE 1   
+C51 COMPILER V7.50   MAIN                                                                  04/03/2016 16:41:40 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE MAIN
@@ -30,168 +30,145 @@ line level    source
   20          
   21          void parameter_send_screen()
   22          {
-  23   1              SendDataToScreen(0x0010, currentPosition);
-  24   1              SendDataToScreen(0x0000, pulseSettingNum);
-  25   1              SendDataToScreen(0x0002, pulseSettingFreq);
-  26   1              SendDataToScreen(0x0004, motorStepAngle);
-  27   1              SendDataToScreen(0x0006, screwPitch);
-  28   1              SendDataToScreen(0x0008, motorReducGearRatio);
-  29   1              SendDataToScreen(0x000A, ballScrew);
-  30   1              SendDataToScreen(0x000C, motorRotationAngle);
-  31   1              SendDataToScreen(0x0012, isStartPosition);
-  32   1      }
-  33          
-  34          void getSensorStatus()
-  35          {
-  36   1              //初始位置传感器
-  37   1              if(sensorStartPosi1 == 0)
-  38   1              {
-  39   2                      if(isStartPosition1 == 0)
-  40   2                      {
-  41   3                              refreshDisplay = 1;
-  42   3                      }
-  43   2                      isStartPosition1 = 1;
-  44   2              }
-  45   1              if(sensorStartPosi1 == 1)
-  46   1              {
-  47   2                      if(isStartPosition1 == 1)
-  48   2                      {
-  49   3                              refreshDisplay = 1;
-  50   3                      }
-  51   2                      isStartPosition1 = 0;
-  52   2              }
-  53   1              //初始位置传感器2
-  54   1              if(sensorStartPosi2 == 0)
-C51 COMPILER V7.50   MAIN                                                                  04/03/2016 15:10:46 PAGE 2   
+  23   1              /*
+  24   1              SendDataToScreen(0x0010, currentPosition);
+  25   1              SendDataToScreen(0x0000, pulseSettingNum);
+  26   1              SendDataToScreen(0x0002, pulseSettingFreq);
+  27   1              SendDataToScreen(0x0004, motorStepAngle);
+  28   1              SendDataToScreen(0x0006, screwPitch);
+  29   1              SendDataToScreen(0x0008, motorReducGearRatio);
+  30   1              SendDataToScreen(0x000A, ballScrew);
+  31   1              SendDataToScreen(0x000C, motorRotationAngle);
+  32   1              SendDataToScreen(0x0012, isStartPosition);
+  33   1              */
+  34   1      }
+  35          
+  36          void getSensorStatus()
+  37          {
+  38   1              //初始位置传感器1
+  39   1              if(sensorStartPosi1 == 0)
+  40   1              {
+  41   2                      isStartPosition1 = 1;
+  42   2              }
+  43   1              if(sensorStartPosi1 == 1)
+  44   1              {
+  45   2                      isStartPosition1 = 0;
+  46   2              }
+  47   1              //初始位置传感器2
+  48   1              if(sensorStartPosi2 == 0)
+  49   1              {
+  50   2                      isStartPosition2 = 1;
+  51   2              }
+  52   1              if(sensorStartPosi2 == 1)
+  53   1              {
+  54   2                      isStartPosition2 = 0;
+C51 COMPILER V7.50   MAIN                                                                  04/03/2016 16:41:40 PAGE 2   
 
-  55   1              {
-  56   2                      if(isStartPosition2 == 0)
-  57   2                      {
-  58   3                              refreshDisplay = 1;
-  59   3                      }
-  60   2                      isStartPosition2 = 1;
-  61   2              }
-  62   1              if(sensorStartPosi2 == 1)
-  63   1              {
-  64   2                      if(isStartPosition2 == 1)
-  65   2                      {
-  66   3                              refreshDisplay = 1;
-  67   3                      }
-  68   2                      isStartPosition2 = 0;
-  69   2              }
-  70   1              //电磁铁输入
-  71   1              if(electromagnetIn == 0)
+  55   2              }
+  56   1      }
+  57          
+  58          /***************************************************************************/
+  59          // 主函数
+  60          // 参数：无
+  61          // 返回值：无   
+  62          /***************************************************************************/
+  63          void main()
+  64          {
+  65   1              uint count10ms = 0;
+  66   1              unsigned long temp = 0;
+  67   1              delay_ms(500);
+  68   1              parameter_init();
+  69   1              uart_init();
+  70   1              timer_init();
+  71   1              while(1)
   72   1              {
-  73   2                      electromagnetOut = 0;
-  74   2              }
-  75   1              else
-  76   1              {
-  77   2                      electromagnetOut = 1;
-  78   2              }
-  79   1      }
-  80          
-  81          /***************************************************************************/
-  82          // 主函数
-  83          // 参数：无
-  84          // 返回值：无   
-  85          /***************************************************************************/
-  86          void main()
-  87          {
-  88   1              uint count10ms = 0;
-  89   1              unsigned long temp = 0;
-  90   1              delay_ms(500);
-  91   1              parameter_init();
-  92   1              uart_init();
-  93   1              timer_init();
-  94   1              while(1)
-  95   1              {
-  96   2                      delay_us(100);
-  97   2                      //按键扫描
-  98   2                      count10ms++;
-  99   2                      if(count10ms > 29)
- 100   2                      {
- 101   3                              Key_Scan();
- 102   3                              count10ms = 0;
- 103   3                      }
- 104   2                      //General the PWM
- 105   2                      if(pulseSettingNumCount > 20)
+  73   2                      /*
+  74   2                      delay_us(100);
+  75   2                      //按键扫描
+  76   2                      count10ms++;
+  77   2                      if(count10ms > 29)
+  78   2                      {
+  79   2                              Key_Scan();
+  80   2                              count10ms = 0;
+  81   2                      }
+  82   2                      //General the PWM
+  83   2                      if(pulseSettingNumCount > 20)
+  84   2                      {
+  85   2                              timer_count --;
+  86   2                      }
+  87   2                      else
+  88   2                      {
+  89   2                              timer_count ++;
+  90   2                      }
+  91   2                      if(timer_count < 1)
+  92   2                      {
+  93   2                              timer_count = 1;        
+  94   2                      }
+  95   2                      else if(timer_count > 50)
+  96   2                      {
+  97   2                              timer_count = 50;
+  98   2                      }
+  99   2                      //Get the sensor status
+ 100   2                      getSensorStatus();
+ 101   2                      if(isStartPosition2 || isStartPosition1)
+ 102   2                      {
+ 103   2                              isStartPosition = 1;
+ 104   2                      }
+ 105   2                      else if(!isStartPosition2 && !isStartPosition1)
  106   2                      {
- 107   3                              timer_count --;
- 108   3                      }
- 109   2                      else
- 110   2                      {
- 111   3                              timer_count ++;
- 112   3                      }
- 113   2                      if(timer_count < 1)
- 114   2                      {
- 115   3                              timer_count = 1;        
- 116   3                      }
-C51 COMPILER V7.50   MAIN                                                                  04/03/2016 15:10:46 PAGE 3   
+ 107   2                              isStartPosition = 0;
+ 108   2                      }
+ 109   2                      //初始化过程中判断原点
+ 110   2                      if(initFlag == 1 && isStartPosition == 1)
+ 111   2                      {
+ 112   2                              pulseSettingNumCount = 4;
+ 113   2                              currentPosition = 1;
+ 114   2                              initFlag = 0;
+ 115   2                      }
+ 116   2                      //Save setting to eeprom
+C51 COMPILER V7.50   MAIN                                                                  04/03/2016 16:41:40 PAGE 3   
 
- 117   2                      else if(timer_count > 50)
+ 117   2                      if(saveSetting)
  118   2                      {
- 119   3                              timer_count = 50;
- 120   3                      }
- 121   2                      //Get the sensor status
- 122   2                      getSensorStatus();
- 123   2                      if(isStartPosition2 || isStartPosition1)
- 124   2                      {
- 125   3                              isStartPosition = 1;
- 126   3                      }
- 127   2                      else if(!isStartPosition2 && !isStartPosition1)
- 128   2                      {
- 129   3                              isStartPosition = 0;
- 130   3                      }
- 131   2                      //初始化过程中判断原点
- 132   2                      if(initFlag == 1 && isStartPosition == 1)
- 133   2                      {
- 134   3                              pulseSettingNumCount = 4;
- 135   3                              currentPosition = 1;
- 136   3                              initFlag = 0;
- 137   3                      }
- 138   2                      //Save setting to eeprom
- 139   2                      if(saveSetting)
- 140   2                      {
- 141   3                              //计算电机旋转角
- 142   3                              temp = (unsigned long)pulseSettingNum*motorStepAngle;
- 143   3                              motorRotationAngle = temp/motorReducGearRatio;
- 144   3                              //计算丝杆导程
- 145   3                              temp = (unsigned long)pulseSettingNum*motorStepAngle;
- 146   3                              temp =  (unsigned long)temp * screwPitch;
- 147   3                              temp =  (unsigned long)temp / motorReducGearRatio;
- 148   3                              ballScrew = temp/3600;
- 149   3                              //保存设置
- 150   3                              ChangeScreenPage(0x04);
- 151   3                              parameter_save();
- 152   3                              ChangeScreenPage(0x02);
- 153   3                              saveSetting = 0;
- 154   3                              refreshDisplay = 1;
- 155   3                      }
- 156   2                      //刷新显示      
- 157   2                      if(refreshDisplay)
- 158   2                      {
- 159   3                              parameter_send_screen();
- 160   3                              refreshDisplay = 0;
- 161   3                      }
- 162   2              }   
- 163   1      }
- 164          
- 165          
- 166          
- 167          
- 168          
- 169          
- 170          
- 171          
+ 119   2                              //计算电机旋转角
+ 120   2                              temp = (unsigned long)pulseSettingNum*motorStepAngle;
+ 121   2                              motorRotationAngle = temp/motorReducGearRatio;
+ 122   2                              //计算丝杆导程
+ 123   2                              temp = (unsigned long)pulseSettingNum*motorStepAngle;
+ 124   2                              temp =  (unsigned long)temp * screwPitch;
+ 125   2                              temp =  (unsigned long)temp / motorReducGearRatio;
+ 126   2                              ballScrew = temp/3600;
+ 127   2                              //保存设置
+ 128   2                              ChangeScreenPage(0x04);
+ 129   2                              parameter_save();
+ 130   2                              ChangeScreenPage(0x02);
+ 131   2                              saveSetting = 0;
+ 132   2                              refreshDisplay = 1;
+ 133   2                      }
+ 134   2                      //刷新显示      
+ 135   2                      if(refreshDisplay)
+ 136   2                      {
+ 137   2                              parameter_send_screen();
+ 138   2                              refreshDisplay = 0;
+ 139   2                      }
+ 140   2                      */
+ 141   2              }   
+ 142   1      }
+ 143          
+ 144          
+ 145          
+ 146          
+ 147          
+ 148          
+ 149          
+ 150          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    728    ----
+   CODE SIZE        =     69    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----       6
    PDATA SIZE       =   ----    ----
-C51 COMPILER V7.50   MAIN                                                                  04/03/2016 15:10:46 PAGE 4   
-
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----

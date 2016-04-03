@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   UART                                                                  04/03/2016 15:10:46 PAGE 1   
+C51 COMPILER V7.50   UART                                                                  04/03/2016 16:41:40 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE UART
@@ -62,7 +62,7 @@ line level    source
   52          void uart_init()
   53          {
   54   1      #if (PARITYBIT == NONE_PARITY)
-C51 COMPILER V7.50   UART                                                                  04/03/2016 15:10:46 PAGE 2   
+C51 COMPILER V7.50   UART                                                                  04/03/2016 16:41:40 PAGE 2   
 
   55   1          S2CON = 0x50;           //8-bit variable UART
   56   1      #elif (PARITYBIT == ODD_PARITY) || (PARITYBIT == EVEN_PARITY) || (PARITYBIT == MARK_PARITY)
@@ -126,7 +126,7 @@ line level    source
  114   2          }
  115   1          busy = 1;
  116   1          S2BUF = ACC;            //Send data to UART2 buffer
-C51 COMPILER V7.50   UART                                                                  04/03/2016 15:10:46 PAGE 3   
+C51 COMPILER V7.50   UART                                                                  04/03/2016 16:41:40 PAGE 3   
 
  117   1      }
  118          
@@ -190,7 +190,7 @@ line level    source
  176   2                              {
  177   3                                      receiveSteps = 0;
  178   3                              }
-C51 COMPILER V7.50   UART                                                                  04/03/2016 15:10:46 PAGE 4   
+C51 COMPILER V7.50   UART                                                                  04/03/2016 16:41:40 PAGE 4   
 
  179   2                      break;
  180   2                      case 2:
@@ -217,75 +217,77 @@ line level    source
  201          {
  202   1              WORD dat = ((uartBuffer[4]<<8) | uartBuffer[5]);
  203   1              
- 204   1              if(uartBuffer[2] == 0x00)//脉冲个数
- 205   1              {
- 206   2                      pulseSettingNum =  dat;
- 207   2                      saveSetting = 1;
- 208   2              }
- 209   1              else if(uartBuffer[2] == 0x02) //脉冲频率
- 210   1              {
- 211   2                      //pulseSettingFreq =  dat;
- 212   2                      //saveSetting = 1;
- 213   2              }
- 214   1              else if(uartBuffer[2] == 0x04) //电机步进角
- 215   1              {
- 216   2                      //motorStepAngle =  dat;
- 217   2                      //saveSetting = 1;
- 218   2              }
- 219   1              else if(uartBuffer[2] == 0x06) // 丝杆丝距
- 220   1              {
- 221   2                      screwPitch =  dat;
- 222   2                      saveSetting = 1;
- 223   2              }
- 224   1              else if(uartBuffer[2] == 0x08)  //电机减速比
- 225   1              {
- 226   2                      motorReducGearRatio =  dat;
- 227   2                      saveSetting = 1;
- 228   2              }
- 229   1              else if(uartBuffer[2] == 0x0A) //丝杆导程
- 230   1              {
- 231   2                      ballScrew =  dat;
- 232   2                      saveSetting = 1;
- 233   2              }
- 234   1              else if(uartBuffer[2] == 0x0C) //电机旋转角
- 235   1              {
- 236   2                      motorRotationAngle =  dat;
- 237   2                      saveSetting = 1;
- 238   2              }
- 239   1              else if(uartBuffer[2] == 0x14) //初始化按钮
- 240   1              {
-C51 COMPILER V7.50   UART                                                                  04/03/2016 15:10:46 PAGE 5   
+ 204   1              /*
+ 205   1              if(uartBuffer[2] == 0x00)//脉冲个数
+ 206   1              {
+ 207   1                      pulseSettingNum =  dat;
+ 208   1                      saveSetting = 1;
+ 209   1              }
+ 210   1              else if(uartBuffer[2] == 0x02) //脉冲频率
+ 211   1              {
+ 212   1                      //pulseSettingFreq =  dat;
+ 213   1                      //saveSetting = 1;
+ 214   1              }
+ 215   1              else if(uartBuffer[2] == 0x04) //电机步进角
+ 216   1              {
+ 217   1                      //motorStepAngle =  dat;
+ 218   1                      //saveSetting = 1;
+ 219   1              }
+ 220   1              else if(uartBuffer[2] == 0x06) // 丝杆丝距
+ 221   1              {
+ 222   1                      screwPitch =  dat;
+ 223   1                      saveSetting = 1;
+ 224   1              }
+ 225   1              else if(uartBuffer[2] == 0x08)  //电机减速比
+ 226   1              {
+ 227   1                      motorReducGearRatio =  dat;
+ 228   1                      saveSetting = 1;
+ 229   1              }
+ 230   1              else if(uartBuffer[2] == 0x0A) //丝杆导程
+ 231   1              {
+ 232   1                      ballScrew =  dat;
+ 233   1                      saveSetting = 1;
+ 234   1              }
+ 235   1              else if(uartBuffer[2] == 0x0C) //电机旋转角
+ 236   1              {
+ 237   1                      motorRotationAngle =  dat;
+ 238   1                      saveSetting = 1;
+ 239   1              }
+ 240   1              else if(uartBuffer[2] == 0x14) //初始化按钮
+C51 COMPILER V7.50   UART                                                                  04/03/2016 16:41:40 PAGE 5   
 
- 241   2                      motorDirection = 0;
- 242   2                      pulseSettingNumCount = 65535;
- 243   2                      timer_count = 50;
- 244   2                      initFlag = 1;
- 245   2                      refreshDisplay = 1;
- 246   2              }
- 247   1              else if(uartBuffer[2] == 0x16) //后退按钮
- 248   1              {
- 249   2                      motorDirection = 0;
- 250   2                      pulseSettingNumCount = pulseSettingNum;
- 251   2                      currentPosition --;
- 252   2                      timer_count = 50;
- 253   2                      refreshDisplay = 1;     
- 254   2              }
- 255   1              else if(uartBuffer[2] == 0x18) //前进按钮
- 256   1              {
- 257   2                      motorDirection = 1;
- 258   2                      pulseSettingNumCount = pulseSettingNum;
- 259   2                      currentPosition ++;
- 260   2                      timer_count = 50;
- 261   2                      refreshDisplay = 1;
- 262   2              }
- 263   1              uartReceiveOK = 1;      
- 264   1      }
+ 241   1              {
+ 242   1                      motorDirection = 0;
+ 243   1                      pulseSettingNumCount = 65535;
+ 244   1                      timer_count = 50;
+ 245   1                      initFlag = 1;
+ 246   1                      refreshDisplay = 1;
+ 247   1              }
+ 248   1              else if(uartBuffer[2] == 0x16) //后退按钮
+ 249   1              {
+ 250   1                      motorDirection = 0;
+ 251   1                      pulseSettingNumCount = pulseSettingNum;
+ 252   1                      currentPosition --;
+ 253   1                      timer_count = 50;
+ 254   1                      refreshDisplay = 1;     
+ 255   1              }
+ 256   1              else if(uartBuffer[2] == 0x18) //前进按钮
+ 257   1              {
+ 258   1                      motorDirection = 1;
+ 259   1                      pulseSettingNumCount = pulseSettingNum;
+ 260   1                      currentPosition ++;
+ 261   1                      timer_count = 50;
+ 262   1                      refreshDisplay = 1;
+ 263   1              }
+ 264   1              */
+ 265   1              uartReceiveOK = 1;      
+ 266   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    512    ----
+   CODE SIZE        =    314    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =     19       3
+   XDATA SIZE       =     19       5
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
