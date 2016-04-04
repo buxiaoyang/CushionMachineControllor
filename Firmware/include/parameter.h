@@ -33,7 +33,10 @@ sbit ioMmotor1PWM = P2^6; //电机1脉冲
 sbit ioMmotor2Direction = P2^0; //电机2方向
 sbit ioMmotor2PWM = P2^1; //电机2脉冲
 
-sbit testOut = P3^7;
+sbit testOutput1 = P1^4;
+sbit testOutput2 = P1^5;
+sbit testOutput3 = P1^6;
+sbit testOutput4 = P1^7;
 
 /***************************************************************************/
 // 参数声明

@@ -16,7 +16,6 @@ unsigned char Key_Scan_Steps = 0; 		//0：初始状态 如果有按键按下则进入1
 
 void Key_Scan(void)
 {
-	testOut = ~testOut;
 	/*
 	switch(Key_Scan_Steps)
 	{

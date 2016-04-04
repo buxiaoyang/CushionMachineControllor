@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   KEY                                                                   04/04/2016 16:05:20 PAGE 1   
+C51 COMPILER V7.50   KEY                                                                   04/04/2016 17:08:24 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE KEY
@@ -26,61 +26,60 @@ line level    source
   16          
   17          void Key_Scan(void)
   18          {
-  19   1              testOut = ~testOut;
-  20   1              /*
-  21   1              switch(Key_Scan_Steps)
-  22   1              {
-  23   1                      case 0:
-  24   1                              if(keyMotorForward == 0 || keyMotorBackward == 0)
-  25   1                              {
-  26   1                                      Key_Scan_Steps = 1;
-  27   1                              }
-  28   1                      break;
-  29   1                      case 1:
-  30   1                              if(keyMotorForward == 0 || keyMotorBackward == 0)
-  31   1                              {
-  32   1                                      Key_Scan_Steps = 2;
-  33   1                              }
-  34   1                              else
-  35   1                              {
-  36   1                                      Key_Scan_Steps = 0;
-  37   1                              }
-  38   1                      break;
-  39   1                      case 2:
-  40   1                              if(keyMotorForward == 0) //电机前进
-  41   1                              {
-  42   1                                      motorDirection = 1;
-  43   1                                      pulseSettingNumCount = pulseSettingNum;
-  44   1                                      currentPosition ++;
-  45   1                                      timer_count = 50;
-  46   1                              }
-  47   1                              else if(keyMotorBackward == 0) //电机后退
-  48   1                              {
-  49   1                                      motorDirection = 0;
-  50   1                                      pulseSettingNumCount = pulseSettingNum;
-  51   1                                      currentPosition --;
-  52   1                                      timer_count = 50;
-  53   1                              }
-  54   1                              refreshDisplay = 1;
-C51 COMPILER V7.50   KEY                                                                   04/04/2016 16:05:20 PAGE 2   
+  19   1              /*
+  20   1              switch(Key_Scan_Steps)
+  21   1              {
+  22   1                      case 0:
+  23   1                              if(keyMotorForward == 0 || keyMotorBackward == 0)
+  24   1                              {
+  25   1                                      Key_Scan_Steps = 1;
+  26   1                              }
+  27   1                      break;
+  28   1                      case 1:
+  29   1                              if(keyMotorForward == 0 || keyMotorBackward == 0)
+  30   1                              {
+  31   1                                      Key_Scan_Steps = 2;
+  32   1                              }
+  33   1                              else
+  34   1                              {
+  35   1                                      Key_Scan_Steps = 0;
+  36   1                              }
+  37   1                      break;
+  38   1                      case 2:
+  39   1                              if(keyMotorForward == 0) //电机前进
+  40   1                              {
+  41   1                                      motorDirection = 1;
+  42   1                                      pulseSettingNumCount = pulseSettingNum;
+  43   1                                      currentPosition ++;
+  44   1                                      timer_count = 50;
+  45   1                              }
+  46   1                              else if(keyMotorBackward == 0) //电机后退
+  47   1                              {
+  48   1                                      motorDirection = 0;
+  49   1                                      pulseSettingNumCount = pulseSettingNum;
+  50   1                                      currentPosition --;
+  51   1                                      timer_count = 50;
+  52   1                              }
+  53   1                              refreshDisplay = 1;
+  54   1                              Key_Scan_Steps = 3;
+C51 COMPILER V7.50   KEY                                                                   04/04/2016 17:08:24 PAGE 2   
 
-  55   1                              Key_Scan_Steps = 3;
-  56   1                      break;
-  57   1                      case 3:
-  58   1                              if(keyMotorBackward == 1 && keyMotorForward == 1)
-  59   1                              {
-  60   1                                      Key_Scan_Steps = 0;
-  61   1                              }
-  62   1                      break;
-  63   1                      default:
-  64   1                               _nop_();
-  65   1              }
-  66   1              */
-  67   1      }
+  55   1                      break;
+  56   1                      case 3:
+  57   1                              if(keyMotorBackward == 1 && keyMotorForward == 1)
+  58   1                              {
+  59   1                                      Key_Scan_Steps = 0;
+  60   1                              }
+  61   1                      break;
+  62   1                      default:
+  63   1                               _nop_();
+  64   1              }
+  65   1              */
+  66   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =      3    ----
+   CODE SIZE        =      1    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      1    ----
    PDATA SIZE       =   ----    ----

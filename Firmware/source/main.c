@@ -53,6 +53,8 @@ void main()
 	parameter_init();
 	uart_init();
 	timer_init();
+	ChangeScreenPage(0x00);
+	/*
 	while(1)
 	{
 		if(displayMode >= 2 && displayMode <= 7)
@@ -134,8 +136,9 @@ void main()
 			parameter_send_screen();
 			refreshDisplay = 0;
 		}
-		*/
+		
 	}   
+	*/
 }
 
 

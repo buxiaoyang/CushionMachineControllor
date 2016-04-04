@@ -55,6 +55,36 @@ unsigned char parameter_read()
 /***************************************************************************/
 void parameter_init()
 {
+	WORD i;
+
+    testOutput1 = 0;
+    Delay(10);                      //Delay
+    IapEraseSector(IAP_ADDRESS);    //Erase current sector
+    for (i=0; i<512; i++)           //Check whether all sector data is FF
+    {
+        if (IapReadByte(IAP_ADDRESS+i) != 0xff)
+            goto Error;             //If error, break
+    }
+    testOutput2 = 0;
+    Delay(10);                      //Delay
+    for (i=0; i<512; i++)           //Program 512 bytes data into data flash
+    {
+        IapProgramByte(IAP_ADDRESS+i, (BYTE)i);
+    }
+   	testOutput3 = 0;
+    Delay(10);                      //Delay
+    for (i=0; i<512; i++)           //Verify 512 bytes data
+    {
+        if (IapReadByte(IAP_ADDRESS+i) != (BYTE)i)
+            goto Error;             //If error, break
+    }
+    testOutput4 = 0;
+    while (1);
+Error:
+    P1 &= 0x7f;                     //0xxx,xxxx IAP operation fail
+    while (1);
+
+	/*
 	unsigned char i,j;
 	if(!parameter_read())
 	{
@@ -66,6 +96,7 @@ void parameter_init()
 			}
 		}	
 	}
+	*/
 }
 
 /***************************************************************************/

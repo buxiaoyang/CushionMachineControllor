@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   PARAMETER                                                             04/04/2016 16:05:20 PAGE 1   
+C51 COMPILER V7.50   PARAMETER                                                             04/04/2016 17:08:24 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE PARAMETER
@@ -62,55 +62,88 @@ line level    source
   51          /***************************************************************************/
   52          // 参数初始化函数
   53          // 参数：无
-C51 COMPILER V7.50   PARAMETER                                                             04/04/2016 16:05:20 PAGE 2   
+C51 COMPILER V7.50   PARAMETER                                                             04/04/2016 17:08:24 PAGE 2   
 
   54          // 返回值：无   
   55          /***************************************************************************/
   56          void parameter_init()
   57          {
-  58   1              unsigned char i,j;
-  59   1              if(!parameter_read())
-  60   1              {
-  61   2                      for(i=0; i < 6; i++)
-  62   2                      {
-  63   3                              for(j=0; j < 40; j++)
-  64   3                              {
-  65   4                                      motorRotationAngle[i][j] = 0;
-  66   4                              }
-  67   3                      }       
-  68   2              }
-  69   1      }
-  70          
-  71          /***************************************************************************/
-  72          // 参数保存到eeprom
-  73          // 参数：无
-  74          // 返回值：0失败 1成功  
-  75          /***************************************************************************/
-  76          unsigned char parameter_save()
-  77          {
-  78   1              unsigned char i,j,address;
-  79   1          delay_ms(10);                      //Delay
-  80   1              IapEraseSector(IAP_ADDRESS); //擦除EEPROM
-  81   1              for(i=0; i < 6; i++)
-  82   1              {
-  83   2                      for(j=0; j < 40; j++)
-  84   2                      {
-  85   3                              address = i * 80 + (j<<1);
-  86   3                              IapProgramByte(IAP_ADDRESS + address, (BYTE)(motorRotationAngle[i][j]>>8));
-  87   3                              IapProgramByte(IAP_ADDRESS + address+1, (BYTE)(motorRotationAngle[i][j]));
-  88   3                      }
-  89   2              }
-  90   1              IapProgramByte(IAP_ADDRESS+511, 0xEE); //写入标志位
-  91   1              return 1;
-  92   1      }
-  93          
-  94          
+  58   1              WORD i;
+  59   1      
+  60   1          testOutput1 = 0;
+  61   1          Delay(10);                      //Delay
+  62   1          IapEraseSector(IAP_ADDRESS);    //Erase current sector
+  63   1          for (i=0; i<512; i++)           //Check whether all sector data is FF
+  64   1          {
+  65   2              if (IapReadByte(IAP_ADDRESS+i) != 0xff)
+  66   2                  goto Error;             //If error, break
+  67   2          }
+  68   1          testOutput2 = 0;
+  69   1          Delay(10);                      //Delay
+  70   1          for (i=0; i<512; i++)           //Program 512 bytes data into data flash
+  71   1          {
+  72   2              IapProgramByte(IAP_ADDRESS+i, (BYTE)i);
+  73   2          }
+  74   1              testOutput3 = 0;
+  75   1          Delay(10);                      //Delay
+  76   1          for (i=0; i<512; i++)           //Verify 512 bytes data
+  77   1          {
+  78   2              if (IapReadByte(IAP_ADDRESS+i) != (BYTE)i)
+  79   2                  goto Error;             //If error, break
+  80   2          }
+  81   1          testOutput4 = 0;
+  82   1          while (1);
+  83   1      Error:
+  84   1          P1 &= 0x7f;                     //0xxx,xxxx IAP operation fail
+  85   1          while (1);
+  86   1      
+  87   1              /*
+  88   1              unsigned char i,j;
+  89   1              if(!parameter_read())
+  90   1              {
+  91   1                      for(i=0; i < 6; i++)
+  92   1                      {
+  93   1                              for(j=0; j < 40; j++)
+  94   1                              {
+  95   1                                      motorRotationAngle[i][j] = 0;
+  96   1                              }
+  97   1                      }       
+  98   1              }
+  99   1              */
+ 100   1      }
+ 101          
+ 102          /***************************************************************************/
+ 103          // 参数保存到eeprom
+ 104          // 参数：无
+ 105          // 返回值：0失败 1成功  
+ 106          /***************************************************************************/
+ 107          unsigned char parameter_save()
+ 108          {
+ 109   1              unsigned char i,j,address;
+ 110   1          delay_ms(10);                      //Delay
+ 111   1              IapEraseSector(IAP_ADDRESS); //擦除EEPROM
+ 112   1              for(i=0; i < 6; i++)
+ 113   1              {
+ 114   2                      for(j=0; j < 40; j++)
+ 115   2                      {
+C51 COMPILER V7.50   PARAMETER                                                             04/04/2016 17:08:24 PAGE 3   
+
+ 116   3                              address = i * 80 + (j<<1);
+ 117   3                              IapProgramByte(IAP_ADDRESS + address, (BYTE)(motorRotationAngle[i][j]>>8));
+ 118   3                              IapProgramByte(IAP_ADDRESS + address+1, (BYTE)(motorRotationAngle[i][j]));
+ 119   3                      }
+ 120   2              }
+ 121   1              IapProgramByte(IAP_ADDRESS+511, 0xEE); //写入标志位
+ 122   1              return 1;
+ 123   1      }
+ 124          
+ 125          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    390    ----
+   CODE SIZE        =    514    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =    483       7
+   XDATA SIZE       =    483       9
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
