@@ -15,8 +15,6 @@
 碰到7号感应器，夹紧气缸3关闭。
 */
 
-unsigned int intervalTimerCount = 0;
-unsigned int cylinderAlarmCount = 0;
 
 unsigned char ManiDispatchSteps = 20;	// 1，1 3 5 7号感应器有效进入延迟
 										// 2，延迟时间到，送料气缸1启动

@@ -208,13 +208,13 @@ void anyData()
 	}
 	else if(uartBuffer[2] == 0x08) //运行按钮
 	{
-		//pulseSettingFreq =  dat;
-		//saveSetting = 1;
+		runMode = MODEL_RUN;
+		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x0A) //停止按钮
 	{
-		//motorStepAngle =  dat;
-		//saveSetting = 1;
+		runMode = MODEL_STOP;
+		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x0C) //前进按钮
 	{

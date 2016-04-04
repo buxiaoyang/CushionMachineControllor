@@ -71,6 +71,7 @@ void main()
 		if(displayMode == DISPLAY_RUN)
 		{
 			 refreshDisplayRunning();
+			 displayMode = DISPLAY_NO_FRESH;
 		}
 		else if(displayMode >= DISPLAY_SETTING1 && displayMode <= DISPLAY_SETTING6)
 		{
