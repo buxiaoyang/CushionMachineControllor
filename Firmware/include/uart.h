@@ -7,9 +7,8 @@ typedef unsigned char BYTE;
 typedef unsigned int WORD;
 typedef unsigned long LONG;
 
-extern bit uartReceiveOK;
-extern BYTE saveSetting;
-extern BYTE uartBuffer[15];
+extern BYTE saveSetting; //是否保存设置值状态位
+
 void uart_init();
 void SendData(BYTE dat);
 void SendDataToScreen(WORD address, WORD dat);

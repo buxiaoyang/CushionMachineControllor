@@ -19,411 +19,28 @@ compiling dispatch.c...
 compiling timer.c...
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SEND_SCREEN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_SENDSTRING?UART
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDDATATOSCREEN?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGESCREENPAGE?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?MANIDISPATCH?DISPATCH
-Program Size: data=17.2 xdata=65 code=2871
+Program Size: data=17.2 xdata=550 code=1014
 creating hex file from ".\output\CushionMachineControllor"...
-".\output\CushionMachineControllor" - 0 Error(s), 3 Warning(s).
-Build target 'Target 1'
-assembling STARTUP.A51...
-compiling main.c...
-.\INCLUDE\PARAMETER.H(47): error C231: 'motor1Direction': redefinition
-.\INCLUDE\PARAMETER.H(48): error C231: 'motor2Direction': redefinition
-SOURCE\MAIN.C(23): error C202: 'currentPosition': undefined identifier
-SOURCE\MAIN.C(24): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\MAIN.C(25): error C202: 'pulseSettingFreq': undefined identifier
-SOURCE\MAIN.C(26): error C202: 'motorStepAngle': undefined identifier
-SOURCE\MAIN.C(27): error C202: 'screwPitch': undefined identifier
-SOURCE\MAIN.C(28): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\MAIN.C(29): error C202: 'ballScrew': undefined identifier
-SOURCE\MAIN.C(31): error C202: 'isStartPosition': undefined identifier
-SOURCE\MAIN.C(71): error C202: 'electromagnetIn': undefined identifier
-SOURCE\MAIN.C(73): error C202: 'electromagnetOut': undefined identifier
-SOURCE\MAIN.C(77): error C202: 'electromagnetOut': undefined identifier
-SOURCE\MAIN.C(125): error C202: 'isStartPosition': undefined identifier
-SOURCE\MAIN.C(129): error C202: 'isStartPosition': undefined identifier
-SOURCE\MAIN.C(132): error C202: 'initFlag': undefined identifier
-SOURCE\MAIN.C(135): error C202: 'currentPosition': undefined identifier
-SOURCE\MAIN.C(136): error C202: 'initFlag': undefined identifier
-SOURCE\MAIN.C(142): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\MAIN.C(143): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\MAIN.C(145): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\MAIN.C(146): error C202: 'screwPitch': undefined identifier
-SOURCE\MAIN.C(147): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\MAIN.C(148): error C202: 'ballScrew': undefined identifier
-compiling basefunc.c...
-compiling parameter.c...
-.\INCLUDE\PARAMETER.H(47): error C231: 'motor1Direction': redefinition
-.\INCLUDE\PARAMETER.H(48): error C231: 'motor2Direction': redefinition
-SOURCE\PARAMETER.C(26): error C231: 'motor1Direction': redefinition
-SOURCE\PARAMETER.C(27): error C231: 'motor2Direction': redefinition
-SOURCE\PARAMETER.C(55): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\PARAMETER.C(58): error C202: 'screwPitch': undefined identifier
-SOURCE\PARAMETER.C(59): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\PARAMETER.C(60): error C202: 'ballScrew': undefined identifier
-SOURCE\PARAMETER.C(66): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\PARAMETER.C(67): error C202: 'screwPitch': undefined identifier
-SOURCE\PARAMETER.C(68): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\PARAMETER.C(69): error C202: 'ballScrew': undefined identifier
-SOURCE\PARAMETER.C(73): error C202: 'pulseSettingFreq': undefined identifier
-SOURCE\PARAMETER.C(74): error C202: 'motorStepAngle': undefined identifier
-SOURCE\PARAMETER.C(85): error C202: 'currentPosition': undefined identifier
-SOURCE\PARAMETER.C(88): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\PARAMETER.C(89): error C202: 'pulseSettingFreq': undefined identifier
-SOURCE\PARAMETER.C(90): error C202: 'motorStepAngle': undefined identifier
-SOURCE\PARAMETER.C(91): error C202: 'screwPitch': undefined identifier
-SOURCE\PARAMETER.C(92): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\PARAMETER.C(93): error C202: 'ballScrew': undefined identifier
-SOURCE\PARAMETER.C(96): error C202: 'isStartPosition': undefined identifier
-SOURCE\PARAMETER.C(98): error C202: 'initFlag': undefined identifier
-SOURCE\PARAMETER.C(112): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\PARAMETER.C(113): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\PARAMETER.C(114): error C202: 'pulseSettingFreq': undefined identifier
-SOURCE\PARAMETER.C(115): error C202: 'pulseSettingFreq': undefined identifier
-SOURCE\PARAMETER.C(116): error C202: 'motorStepAngle': undefined identifier
-SOURCE\PARAMETER.C(117): error C202: 'motorStepAngle': undefined identifier
-SOURCE\PARAMETER.C(118): error C202: 'screwPitch': undefined identifier
-SOURCE\PARAMETER.C(119): error C202: 'screwPitch': undefined identifier
-SOURCE\PARAMETER.C(120): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\PARAMETER.C(121): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\PARAMETER.C(122): error C202: 'ballScrew': undefined identifier
-SOURCE\PARAMETER.C(123): error C202: 'ballScrew': undefined identifier
-compiling eeprom.c...
-compiling uart.c...
-.\INCLUDE\PARAMETER.H(47): error C231: 'motor1Direction': redefinition
-.\INCLUDE\PARAMETER.H(48): error C231: 'motor2Direction': redefinition
-SOURCE\UART.C(206): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\UART.C(221): error C202: 'screwPitch': undefined identifier
-SOURCE\UART.C(226): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\UART.C(231): error C202: 'ballScrew': undefined identifier
-SOURCE\UART.C(241): error C202: 'motorDirection': undefined identifier
-SOURCE\UART.C(244): error C202: 'initFlag': undefined identifier
-SOURCE\UART.C(249): error C202: 'motorDirection': undefined identifier
-SOURCE\UART.C(250): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\UART.C(251): error C202: 'currentPosition': undefined identifier
-SOURCE\UART.C(257): error C202: 'motorDirection': undefined identifier
-SOURCE\UART.C(258): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\UART.C(259): error C202: 'currentPosition': undefined identifier
-compiling key.c...
-.\INCLUDE\PARAMETER.H(47): error C231: 'motor1Direction': redefinition
-.\INCLUDE\PARAMETER.H(48): error C231: 'motor2Direction': redefinition
-SOURCE\KEY.C(23): error C202: 'keyMotorForward': undefined identifier
-SOURCE\KEY.C(29): error C202: 'keyMotorForward': undefined identifier
-SOURCE\KEY.C(39): error C202: 'keyMotorForward': undefined identifier
-SOURCE\KEY.C(41): error C202: 'motorDirection': undefined identifier
-SOURCE\KEY.C(42): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\KEY.C(43): error C202: 'currentPosition': undefined identifier
-SOURCE\KEY.C(46): error C202: 'keyMotorBackward': undefined identifier
-SOURCE\KEY.C(48): error C202: 'motorDirection': undefined identifier
-SOURCE\KEY.C(49): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\KEY.C(50): error C202: 'currentPosition': undefined identifier
-SOURCE\KEY.C(57): error C202: 'keyMotorBackward': undefined identifier
-compiling dispatch.c...
-.\INCLUDE\PARAMETER.H(47): error C231: 'motor1Direction': redefinition
-.\INCLUDE\PARAMETER.H(48): error C231: 'motor2Direction': redefinition
-compiling timer.c...
-.\INCLUDE\PARAMETER.H(47): error C231: 'motor1Direction': redefinition
-.\INCLUDE\PARAMETER.H(48): error C231: 'motor2Direction': redefinition
-SOURCE\TIMER.C(42): error C202: 'motorPWM': undefined identifier
-SOURCE\TIMER.C(44): error C202: 'motorPWM': undefined identifier
-Target not created
-Build target 'Target 1'
-assembling STARTUP.A51...
-compiling main.c...
-SOURCE\MAIN.C(23): error C202: 'currentPosition': undefined identifier
-SOURCE\MAIN.C(24): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\MAIN.C(25): error C202: 'pulseSettingFreq': undefined identifier
-SOURCE\MAIN.C(26): error C202: 'motorStepAngle': undefined identifier
-SOURCE\MAIN.C(27): error C202: 'screwPitch': undefined identifier
-SOURCE\MAIN.C(28): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\MAIN.C(29): error C202: 'ballScrew': undefined identifier
-SOURCE\MAIN.C(31): error C202: 'isStartPosition': undefined identifier
-SOURCE\MAIN.C(71): error C202: 'electromagnetIn': undefined identifier
-SOURCE\MAIN.C(73): error C202: 'electromagnetOut': undefined identifier
-SOURCE\MAIN.C(77): error C202: 'electromagnetOut': undefined identifier
-SOURCE\MAIN.C(125): error C202: 'isStartPosition': undefined identifier
-SOURCE\MAIN.C(129): error C202: 'isStartPosition': undefined identifier
-SOURCE\MAIN.C(132): error C202: 'initFlag': undefined identifier
-SOURCE\MAIN.C(135): error C202: 'currentPosition': undefined identifier
-SOURCE\MAIN.C(136): error C202: 'initFlag': undefined identifier
-SOURCE\MAIN.C(142): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\MAIN.C(143): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\MAIN.C(145): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\MAIN.C(146): error C202: 'screwPitch': undefined identifier
-SOURCE\MAIN.C(147): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\MAIN.C(148): error C202: 'ballScrew': undefined identifier
-compiling basefunc.c...
-compiling parameter.c...
-SOURCE\PARAMETER.C(55): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\PARAMETER.C(58): error C202: 'screwPitch': undefined identifier
-SOURCE\PARAMETER.C(59): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\PARAMETER.C(60): error C202: 'ballScrew': undefined identifier
-SOURCE\PARAMETER.C(66): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\PARAMETER.C(67): error C202: 'screwPitch': undefined identifier
-SOURCE\PARAMETER.C(68): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\PARAMETER.C(69): error C202: 'ballScrew': undefined identifier
-SOURCE\PARAMETER.C(73): error C202: 'pulseSettingFreq': undefined identifier
-SOURCE\PARAMETER.C(74): error C202: 'motorStepAngle': undefined identifier
-SOURCE\PARAMETER.C(85): error C202: 'currentPosition': undefined identifier
-SOURCE\PARAMETER.C(88): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\PARAMETER.C(89): error C202: 'pulseSettingFreq': undefined identifier
-SOURCE\PARAMETER.C(90): error C202: 'motorStepAngle': undefined identifier
-SOURCE\PARAMETER.C(91): error C202: 'screwPitch': undefined identifier
-SOURCE\PARAMETER.C(92): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\PARAMETER.C(93): error C202: 'ballScrew': undefined identifier
-SOURCE\PARAMETER.C(96): error C202: 'isStartPosition': undefined identifier
-SOURCE\PARAMETER.C(98): error C202: 'initFlag': undefined identifier
-SOURCE\PARAMETER.C(112): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\PARAMETER.C(113): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\PARAMETER.C(114): error C202: 'pulseSettingFreq': undefined identifier
-SOURCE\PARAMETER.C(115): error C202: 'pulseSettingFreq': undefined identifier
-SOURCE\PARAMETER.C(116): error C202: 'motorStepAngle': undefined identifier
-SOURCE\PARAMETER.C(117): error C202: 'motorStepAngle': undefined identifier
-SOURCE\PARAMETER.C(118): error C202: 'screwPitch': undefined identifier
-SOURCE\PARAMETER.C(119): error C202: 'screwPitch': undefined identifier
-SOURCE\PARAMETER.C(120): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\PARAMETER.C(121): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\PARAMETER.C(122): error C202: 'ballScrew': undefined identifier
-SOURCE\PARAMETER.C(123): error C202: 'ballScrew': undefined identifier
-compiling eeprom.c...
-compiling uart.c...
-SOURCE\UART.C(206): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\UART.C(221): error C202: 'screwPitch': undefined identifier
-SOURCE\UART.C(226): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\UART.C(231): error C202: 'ballScrew': undefined identifier
-SOURCE\UART.C(241): error C202: 'motorDirection': undefined identifier
-SOURCE\UART.C(244): error C202: 'initFlag': undefined identifier
-SOURCE\UART.C(249): error C202: 'motorDirection': undefined identifier
-SOURCE\UART.C(250): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\UART.C(251): error C202: 'currentPosition': undefined identifier
-SOURCE\UART.C(257): error C202: 'motorDirection': undefined identifier
-SOURCE\UART.C(258): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\UART.C(259): error C202: 'currentPosition': undefined identifier
-compiling key.c...
-SOURCE\KEY.C(23): error C202: 'keyMotorForward': undefined identifier
-SOURCE\KEY.C(29): error C202: 'keyMotorForward': undefined identifier
-SOURCE\KEY.C(39): error C202: 'keyMotorForward': undefined identifier
-SOURCE\KEY.C(41): error C202: 'motorDirection': undefined identifier
-SOURCE\KEY.C(42): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\KEY.C(43): error C202: 'currentPosition': undefined identifier
-SOURCE\KEY.C(46): error C202: 'keyMotorBackward': undefined identifier
-SOURCE\KEY.C(48): error C202: 'motorDirection': undefined identifier
-SOURCE\KEY.C(49): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\KEY.C(50): error C202: 'currentPosition': undefined identifier
-SOURCE\KEY.C(57): error C202: 'keyMotorBackward': undefined identifier
-compiling dispatch.c...
-compiling timer.c...
-SOURCE\TIMER.C(42): error C202: 'motorPWM': undefined identifier
-SOURCE\TIMER.C(44): error C202: 'motorPWM': undefined identifier
-Target not created
-Build target 'Target 1'
-assembling STARTUP.A51...
-compiling main.c...
-SOURCE\MAIN.C(102): error C202: 'isStartPosition': undefined identifier
-SOURCE\MAIN.C(106): error C202: 'isStartPosition': undefined identifier
-SOURCE\MAIN.C(109): error C202: 'initFlag': undefined identifier
-SOURCE\MAIN.C(112): error C202: 'currentPosition': undefined identifier
-SOURCE\MAIN.C(113): error C202: 'initFlag': undefined identifier
-SOURCE\MAIN.C(119): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\MAIN.C(120): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\MAIN.C(122): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\MAIN.C(123): error C202: 'screwPitch': undefined identifier
-SOURCE\MAIN.C(124): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\MAIN.C(125): error C202: 'ballScrew': undefined identifier
-compiling basefunc.c...
-compiling parameter.c...
-SOURCE\PARAMETER.C(55): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\PARAMETER.C(58): error C202: 'screwPitch': undefined identifier
-SOURCE\PARAMETER.C(59): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\PARAMETER.C(60): error C202: 'ballScrew': undefined identifier
-SOURCE\PARAMETER.C(66): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\PARAMETER.C(67): error C202: 'screwPitch': undefined identifier
-SOURCE\PARAMETER.C(68): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\PARAMETER.C(69): error C202: 'ballScrew': undefined identifier
-SOURCE\PARAMETER.C(73): error C202: 'pulseSettingFreq': undefined identifier
-SOURCE\PARAMETER.C(74): error C202: 'motorStepAngle': undefined identifier
-SOURCE\PARAMETER.C(85): error C202: 'currentPosition': undefined identifier
-SOURCE\PARAMETER.C(88): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\PARAMETER.C(89): error C202: 'pulseSettingFreq': undefined identifier
-SOURCE\PARAMETER.C(90): error C202: 'motorStepAngle': undefined identifier
-SOURCE\PARAMETER.C(91): error C202: 'screwPitch': undefined identifier
-SOURCE\PARAMETER.C(92): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\PARAMETER.C(93): error C202: 'ballScrew': undefined identifier
-SOURCE\PARAMETER.C(96): error C202: 'isStartPosition': undefined identifier
-SOURCE\PARAMETER.C(98): error C202: 'initFlag': undefined identifier
-SOURCE\PARAMETER.C(112): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\PARAMETER.C(113): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\PARAMETER.C(114): error C202: 'pulseSettingFreq': undefined identifier
-SOURCE\PARAMETER.C(115): error C202: 'pulseSettingFreq': undefined identifier
-SOURCE\PARAMETER.C(116): error C202: 'motorStepAngle': undefined identifier
-SOURCE\PARAMETER.C(117): error C202: 'motorStepAngle': undefined identifier
-SOURCE\PARAMETER.C(118): error C202: 'screwPitch': undefined identifier
-SOURCE\PARAMETER.C(119): error C202: 'screwPitch': undefined identifier
-SOURCE\PARAMETER.C(120): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\PARAMETER.C(121): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\PARAMETER.C(122): error C202: 'ballScrew': undefined identifier
-SOURCE\PARAMETER.C(123): error C202: 'ballScrew': undefined identifier
-compiling eeprom.c...
-compiling uart.c...
-SOURCE\UART.C(206): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\UART.C(221): error C202: 'screwPitch': undefined identifier
-SOURCE\UART.C(226): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\UART.C(231): error C202: 'ballScrew': undefined identifier
-SOURCE\UART.C(241): error C202: 'motorDirection': undefined identifier
-SOURCE\UART.C(244): error C202: 'initFlag': undefined identifier
-SOURCE\UART.C(249): error C202: 'motorDirection': undefined identifier
-SOURCE\UART.C(250): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\UART.C(251): error C202: 'currentPosition': undefined identifier
-SOURCE\UART.C(257): error C202: 'motorDirection': undefined identifier
-SOURCE\UART.C(258): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\UART.C(259): error C202: 'currentPosition': undefined identifier
-compiling key.c...
-SOURCE\KEY.C(23): error C202: 'keyMotorForward': undefined identifier
-SOURCE\KEY.C(29): error C202: 'keyMotorForward': undefined identifier
-SOURCE\KEY.C(39): error C202: 'keyMotorForward': undefined identifier
-SOURCE\KEY.C(41): error C202: 'motorDirection': undefined identifier
-SOURCE\KEY.C(42): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\KEY.C(43): error C202: 'currentPosition': undefined identifier
-SOURCE\KEY.C(46): error C202: 'keyMotorBackward': undefined identifier
-SOURCE\KEY.C(48): error C202: 'motorDirection': undefined identifier
-SOURCE\KEY.C(49): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\KEY.C(50): error C202: 'currentPosition': undefined identifier
-SOURCE\KEY.C(57): error C202: 'keyMotorBackward': undefined identifier
-compiling dispatch.c...
-compiling timer.c...
-SOURCE\TIMER.C(42): error C202: 'motorPWM': undefined identifier
-SOURCE\TIMER.C(44): error C202: 'motorPWM': undefined identifier
-Target not created
-Build target 'Target 1'
-assembling STARTUP.A51...
-compiling main.c...
-compiling basefunc.c...
-compiling parameter.c...
-SOURCE\PARAMETER.C(55): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\PARAMETER.C(58): error C202: 'screwPitch': undefined identifier
-SOURCE\PARAMETER.C(59): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\PARAMETER.C(60): error C202: 'ballScrew': undefined identifier
-SOURCE\PARAMETER.C(66): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\PARAMETER.C(67): error C202: 'screwPitch': undefined identifier
-SOURCE\PARAMETER.C(68): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\PARAMETER.C(69): error C202: 'ballScrew': undefined identifier
-SOURCE\PARAMETER.C(73): error C202: 'pulseSettingFreq': undefined identifier
-SOURCE\PARAMETER.C(74): error C202: 'motorStepAngle': undefined identifier
-SOURCE\PARAMETER.C(85): error C202: 'currentPosition': undefined identifier
-SOURCE\PARAMETER.C(88): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\PARAMETER.C(89): error C202: 'pulseSettingFreq': undefined identifier
-SOURCE\PARAMETER.C(90): error C202: 'motorStepAngle': undefined identifier
-SOURCE\PARAMETER.C(91): error C202: 'screwPitch': undefined identifier
-SOURCE\PARAMETER.C(92): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\PARAMETER.C(93): error C202: 'ballScrew': undefined identifier
-SOURCE\PARAMETER.C(96): error C202: 'isStartPosition': undefined identifier
-SOURCE\PARAMETER.C(98): error C202: 'initFlag': undefined identifier
-SOURCE\PARAMETER.C(112): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\PARAMETER.C(113): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\PARAMETER.C(114): error C202: 'pulseSettingFreq': undefined identifier
-SOURCE\PARAMETER.C(115): error C202: 'pulseSettingFreq': undefined identifier
-SOURCE\PARAMETER.C(116): error C202: 'motorStepAngle': undefined identifier
-SOURCE\PARAMETER.C(117): error C202: 'motorStepAngle': undefined identifier
-SOURCE\PARAMETER.C(118): error C202: 'screwPitch': undefined identifier
-SOURCE\PARAMETER.C(119): error C202: 'screwPitch': undefined identifier
-SOURCE\PARAMETER.C(120): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\PARAMETER.C(121): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\PARAMETER.C(122): error C202: 'ballScrew': undefined identifier
-SOURCE\PARAMETER.C(123): error C202: 'ballScrew': undefined identifier
-compiling eeprom.c...
-compiling uart.c...
-SOURCE\UART.C(206): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\UART.C(221): error C202: 'screwPitch': undefined identifier
-SOURCE\UART.C(226): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\UART.C(231): error C202: 'ballScrew': undefined identifier
-SOURCE\UART.C(241): error C202: 'motorDirection': undefined identifier
-SOURCE\UART.C(244): error C202: 'initFlag': undefined identifier
-SOURCE\UART.C(249): error C202: 'motorDirection': undefined identifier
-SOURCE\UART.C(250): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\UART.C(251): error C202: 'currentPosition': undefined identifier
-SOURCE\UART.C(257): error C202: 'motorDirection': undefined identifier
-SOURCE\UART.C(258): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\UART.C(259): error C202: 'currentPosition': undefined identifier
-compiling key.c...
-SOURCE\KEY.C(23): error C202: 'keyMotorForward': undefined identifier
-SOURCE\KEY.C(29): error C202: 'keyMotorForward': undefined identifier
-SOURCE\KEY.C(39): error C202: 'keyMotorForward': undefined identifier
-SOURCE\KEY.C(41): error C202: 'motorDirection': undefined identifier
-SOURCE\KEY.C(42): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\KEY.C(43): error C202: 'currentPosition': undefined identifier
-SOURCE\KEY.C(46): error C202: 'keyMotorBackward': undefined identifier
-SOURCE\KEY.C(48): error C202: 'motorDirection': undefined identifier
-SOURCE\KEY.C(49): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\KEY.C(50): error C202: 'currentPosition': undefined identifier
-SOURCE\KEY.C(57): error C202: 'keyMotorBackward': undefined identifier
-compiling dispatch.c...
-compiling timer.c...
-SOURCE\TIMER.C(42): error C202: 'motorPWM': undefined identifier
-SOURCE\TIMER.C(44): error C202: 'motorPWM': undefined identifier
-Target not created
-Build target 'Target 1'
-assembling STARTUP.A51...
-compiling main.c...
-compiling basefunc.c...
-compiling parameter.c...
-compiling eeprom.c...
-compiling uart.c...
-SOURCE\UART.C(206): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\UART.C(221): error C202: 'screwPitch': undefined identifier
-SOURCE\UART.C(226): error C202: 'motorReducGearRatio': undefined identifier
-SOURCE\UART.C(231): error C202: 'ballScrew': undefined identifier
-SOURCE\UART.C(241): error C202: 'motorDirection': undefined identifier
-SOURCE\UART.C(244): error C202: 'initFlag': undefined identifier
-SOURCE\UART.C(249): error C202: 'motorDirection': undefined identifier
-SOURCE\UART.C(250): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\UART.C(251): error C202: 'currentPosition': undefined identifier
-SOURCE\UART.C(257): error C202: 'motorDirection': undefined identifier
-SOURCE\UART.C(258): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\UART.C(259): error C202: 'currentPosition': undefined identifier
-compiling key.c...
-SOURCE\KEY.C(23): error C202: 'keyMotorForward': undefined identifier
-SOURCE\KEY.C(29): error C202: 'keyMotorForward': undefined identifier
-SOURCE\KEY.C(39): error C202: 'keyMotorForward': undefined identifier
-SOURCE\KEY.C(41): error C202: 'motorDirection': undefined identifier
-SOURCE\KEY.C(42): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\KEY.C(43): error C202: 'currentPosition': undefined identifier
-SOURCE\KEY.C(46): error C202: 'keyMotorBackward': undefined identifier
-SOURCE\KEY.C(48): error C202: 'motorDirection': undefined identifier
-SOURCE\KEY.C(49): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\KEY.C(50): error C202: 'currentPosition': undefined identifier
-SOURCE\KEY.C(57): error C202: 'keyMotorBackward': undefined identifier
-compiling dispatch.c...
-compiling timer.c...
-SOURCE\TIMER.C(42): error C202: 'motorPWM': undefined identifier
-SOURCE\TIMER.C(44): error C202: 'motorPWM': undefined identifier
-Target not created
-Build target 'Target 1'
-assembling STARTUP.A51...
-compiling main.c...
-compiling basefunc.c...
-compiling parameter.c...
-compiling eeprom.c...
-compiling uart.c...
-compiling key.c...
-SOURCE\KEY.C(23): error C202: 'keyMotorForward': undefined identifier
-SOURCE\KEY.C(29): error C202: 'keyMotorForward': undefined identifier
-SOURCE\KEY.C(39): error C202: 'keyMotorForward': undefined identifier
-SOURCE\KEY.C(41): error C202: 'motorDirection': undefined identifier
-SOURCE\KEY.C(42): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\KEY.C(43): error C202: 'currentPosition': undefined identifier
-SOURCE\KEY.C(46): error C202: 'keyMotorBackward': undefined identifier
-SOURCE\KEY.C(48): error C202: 'motorDirection': undefined identifier
-SOURCE\KEY.C(49): error C202: 'pulseSettingNum': undefined identifier
-SOURCE\KEY.C(50): error C202: 'currentPosition': undefined identifier
-SOURCE\KEY.C(57): error C202: 'keyMotorBackward': undefined identifier
-compiling dispatch.c...
-compiling timer.c...
-SOURCE\TIMER.C(42): error C202: 'motorPWM': undefined identifier
-SOURCE\TIMER.C(44): error C202: 'motorPWM': undefined identifier
-Target not created
+".\output\CushionMachineControllor" - 0 Error(s), 10 Warning(s).
 Build target 'Target 1'
 assembling STARTUP.A51...
 compiling main.c...
@@ -434,8 +51,44 @@ compiling uart.c...
 compiling key.c...
 compiling dispatch.c...
 compiling timer.c...
-SOURCE\TIMER.C(42): error C202: 'motorPWM': undefined identifier
-SOURCE\TIMER.C(44): error C202: 'motorPWM': undefined identifier
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SEND_SCREEN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDDATATOSCREEN?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGESCREENPAGE?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=547 code=938
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 9 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+.\INCLUDE\PARAMETER.H(28): error C231: 'keyMotor2Operation': redefinition
+compiling basefunc.c...
+compiling parameter.c...
+.\INCLUDE\PARAMETER.H(28): error C231: 'keyMotor2Operation': redefinition
+compiling eeprom.c...
+compiling uart.c...
+.\INCLUDE\PARAMETER.H(28): error C231: 'keyMotor2Operation': redefinition
+compiling key.c...
+.\INCLUDE\PARAMETER.H(28): error C231: 'keyMotor2Operation': redefinition
+compiling dispatch.c...
+.\INCLUDE\PARAMETER.H(28): error C231: 'keyMotor2Operation': redefinition
+compiling timer.c...
+.\INCLUDE\PARAMETER.H(28): error C231: 'keyMotor2Operation': redefinition
 Target not created
 Build target 'Target 1'
 assembling STARTUP.A51...
@@ -459,7 +112,37 @@ linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SENDSTRING?UART
+    SEGMENT: ?PR?_SENDDATATOSCREEN?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGESCREENPAGE?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=547 code=938
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 9 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SEND_SCREEN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_SENDDATATOSCREEN?UART
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
@@ -468,6 +151,1461 @@ linking...
     SEGMENT: ?PR?KEY_SCAN?KEY
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?MANIDISPATCH?DISPATCH
-Program Size: data=17.2 xdata=550 code=1014
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  ISSTARTPOSITION1
+    MODULE:  .\output\main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  ISSTARTPOSITION2
+    MODULE:  .\output\main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ISSTARTPOSITION1
+    MODULE:  .\output\main.obj (MAIN)
+    ADDRESS: 025FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ISSTARTPOSITION1
+    MODULE:  .\output\main.obj (MAIN)
+    ADDRESS: 0269H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ISSTARTPOSITION2
+    MODULE:  .\output\main.obj (MAIN)
+    ADDRESS: 0270H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ISSTARTPOSITION2
+    MODULE:  .\output\main.obj (MAIN)
+    ADDRESS: 027AH
+Program Size: data=17.2 xdata=559 code=938
 creating hex file from ".\output\CushionMachineControllor"...
-".\output\CushionMachineControllor" - 0 Error(s), 10 Warning(s).
+".\output\CushionMachineControllor" - 0 Error(s), 15 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SEND_SCREEN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDDATATOSCREEN?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGESCREENPAGE?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  ISSTARTPOSITION1
+    MODULE:  .\output\main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  ISSTARTPOSITION2
+    MODULE:  .\output\main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ISSTARTPOSITION1
+    MODULE:  .\output\main.obj (MAIN)
+    ADDRESS: 025FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ISSTARTPOSITION1
+    MODULE:  .\output\main.obj (MAIN)
+    ADDRESS: 0269H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ISSTARTPOSITION2
+    MODULE:  .\output\main.obj (MAIN)
+    ADDRESS: 0270H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ISSTARTPOSITION2
+    MODULE:  .\output\main.obj (MAIN)
+    ADDRESS: 027AH
+Program Size: data=17.2 xdata=559 code=938
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 15 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+.\INCLUDE\PARAMETER.H(46): error C129: missing ';' before 'motor1'
+compiling basefunc.c...
+compiling parameter.c...
+.\INCLUDE\PARAMETER.H(46): error C129: missing ';' before 'motor1'
+compiling eeprom.c...
+compiling uart.c...
+.\INCLUDE\PARAMETER.H(46): error C129: missing ';' before 'motor1'
+compiling key.c...
+.\INCLUDE\PARAMETER.H(46): error C129: missing ';' before 'motor1'
+compiling dispatch.c...
+.\INCLUDE\PARAMETER.H(46): error C129: missing ';' before 'motor1'
+compiling timer.c...
+.\INCLUDE\PARAMETER.H(46): error C129: missing ';' before 'motor1'
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(41): error C202: 'isStartPosition1': undefined identifier
+SOURCE\MAIN.C(45): error C202: 'isStartPosition1': undefined identifier
+SOURCE\MAIN.C(50): error C202: 'isStartPosition2': undefined identifier
+SOURCE\MAIN.C(54): error C202: 'isStartPosition2': undefined identifier
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTORROTATIONANGLE
+    MODULE:  .\output\parameter.obj (PARAMETER)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTOR2
+    MODULE:  .\output\parameter.obj (PARAMETER)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTOR1
+    MODULE:  .\output\parameter.obj (PARAMETER)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  RUNMODE
+    MODULE:  .\output\parameter.obj (PARAMETER)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  REFRESHDISPLAY
+    MODULE:  .\output\parameter.obj (PARAMETER)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTORROTATIONANGLE
+    MODULE:  .\output\uart.obj (UART)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTOR2
+    MODULE:  .\output\uart.obj (UART)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTOR1
+    MODULE:  .\output\uart.obj (UART)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  RUNMODE
+    MODULE:  .\output\uart.obj (UART)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  REFRESHDISPLAY
+    MODULE:  .\output\uart.obj (UART)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTORROTATIONANGLE
+    MODULE:  .\output\key.obj (KEY)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTOR2
+    MODULE:  .\output\key.obj (KEY)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTOR1
+    MODULE:  .\output\key.obj (KEY)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  RUNMODE
+    MODULE:  .\output\key.obj (KEY)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  REFRESHDISPLAY
+    MODULE:  .\output\key.obj (KEY)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTORROTATIONANGLE
+    MODULE:  .\output\dispatch.obj (DISPATCH)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTOR2
+    MODULE:  .\output\dispatch.obj (DISPATCH)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTOR1
+    MODULE:  .\output\dispatch.obj (DISPATCH)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  RUNMODE
+    MODULE:  .\output\dispatch.obj (DISPATCH)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  REFRESHDISPLAY
+    MODULE:  .\output\dispatch.obj (DISPATCH)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTORROTATIONANGLE
+    MODULE:  .\output\timer.obj (TIMER)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTOR2
+    MODULE:  .\output\timer.obj (TIMER)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTOR1
+    MODULE:  .\output\timer.obj (TIMER)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  RUNMODE
+    MODULE:  .\output\timer.obj (TIMER)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  REFRESHDISPLAY
+    MODULE:  .\output\timer.obj (TIMER)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SEND_SCREEN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDDATATOSCREEN?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGESCREENPAGE?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   XDATA   
+    SEGMENT: ?XD?TIMER
+    LENGTH:  0208H
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   XDATA   
+    SEGMENT: ?XD?DISPATCH
+    LENGTH:  0207H
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   XDATA   
+    SEGMENT: ?XD?KEY
+    LENGTH:  0203H
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   XDATA   
+    SEGMENT: ?XD?MAIN
+    LENGTH:  0202H
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   XDATA   
+    SEGMENT: ?XD?PARAMETER
+    LENGTH:  0202H
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  MOTORROTATIONANGLE
+    SEGMENT: ?XD?MAIN
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  MOTOR2
+    SEGMENT: ?XD?MAIN
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  MOTOR1
+    SEGMENT: ?XD?MAIN
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  RUNMODE
+    SEGMENT: ?XD?MAIN
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  REFRESHDISPLAY
+    SEGMENT: ?XD?MAIN
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  MOTORROTATIONANGLE
+    SEGMENT: ?XD?PARAMETER
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  MOTOR2
+    SEGMENT: ?XD?PARAMETER
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  MOTOR1
+    SEGMENT: ?XD?PARAMETER
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  RUNMODE
+    SEGMENT: ?XD?PARAMETER
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  REFRESHDISPLAY
+    SEGMENT: ?XD?PARAMETER
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  MOTORROTATIONANGLE
+    SEGMENT: ?XD?KEY
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  MOTOR2
+    SEGMENT: ?XD?KEY
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  MOTOR1
+    SEGMENT: ?XD?KEY
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  RUNMODE
+    SEGMENT: ?XD?KEY
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  REFRESHDISPLAY
+    SEGMENT: ?XD?KEY
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  KEY_SCAN_STEPS
+    SEGMENT: ?XD?KEY
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  INTERVALTIMERCOUNT
+    SEGMENT: ?XD?DISPATCH
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  MOTORROTATIONANGLE
+    SEGMENT: ?XD?DISPATCH
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  MOTOR2
+    SEGMENT: ?XD?DISPATCH
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  MOTOR1
+    SEGMENT: ?XD?DISPATCH
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  RUNMODE
+    SEGMENT: ?XD?DISPATCH
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  CYLINDERALARMCOUNT
+    SEGMENT: ?XD?DISPATCH
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  MANIDISPATCHSTEPS
+    SEGMENT: ?XD?DISPATCH
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  REFRESHDISPLAY
+    SEGMENT: ?XD?DISPATCH
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  MOTORROTATIONANGLE
+    SEGMENT: ?XD?TIMER
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  MOTOR2
+    SEGMENT: ?XD?TIMER
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  MOTOR1
+    SEGMENT: ?XD?TIMER
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  RUNMODE
+    SEGMENT: ?XD?TIMER
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  PULSESETTINGNUMCOUNT
+    SEGMENT: ?XD?TIMER
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  REFRESHDISPLAY
+    SEGMENT: ?XD?TIMER
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  TIMER_COUNT
+    SEGMENT: ?XD?TIMER
+*** ERROR L105: PUBLIC REFERS TO IGNORED SEGMENT
+    SYMBOL:  COUNT
+    SEGMENT: ?XD?TIMER
+Program Size: data=17.2 xdata=3129 code=940
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTOR2
+    MODULE:  .\output\parameter.obj (PARAMETER)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTOR1
+    MODULE:  .\output\parameter.obj (PARAMETER)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTOR2
+    MODULE:  .\output\uart.obj (UART)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTOR1
+    MODULE:  .\output\uart.obj (UART)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTOR2
+    MODULE:  .\output\key.obj (KEY)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTOR1
+    MODULE:  .\output\key.obj (KEY)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTOR2
+    MODULE:  .\output\dispatch.obj (DISPATCH)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTOR1
+    MODULE:  .\output\dispatch.obj (DISPATCH)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTOR2
+    MODULE:  .\output\timer.obj (TIMER)
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  MOTOR1
+    MODULE:  .\output\timer.obj (TIMER)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SEND_SCREEN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDDATATOSCREEN?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGESCREENPAGE?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=719 code=938
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SEND_SCREEN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDDATATOSCREEN?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGESCREENPAGE?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=559 code=938
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 9 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SEND_SCREEN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDDATATOSCREEN?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGESCREENPAGE?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=559 code=938
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 9 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SEND_SCREEN?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDDATATOSCREEN?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGESCREENPAGE?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=559 code=938
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 9 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+SOURCE\UART.C(233): error C202: 'motorDirection': undefined identifier
+SOURCE\UART.C(236): error C202: 'initFlag': undefined identifier
+SOURCE\UART.C(237): error C202: 'refreshDisplay': undefined identifier
+SOURCE\UART.C(245): error C202: 'currentPosition': undefined identifier
+SOURCE\UART.C(246): error C202: 'pulseSettingNum': undefined identifier
+SOURCE\UART.C(247): error C202: 'pulseSettingFreq': undefined identifier
+SOURCE\UART.C(248): error C202: 'motorStepAngle': undefined identifier
+SOURCE\UART.C(249): error C202: 'screwPitch': undefined identifier
+SOURCE\UART.C(250): error C202: 'motorReducGearRatio': undefined identifier
+SOURCE\UART.C(251): error C202: 'ballScrew': undefined identifier
+SOURCE\UART.C(253): error C202: 'isStartPosition': undefined identifier
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+SOURCE\UART.C(247): error C202: 'currentPosition': undefined identifier
+SOURCE\UART.C(248): error C202: 'pulseSettingNum': undefined identifier
+SOURCE\UART.C(249): error C202: 'pulseSettingFreq': undefined identifier
+SOURCE\UART.C(250): error C202: 'motorStepAngle': undefined identifier
+SOURCE\UART.C(251): error C202: 'screwPitch': undefined identifier
+SOURCE\UART.C(252): error C202: 'motorReducGearRatio': undefined identifier
+SOURCE\UART.C(253): error C202: 'ballScrew': undefined identifier
+SOURCE\UART.C(255): error C202: 'isStartPosition': undefined identifier
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGESCREENPAGE?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYSETTING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=559 code=1076
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 9 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(61): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGESCREENPAGE?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=559 code=1081
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 9 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(61): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGESCREENPAGE?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=559 code=1081
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 9 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(61): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGESCREENPAGE?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=559 code=1086
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 9 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(63): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGESCREENPAGE?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=559 code=1097
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 9 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(62): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGESCREENPAGE?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=559 code=1107
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 9 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(62): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGESCREENPAGE?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=559 code=1107
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 9 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(62): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGESCREENPAGE?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=559 code=1094
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 9 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(62): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+SOURCE\UART.C(260): error C141: syntax error near ';'
+SOURCE\UART.C(260): error C141: syntax error near ')'
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(62): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGESCREENPAGE?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=559 code=1175
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 9 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(62): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+SOURCE\UART.C(233): error C202: 'i': undefined identifier
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(62): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_SAVE?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHANGESCREENPAGE?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=557 code=1230
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 9 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(27): error C202: 'motor1': undefined identifier
+SOURCE\MAIN.C(31): error C202: 'motor1': undefined identifier
+SOURCE\MAIN.C(36): error C202: 'motor2': undefined identifier
+SOURCE\MAIN.C(40): error C202: 'motor2': undefined identifier
+compiling basefunc.c...
+compiling parameter.c...
+SOURCE\PARAMETER.C(92): error C141: syntax error near ')'
+compiling eeprom.c...
+compiling uart.c...
+SOURCE\UART.C(226): error C202: 'motor1': undefined identifier
+SOURCE\UART.C(227): error C202: 'motor1': undefined identifier
+SOURCE\UART.C(231): error C202: 'motor1': undefined identifier
+SOURCE\UART.C(248): error C202: 'motor1': undefined identifier
+SOURCE\UART.C(250): error C202: 'motor1': undefined identifier
+SOURCE\UART.C(252): error C202: 'motor1': undefined identifier
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(27): error C202: 'motor1': undefined identifier
+SOURCE\MAIN.C(31): error C202: 'motor1': undefined identifier
+SOURCE\MAIN.C(36): error C202: 'motor2': undefined identifier
+SOURCE\MAIN.C(40): error C202: 'motor2': undefined identifier
+compiling basefunc.c...
+compiling parameter.c...
+SOURCE\PARAMETER.C(92): error C141: syntax error near ')'
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(64): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+SOURCE\PARAMETER.C(92): error C141: syntax error near ')'
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(64): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+SOURCE\PARAMETER.C(92): error C141: syntax error near ')'
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(64): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IAPPROGRAMBYTE?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=525 code=1243
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(62): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=521 code=1319
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 6 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(62): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=522 code=1460
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 6 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(62): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=522 code=1502
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 6 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(62): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=522 code=1500
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 6 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(62): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=522 code=1502
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 6 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(62): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+SOURCE\UART.C(239): warning C280: 'i': unreferenced local variable
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=522 code=1425
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(62): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=522 code=1509
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 6 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(62): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=522 code=1509
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 6 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(62): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_INIT?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=525 code=1506
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(62): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_INIT?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=525 code=1499
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(61): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PARAMETER_INIT?PARAMETER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=525 code=1499
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(61): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=522 code=1502
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 6 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(39): error C202: 'busy': undefined identifier
+source\main.c(43): warning C322: unknown identifier
+source\main.c(43): warning C322: unknown identifier
+source\main.c(51): warning C322: unknown identifier
+source\main.c(51): warning C322: unknown identifier
+SOURCE\MAIN.C(57): error C202: 'busy': undefined identifier
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+source\main.c(44): warning C322: unknown identifier
+source\main.c(44): warning C322: unknown identifier
+source\main.c(52): warning C322: unknown identifier
+source\main.c(52): warning C322: unknown identifier
+SOURCE\MAIN.C(101): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  BUSY
+    MODULE:  .\output\uart.obj (UART)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INITUART0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDDATAUART0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.3 xdata=522 code=1539
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(85): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  BUSY
+    MODULE:  .\output\uart.obj (UART)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INITUART0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDDATAUART0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.3 xdata=522 code=1530
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(85): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INITUART0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDDATAUART0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.3 xdata=522 code=1530
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(85): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INITUART0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDDATAUART0?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.3 xdata=522 code=1530
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 8 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(87): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.3 xdata=522 code=1538
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 6 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+SOURCE\MAIN.C(60): warning C206: 'refreshDisplaySetting': missing function-prototype
+compiling basefunc.c...
+compiling parameter.c...
+compiling eeprom.c...
+compiling uart.c...
+compiling key.c...
+compiling dispatch.c...
+compiling timer.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GETSENSORSTATUS?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?REFRESHDISPLAYRUNNING?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?KEY_SCAN?KEY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MANIDISPATCH?DISPATCH
+Program Size: data=17.2 xdata=522 code=1502
+creating hex file from ".\output\CushionMachineControllor"...
+".\output\CushionMachineControllor" - 0 Error(s), 6 Warning(s).

@@ -31,7 +31,7 @@ sfr IE2   = 0xaf;           //Interrupt control 2
 
 bit busy;
 bit uartReceiveOK = 0;
-BYTE saveSetting = 0;
+BYTE saveSetting = 0; //是否保存设置值状态位 0：不保存 1：保存设置值 2：保存运行状态
 
 BYTE uartBuffer[15] = {0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff};
 
@@ -45,7 +45,6 @@ BYTE dataIndex = 0;
 BYTE dataLength = 0;
   
 void SendData(BYTE dat);
-void SendString(char *s);
 void ReceiveData(BYTE dat);
 void anyData();
 
@@ -114,19 +113,6 @@ void SendData(BYTE dat)
     }
     busy = 1;
     S2BUF = ACC;            //Send data to UART2 buffer
-}
-
-/*----------------------------
-Send a string to UART
-Input: s (address of string)
-Output:None
-----------------------------*/
-void SendString(char *s)
-{
-    while (*s)              //Check the end of the string
-    {
-        SendData(*s++);     //Send current char and increment string ptr
-    }
 }
 
 void SendDataToScreen(WORD address, WORD dat)
@@ -201,66 +187,74 @@ void anyData()
 {
 	WORD dat = ((uartBuffer[4]<<8) | uartBuffer[5]);
 	
-	/*
-	if(uartBuffer[2] == 0x00)//脉冲个数
+
+	if(uartBuffer[2] == 0x06)//回零按钮
 	{
-		pulseSettingNum =  dat;
-		saveSetting = 1;
+		//pulseSettingNum =  dat;
+		//saveSetting = 1;
 	}
-	else if(uartBuffer[2] == 0x02) //脉冲频率
+	else if(uartBuffer[2] == 0x08) //运行按钮
 	{
 		//pulseSettingFreq =  dat;
 		//saveSetting = 1;
 	}
-	else if(uartBuffer[2] == 0x04) //电机步进角
+	else if(uartBuffer[2] == 0x0A) //停止按钮
 	{
 		//motorStepAngle =  dat;
 		//saveSetting = 1;
 	}
-	else if(uartBuffer[2] == 0x06) // 丝杆丝距
+	else if(uartBuffer[2] == 0x0C) //前进按钮
 	{
-		screwPitch =  dat;
+		//screwPitch =  dat;
+		//saveSetting = 1;
+	}
+	else if(uartBuffer[2] == 0x10)	//跟随按钮
+	{
+		//motorReducGearRatio =  dat;
+		//saveSetting = 1;
+	}
+	else if(uartBuffer[2] == 0x1E) //保存按钮
+	{
 		saveSetting = 1;
 	}
-	else if(uartBuffer[2] == 0x08)	//电机减速比
+	else if(uartBuffer[2] == 0x20) //返回按钮
 	{
-		motorReducGearRatio =  dat;
-		saveSetting = 1;
+
 	}
-	else if(uartBuffer[2] == 0x0A) //丝杆导程
+	else if(uartBuffer[2] >= 0x12 && uartBuffer[2] <= 0x1C) //过程设置按钮
 	{
-		ballScrew =  dat;
-		saveSetting = 1;
+		motorCurrentRatationGroup = (uartBuffer[2] - 0x12)>>1;
+		displayMode = motorCurrentRatationGroup + 2; //刷新显示
 	}
-	else if(uartBuffer[2] == 0x0C) //电机旋转角
+	else if(uartBuffer[2] >= 0x2E && uartBuffer[2] <= 0x7C) //过程设置值
 	{
-		motorRotationAngle =  dat;
-		saveSetting = 1;
+		motorRotationAngle[motorCurrentRatationGroup][(uartBuffer[2] - 0x2E)>>1] = dat;
 	}
-	else if(uartBuffer[2] == 0x14) //初始化按钮
-	{
-		motorDirection = 0;
-		pulseSettingNumCount = 65535;
-		timer_count = 50;
-		initFlag = 1;
-		refreshDisplay = 1;
-	}
-	else if(uartBuffer[2] == 0x16) //后退按钮
-	{
-		motorDirection = 0;
-		pulseSettingNumCount = pulseSettingNum;
-		currentPosition --;
-		timer_count = 50;
-		refreshDisplay = 1;	
-	}
-	else if(uartBuffer[2] == 0x18) //前进按钮
-	{
-		motorDirection = 1;
-		pulseSettingNumCount = pulseSettingNum;
-		currentPosition ++;
-		timer_count = 50;
-		refreshDisplay = 1;
-	}
-	*/
+
 	uartReceiveOK = 1;	
+}
+
+void refreshDisplaySetting()
+{
+	BYTE i;
+	//设置按钮显示非选中
+	SendDataToScreen(0x0022, 0);
+	SendDataToScreen(0x0024, 0);
+	SendDataToScreen(0x0026, 0);
+	SendDataToScreen(0x0028, 0);
+	SendDataToScreen(0x002A, 0);
+	SendDataToScreen(0x002C, 0);
+	//设置按钮显示当前选中
+	SendDataToScreen((motorCurrentRatationGroup<<1)+0x22, 1);
+	//当组设置值
+	for(i=0; i < 40; i++)
+	{
+		SendDataToScreen(0x002E + (i<<1) ,motorRotationAngle[motorCurrentRatationGroup][i]);
+	   	
+	}
+}
+
+void refreshDisplayRunning()
+{
+	
 }

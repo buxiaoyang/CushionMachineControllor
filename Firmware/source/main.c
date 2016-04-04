@@ -18,41 +18,28 @@
 #include <key.h>
 #include <dispatch.h>
 
-void parameter_send_screen()
-{
-	/*
-	SendDataToScreen(0x0010, currentPosition);
-	SendDataToScreen(0x0000, pulseSettingNum);
-	SendDataToScreen(0x0002, pulseSettingFreq);
-	SendDataToScreen(0x0004, motorStepAngle);
-	SendDataToScreen(0x0006, screwPitch);
-	SendDataToScreen(0x0008, motorReducGearRatio);
-	SendDataToScreen(0x000A, ballScrew);
-	SendDataToScreen(0x000C, motorRotationAngle);
-	SendDataToScreen(0x0012, isStartPosition);
-	*/
-}
-
 void getSensorStatus()
 {
+	/*
 	//初始位置传感器1
 	if(sensorStartPosi1 == 0)
 	{
-		isStartPosition1 = 1;
+		motor1.isStartPosition = 1;
 	}
 	if(sensorStartPosi1 == 1)
 	{
-		isStartPosition1 = 0;
+		motor1.isStartPosition = 0;
 	}
 	//初始位置传感器2
 	if(sensorStartPosi2 == 0)
 	{
-		isStartPosition2 = 1;
+		motor2.isStartPosition = 1;
 	}
 	if(sensorStartPosi2 == 1)
 	{
-		isStartPosition2 = 0;
+		motor2.isStartPosition = 0;
 	}
+	*/
 }
 
 /***************************************************************************/
@@ -62,14 +49,24 @@ void getSensorStatus()
 /***************************************************************************/
 void main()
 {
-	uint count10ms = 0;
-	unsigned long temp = 0;
 	delay_ms(500);
 	parameter_init();
 	uart_init();
 	timer_init();
 	while(1)
 	{
+		if(displayMode >= 2 && displayMode <= 7)
+		{
+			 refreshDisplaySetting();
+			 displayMode = 0;
+		}
+		if(saveSetting == 1) //保存设置值
+		{
+			ChangeScreenPage(0x04);
+			parameter_save();
+			ChangeScreenPage(0x02);
+			saveSetting = 0;
+		}
 		/*
 		delay_us(100);
 		//按键扫描
