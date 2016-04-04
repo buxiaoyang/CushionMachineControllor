@@ -55,19 +55,11 @@ void main()
 	Timer0Init();
 	Timer1Init();
 	ChangeScreenPage(0x00);
-
-	/*
-	motor1.stepPWMs = 32000;
-	motor1.stepPassPWMs = 0;
-	Motor1Start();
-
-	motor2.stepPWMs = 3200;
-	motor2.stepPassPWMs = 0;
-	Motor2Start();
-	*/
-
 	while(1)
 	{
+		//电机初始化状态机
+		ResetMotorDispatch();
+		//刷新显示器
 		if(displayMode == DISPLAY_RUN)
 		{
 			 refreshDisplayRunning();
@@ -78,7 +70,8 @@ void main()
 			 refreshDisplaySetting();
 			 displayMode = DISPLAY_NO_FRESH;
 		}
-		if(saveMode == SAVE_SETTING) //保存设置值
+		//保存设置值
+		if(saveMode == SAVE_SETTING) 
 		{
 			ChangeScreenPage(0x04);
 			if(!parameter_save())

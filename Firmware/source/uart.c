@@ -203,8 +203,10 @@ void anyData()
 
 	if(uartBuffer[2] == 0x07)//回零按钮
 	{
-		//pulseSettingNum =  dat;
-		//saveSetting = 1;
+		if(ResetMotorDispatchSteps == 20)
+		{
+			ResetMotorDispatchSteps = 0;	
+		}
 	}
 	else if(uartBuffer[2] == 0x08) //运行按钮
 	{

@@ -10,6 +10,8 @@
 /* define SFR */
 sfr AUXR = 0x8e;                    //Auxiliary register
 
+unsigned int timerInit1 = TIMER_INIT, timerInit2 = TIMER_INIT;
+
 unsigned int code timerStep[259] = {  0,  153,  771,  1104,  1379,  1589,  1736,  1824,  1862,  1862,  1830,  1777,  1710,
   1635,  1555,  1473,  1393,  1314,  1239,  1168,  1101,  1037,  979,  923,  871,
   824,  780,  738,  699,  664,  630,  599,  570,  543,  518,  494,  472,  452,  432,
@@ -33,48 +35,46 @@ unsigned int code timerStep[259] = {  0,  153,  771,  1104,  1379,  1589,  1736,
 /* Timer0 interrupt routine */
 void tm0_isr() interrupt 1 using 1
 {
-	static unsigned int timerInit;
 	unsigned long stepRemain = motor1.stepPWMs -  motor1.stepPassPWMs;
 	if(motor1.stepPassPWMs < 259)
 	{
-		timerInit += timerStep[motor1.stepPassPWMs];
+		timerInit2 += timerStep[motor1.stepPassPWMs];
 	}
 	if(stepRemain < 259)
 	{
-		timerInit -= timerStep[stepRemain];
+		timerInit2 -= timerStep[stepRemain];
 	}
 	motor1.stepPassPWMs++;
 	if(motor1.stepPassPWMs == motor1.stepPWMs)
 	{
 	    TR0 = 0;
-		timerInit = TIMER_INIT;
+		timerInit2 = TIMER_INIT;
 	}
-	TL0 = timerInit;		//设置定时初值
-	TH0 = timerInit>>8;		//设置定时初值
+	TL0 = timerInit2;		//设置定时初值
+	TH0 = timerInit2>>8;		//设置定时初值
 	ioMmotor1PWM = !ioMmotor1PWM;
 }
 
 /* Timer1 interrupt routine */
 void tm1_isr() interrupt 3 using 1
 {
-	static unsigned int timerInit;
 	unsigned long stepRemain = motor2.stepPWMs -  motor2.stepPassPWMs;
 	if(motor2.stepPassPWMs < 259)
 	{
-		timerInit += timerStep[motor2.stepPassPWMs];
+		timerInit1 += timerStep[motor2.stepPassPWMs];
 	}
 	if(stepRemain < 259)
 	{
-		timerInit -= timerStep[stepRemain];
+		timerInit1 -= timerStep[stepRemain];
 	}
 	motor2.stepPassPWMs++;
 	if(motor2.stepPassPWMs == motor2.stepPWMs)
 	{
 	    TR1 = 0;
-		timerInit = TIMER_INIT;
+		timerInit1 = TIMER_INIT;
 	}
-	TL1 = timerInit;		//设置定时初值
-	TH1 = timerInit>>8;		//设置定时初值
+	TL1 = timerInit1;		//设置定时初值
+	TH1 = timerInit1>>8;		//设置定时初值
 	ioMmotor2PWM = !ioMmotor2PWM;
 }
 
@@ -89,13 +89,23 @@ void Timer0Init(void)
 	TH0 = TIMER_INIT>>8;		//设置定时初值
 	TF0 = 0;		//清除TF0标志
 	TR0 = 0;		//定时器0开始计时
-	ET0 = 1;                        //enable timer0 interrupt
+	ET0 = 0;                        //enable timer0 interrupt
 	EA = 1;                         //open global interrupt switch
 }
 
 void Motor1Start(void)		
 {
+	TL0 = TIMER_INIT;		//设置定时初值
+	TH0 = TIMER_INIT>>8;		//设置定时初值
+	timerInit1 = TIMER_INIT;
+	ET0 = 1;
 	TR0 = 1;                       
+}
+
+void Motor1Stop(void)		
+{
+	ET0 = 0;
+	TR0 = 0;                       
 }
 
 void Timer1Init(void)		
@@ -106,11 +116,21 @@ void Timer1Init(void)
 	TH1 = TIMER_INIT>>8;		//设置定时初值
 	TF1 = 0;		//清除TF0标志
 	TR1 = 0;		//定时器0开始计时
-	ET1 = 1;                        //enable timer1 interrupt
+	ET1 = 0;                        //enable timer1 interrupt
 	EA = 1;                         //open global interrupt switch
 }
 
 void Motor2Start(void)		
 {
+	TL1 = TIMER_INIT;		//设置定时初值
+	TH1 = TIMER_INIT>>8;		//设置定时初值
+	timerInit2 = TIMER_INIT;
+	ET1 = 1;
 	TR1 = 1;                       
+}
+
+void Motor2Stop(void)		
+{
+	TR1 = 0;
+	ET1 = 0;                       
 }
