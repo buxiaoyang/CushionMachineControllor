@@ -23,6 +23,7 @@ struct Motor motor1, motor2; //电机
 unsigned int motorRotationAngle[6][40]; //电机旋转角 6组数据，每组40个
 unsigned char motorCurrentRatationGroup; //当前设置旋转角组
 enum DisplayMode displayMode; //刷新屏幕标志位 0 不刷新
+enum SaveMode saveMode;
 
 /***************************************************************************/
 // 读取参数
@@ -68,14 +69,19 @@ void parameter_init()
 		}	
 	}
 
+	runMode = MODEL_RUN;
+	motorCurrentRatationGroup = 0;
+	displayMode = DISPLAY_RUN;
+	saveMode = SAVE_NO_SAVING;
+
 	//电机参数初始化
 	motor1.position = 0;
 	motor1.status = MOTOR_STOP;
 	motor1.isStartPosition = 1;
 	motor1.stepPWMs = 0;
 	motor1.stepPassPWMs = 0;
-	motor1.totalPWMs = 0;
-	motor1.currentStage = 0;
+	motor1.totalPWMs = 6553600;
+	motor1.currentStage = 6;
 
 	motor2.position = 0;
 	motor2.status = MOTOR_STOP;

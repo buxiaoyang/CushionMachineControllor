@@ -31,7 +31,6 @@ sfr IE2   = 0xaf;           //Interrupt control 2
 
 bit busy;
 bit uartReceiveOK = 0;
-BYTE saveSetting = 0; //是否保存设置值状态位 0：不保存 1：保存设置值 2：保存运行状态
 
 BYTE uartBuffer[15] = {0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff};
 
@@ -127,6 +126,20 @@ void SendDataToScreen(WORD address, WORD dat)
 	SendData(dat);
 }
 
+void SendLongDataToScreen(WORD address, unsigned long dat)
+{
+	SendData(0x5A);
+	SendData(0xA5);
+	SendData(0x07);
+	SendData(0x82);
+	SendData(address>>8);
+	SendData(address);
+	SendData(dat>>24);
+	SendData(dat>>16);
+	SendData(dat>>8);
+	SendData(dat);
+}
+
 void ChangeScreenPage(WORD page)
 {
 	SendData(0x5A);
@@ -215,7 +228,7 @@ void anyData()
 	}
 	else if(uartBuffer[2] == 0x1E) //保存按钮
 	{
-		saveSetting = 1;
+		saveMode = SAVE_SETTING;
 	}
 	else if(uartBuffer[2] == 0x20) //返回按钮
 	{
@@ -256,5 +269,7 @@ void refreshDisplaySetting()
 
 void refreshDisplayRunning()
 {
-	
+	SendDataToScreen(0x0000, runMode);
+	SendDataToScreen(0x0002, motor1.currentStage);
+	SendLongDataToScreen(0x0004, motor1.totalPWMs);
 }

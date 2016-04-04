@@ -45,6 +45,7 @@ sbit testOutput4 = P1^7;
 enum RunMode {MODEL_STOP, MODEL_RUN};  //运行模式 0：停止 1：运行
 enum MotorStatus {MOTOR_STOP, MOTOR_FORWARD, MOTOR_BACKWARD};  //电机状态 0：停止 1：向前 2：向后
 enum DisplayMode {DISPLAY_NO_FRESH, DISPLAY_RUN, DISPLAY_SETTING1, DISPLAY_SETTING2, DISPLAY_SETTING3, DISPLAY_SETTING4, DISPLAY_SETTING5, DISPLAY_SETTING6}; //屏幕显示模式
+enum SaveMode {SAVE_NO_SAVING, SAVE_SETTING, SAVE_SNAPSHOT}; //是否保存EEPROM状态位  0：不保存 1：保存设置值 2：保存运行状态
 
 struct Motor //电机结构体
 {
@@ -63,6 +64,7 @@ extern struct Motor motor1, motor2; //电机
 extern unsigned int motorRotationAngle[6][40]; //电机旋转角 6组数据，每组40个
 extern unsigned char motorCurrentRatationGroup; //当前设置旋转角组
 extern enum DisplayMode displayMode; //刷新屏幕标志位 0 不刷新
+extern enum SaveMode saveMode; //保存EEPROM状态位 
 
 /***************************************************************************/
 // 函数声明

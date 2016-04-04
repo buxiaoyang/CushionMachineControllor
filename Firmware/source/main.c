@@ -68,12 +68,16 @@ void main()
 
 	while(1)
 	{
-		if(displayMode >= 2 && displayMode <= 7)
+		if(displayMode == DISPLAY_RUN)
+		{
+			 refreshDisplayRunning();
+		}
+		else if(displayMode >= DISPLAY_SETTING1 && displayMode <= DISPLAY_SETTING6)
 		{
 			 refreshDisplaySetting();
-			 displayMode = 0;
+			 displayMode = DISPLAY_NO_FRESH;
 		}
-		if(saveSetting == 1) //保存设置值
+		if(saveMode == SAVE_SETTING) //保存设置值
 		{
 			ChangeScreenPage(0x04);
 			if(!parameter_save())
@@ -86,7 +90,7 @@ void main()
 				//succeed
 				ChangeScreenPage(0x02);
 			}
-			saveSetting = 0;
+			saveMode = SAVE_NO_SAVING;
 		}
 		/*
 		delay_us(100);
