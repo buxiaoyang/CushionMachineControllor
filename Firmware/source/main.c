@@ -56,6 +56,7 @@ void main()
 	Timer1Init();
 	ChangeScreenPage(0x00);
 
+	/*
 	motor1.stepPWMs = 32000;
 	motor1.stepPassPWMs = 0;
 	Motor1Start();
@@ -63,6 +64,7 @@ void main()
 	motor2.stepPWMs = 3200;
 	motor2.stepPassPWMs = 0;
 	Motor2Start();
+	*/
 
 	while(1)
 	{
