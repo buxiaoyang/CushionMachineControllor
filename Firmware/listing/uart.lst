@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   UART                                                                  04/04/2016 17:08:24 PAGE 1   
+C51 COMPILER V7.50   UART                                                                  04/04/2016 19:25:33 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE UART
@@ -62,7 +62,7 @@ line level    source
   52          {
   53   1      #if (PARITYBIT == NONE_PARITY)
   54   1          S2CON = 0x50;           //8-bit variable UART
-C51 COMPILER V7.50   UART                                                                  04/04/2016 17:08:24 PAGE 2   
+C51 COMPILER V7.50   UART                                                                  04/04/2016 19:25:33 PAGE 2   
 
   55   1      #elif (PARITYBIT == ODD_PARITY) || (PARITYBIT == EVEN_PARITY) || (PARITYBIT == MARK_PARITY)
                   S2CON = 0xda;           //9-bit variable UART, parity bit initial to 1
@@ -126,7 +126,7 @@ line level    source
  114   1          busy = 1;
  115   1          S2BUF = ACC;            //Send data to UART2 buffer
  116   1      }
-C51 COMPILER V7.50   UART                                                                  04/04/2016 17:08:24 PAGE 3   
+C51 COMPILER V7.50   UART                                                                  04/04/2016 19:25:33 PAGE 3   
 
  117          
  118          void SendDataToScreen(WORD address, WORD dat)
@@ -190,7 +190,7 @@ line level    source
  176   3                                      anyData();
  177   3                                      receiveSteps = 0;
  178   3                              }
-C51 COMPILER V7.50   UART                                                                  04/04/2016 17:08:24 PAGE 4   
+C51 COMPILER V7.50   UART                                                                  04/04/2016 19:25:33 PAGE 4   
 
  179   2                      break;
  180   2                      default:
@@ -254,7 +254,7 @@ line level    source
  238          {
  239   1              BYTE i;
  240   1              //设置按钮显示非选中
-C51 COMPILER V7.50   UART                                                                  04/04/2016 17:08:24 PAGE 5   
+C51 COMPILER V7.50   UART                                                                  04/04/2016 19:25:33 PAGE 5   
 
  241   1              SendDataToScreen(0x0022, 0);
  242   1              SendDataToScreen(0x0024, 0);

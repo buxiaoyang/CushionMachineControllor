@@ -54,7 +54,6 @@ void main()
 	uart_init();
 	timer_init();
 	ChangeScreenPage(0x00);
-	/*
 	while(1)
 	{
 		if(displayMode >= 2 && displayMode <= 7)
@@ -65,8 +64,16 @@ void main()
 		if(saveSetting == 1) //±£´æÉèÖÃÖµ
 		{
 			ChangeScreenPage(0x04);
-			parameter_save();
-			ChangeScreenPage(0x02);
+			if(!parameter_save())
+			{
+				//ERROR
+				ChangeScreenPage(0x02);
+			}
+			else
+			{
+				//succeed
+				ChangeScreenPage(0x02);
+			}
 			saveSetting = 0;
 		}
 		/*
@@ -136,9 +143,9 @@ void main()
 			parameter_send_screen();
 			refreshDisplay = 0;
 		}
-		
+		*/
 	}   
-	*/
+
 }
 
 

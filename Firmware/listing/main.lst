@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   MAIN                                                                  04/04/2016 17:08:24 PAGE 1   
+C51 COMPILER V7.50   MAIN                                                                  04/04/2016 19:25:33 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE MAIN
@@ -61,114 +61,119 @@ line level    source
   51          {
   52   1              delay_ms(500);
   53   1              parameter_init();
-  54   1      
-C51 COMPILER V7.50   MAIN                                                                  04/04/2016 17:08:24 PAGE 2   
+  54   1              uart_init();
+C51 COMPILER V7.50   MAIN                                                                  04/04/2016 19:25:33 PAGE 2   
 
-  55   1      
-  56   1              /*
-  57   1      
-  58   1              uart_init();
-  59   1              timer_init();
-  60   1              ChangeScreenPage(0x00);
-  61   1              while(1)
-  62   1              {
-  63   1                      if(displayMode >= 2 && displayMode <= 7)
-  64   1                      {
-  65   1                               refreshDisplaySetting();
-  66   1                               displayMode = 0;
-  67   1                      }
-  68   1                      if(saveSetting == 1) //保存设置值
-  69   1                      {
-  70   1                              ChangeScreenPage(0x04);
-  71   1                              parameter_save();
-  72   1                              ChangeScreenPage(0x02);
-  73   1                              saveSetting = 0;
-  74   1                      }
-  75   1                      /*
-  76   1                      delay_us(100);
-  77   1                      //按键扫描
-  78   1                      count10ms++;
-  79   1                      if(count10ms > 29)
-  80   1                      {
-  81   1                              Key_Scan();
-  82   1                              count10ms = 0;
-  83   1                      }
-  84   1                      //General the PWM
-  85   1                      if(pulseSettingNumCount > 20)
-  86   1                      {
-  87   1                              timer_count --;
-  88   1                      }
-  89   1                      else
-  90   1                      {
-  91   1                              timer_count ++;
-  92   1                      }
-  93   1                      if(timer_count < 1)
-  94   1                      {
-  95   1                              timer_count = 1;        
-  96   1                      }
-  97   1                      else if(timer_count > 50)
-  98   1                      {
-  99   1                              timer_count = 50;
- 100   1                      }
- 101   1                      //Get the sensor status
- 102   1                      getSensorStatus();
- 103   1                      if(isStartPosition2 || isStartPosition1)
- 104   1                      {
- 105   1                              isStartPosition = 1;
- 106   1                      }
- 107   1                      else if(!isStartPosition2 && !isStartPosition1)
- 108   1                      {
- 109   1                              isStartPosition = 0;
- 110   1                      }
- 111   1                      //初始化过程中判断原点
- 112   1                      if(initFlag == 1 && isStartPosition == 1)
- 113   1                      {
- 114   1                              pulseSettingNumCount = 4;
- 115   1                              currentPosition = 1;
- 116   1                              initFlag = 0;
-C51 COMPILER V7.50   MAIN                                                                  04/04/2016 17:08:24 PAGE 3   
+  55   1              timer_init();
+  56   1              ChangeScreenPage(0x00);
+  57   1              while(1)
+  58   1              {
+  59   2                      if(displayMode >= 2 && displayMode <= 7)
+  60   2                      {
+  61   3                               refreshDisplaySetting();
+*** WARNING C206 IN LINE 61 OF SOURCE\MAIN.C: 'refreshDisplaySetting': missing function-prototype
+  62   3                               displayMode = 0;
+  63   3                      }
+  64   2                      if(saveSetting == 1) //保存设置值
+  65   2                      {
+  66   3                              ChangeScreenPage(0x04);
+  67   3                              if(!parameter_save())
+  68   3                              {
+  69   4                                      //ERROR
+  70   4                                      ChangeScreenPage(0x02);
+  71   4                              }
+  72   3                              else
+  73   3                              {
+  74   4                                      //succeed
+  75   4                                      ChangeScreenPage(0x02);
+  76   4                              }
+  77   3                              saveSetting = 0;
+  78   3                      }
+  79   2                      /*
+  80   2                      delay_us(100);
+  81   2                      //按键扫描
+  82   2                      count10ms++;
+  83   2                      if(count10ms > 29)
+  84   2                      {
+  85   2                              Key_Scan();
+  86   2                              count10ms = 0;
+  87   2                      }
+  88   2                      //General the PWM
+  89   2                      if(pulseSettingNumCount > 20)
+  90   2                      {
+  91   2                              timer_count --;
+  92   2                      }
+  93   2                      else
+  94   2                      {
+  95   2                              timer_count ++;
+  96   2                      }
+  97   2                      if(timer_count < 1)
+  98   2                      {
+  99   2                              timer_count = 1;        
+ 100   2                      }
+ 101   2                      else if(timer_count > 50)
+ 102   2                      {
+ 103   2                              timer_count = 50;
+ 104   2                      }
+ 105   2                      //Get the sensor status
+ 106   2                      getSensorStatus();
+ 107   2                      if(isStartPosition2 || isStartPosition1)
+ 108   2                      {
+ 109   2                              isStartPosition = 1;
+ 110   2                      }
+ 111   2                      else if(!isStartPosition2 && !isStartPosition1)
+ 112   2                      {
+ 113   2                              isStartPosition = 0;
+ 114   2                      }
+ 115   2                      //初始化过程中判断原点
+C51 COMPILER V7.50   MAIN                                                                  04/04/2016 19:25:33 PAGE 3   
 
- 117   1                      }
- 118   1                      //Save setting to eeprom
- 119   1                      if(saveSetting)
- 120   1                      {
- 121   1                              //计算电机旋转角
- 122   1                              temp = (unsigned long)pulseSettingNum*motorStepAngle;
- 123   1                              motorRotationAngle = temp/motorReducGearRatio;
- 124   1                              //计算丝杆导程
- 125   1                              temp = (unsigned long)pulseSettingNum*motorStepAngle;
- 126   1                              temp =  (unsigned long)temp * screwPitch;
- 127   1                              temp =  (unsigned long)temp / motorReducGearRatio;
- 128   1                              ballScrew = temp/3600;
- 129   1                              //保存设置
- 130   1                              ChangeScreenPage(0x04);
- 131   1                              parameter_save();
- 132   1                              ChangeScreenPage(0x02);
- 133   1                              saveSetting = 0;
- 134   1                              refreshDisplay = 1;
- 135   1                      }
- 136   1                      //刷新显示      
- 137   1                      if(refreshDisplay)
- 138   1                      {
- 139   1                              parameter_send_screen();
- 140   1                              refreshDisplay = 0;
- 141   1                      }
- 142   1                      
- 143   1              }   
- 144   1              */
- 145   1      }
- 146          
- 147          
- 148          
- 149          
+ 116   2                      if(initFlag == 1 && isStartPosition == 1)
+ 117   2                      {
+ 118   2                              pulseSettingNumCount = 4;
+ 119   2                              currentPosition = 1;
+ 120   2                              initFlag = 0;
+ 121   2                      }
+ 122   2                      //Save setting to eeprom
+ 123   2                      if(saveSetting)
+ 124   2                      {
+ 125   2                              //计算电机旋转角
+ 126   2                              temp = (unsigned long)pulseSettingNum*motorStepAngle;
+ 127   2                              motorRotationAngle = temp/motorReducGearRatio;
+ 128   2                              //计算丝杆导程
+ 129   2                              temp = (unsigned long)pulseSettingNum*motorStepAngle;
+ 130   2                              temp =  (unsigned long)temp * screwPitch;
+ 131   2                              temp =  (unsigned long)temp / motorReducGearRatio;
+ 132   2                              ballScrew = temp/3600;
+ 133   2                              //保存设置
+ 134   2                              ChangeScreenPage(0x04);
+ 135   2                              parameter_save();
+ 136   2                              ChangeScreenPage(0x02);
+ 137   2                              saveSetting = 0;
+ 138   2                              refreshDisplay = 1;
+ 139   2                      }
+ 140   2                      //刷新显示      
+ 141   2                      if(refreshDisplay)
+ 142   2                      {
+ 143   2                              parameter_send_screen();
+ 144   2                              refreshDisplay = 0;
+ 145   2                      }
+ 146   2                      */
+ 147   2              }   
+ 148   1      
+ 149   1      }
  150          
  151          
  152          
  153          
+ 154          
+ 155          
+ 156          
+ 157          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     11    ----
+   CODE SIZE        =     84    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
@@ -178,4 +183,4 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

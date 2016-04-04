@@ -19,7 +19,7 @@
 /***************************************************************************/
 
 enum RunMode runMode; //运行模式 0：停止 1：运行
-//struct Motor motor1, motor2; //电机
+struct Motor motor1, motor2; //电机
 unsigned int motorRotationAngle[6][40]; //电机旋转角 6组数据，每组40个
 unsigned char motorCurrentRatationGroup; //当前设置旋转角组
 enum DisplayMode displayMode; //刷新屏幕标志位 0 不刷新
@@ -31,8 +31,8 @@ enum DisplayMode displayMode; //刷新屏幕标志位 0 不刷新
 /***************************************************************************/
 unsigned char parameter_read()
 {
-	unsigned char result = 0,i,j,address;
-	delay_ms(10); 
+	WORD result = 0,i,j,address;
+	Delay(10); 
 	if(IapReadByte(IAP_ADDRESS+511) == 0xEE)
 	{	
 		for(i=0; i < 6; i++)
@@ -40,8 +40,9 @@ unsigned char parameter_read()
 			for(j=0; j < 40; j++)
 			{
 				address = i * 80 + (j<<1);
-				motorRotationAngle[i][j] = ((IapReadByte(IAP_ADDRESS + address) << 8) | IapReadByte(IAP_ADDRESS + address + 1));
+				motorRotationAngle[i][j] = (WORD)((IapReadByte(IAP_ADDRESS + address) << 8) | IapReadByte(IAP_ADDRESS + address + 1));
 			}
+			
 		}
 		result = 1;
 	}
@@ -54,38 +55,8 @@ unsigned char parameter_read()
 // 返回值：无	
 /***************************************************************************/
 void parameter_init()
-{
-	WORD i;
-
-    testOutput1 = 0;
-    Delay(10);                      //Delay
-    IapEraseSector(IAP_ADDRESS);    //Erase current sector
-    for (i=0; i<512; i++)           //Check whether all sector data is FF
-    {
-        if (IapReadByte(IAP_ADDRESS+i) != 0xff)
-            goto Error;             //If error, break
-    }
-    testOutput2 = 0;
-    Delay(10);                      //Delay
-    for (i=0; i<512; i++)           //Program 512 bytes data into data flash
-    {
-        IapProgramByte(IAP_ADDRESS+i, (BYTE)i);
-    }
-   	testOutput3 = 0;
-    Delay(10);                      //Delay
-    for (i=0; i<512; i++)           //Verify 512 bytes data
-    {
-        if (IapReadByte(IAP_ADDRESS+i) != (BYTE)i)
-            goto Error;             //If error, break
-    }
-    testOutput4 = 0;
-    while (1);
-Error:
-    P1 &= 0x7f;                     //0xxx,xxxx IAP operation fail
-    while (1);
-
-	/*
-	unsigned char i,j;
+{	
+	WORD i,j;
 	if(!parameter_read())
 	{
 		for(i=0; i < 6; i++)
@@ -96,7 +67,6 @@ Error:
 			}
 		}	
 	}
-	*/
 }
 
 /***************************************************************************/
@@ -106,9 +76,11 @@ Error:
 /***************************************************************************/
 unsigned char parameter_save()
 {
-	unsigned char i,j,address;
-    delay_ms(10);                      //Delay
+	WORD result = 1,i,j,address;
+    Delay(10);                     //Delay
 	IapEraseSector(IAP_ADDRESS); //擦除EEPROM
+	Delay(10);  
+	//写入参数
 	for(i=0; i < 6; i++)
 	{
 		for(j=0; j < 40; j++)
@@ -119,7 +91,21 @@ unsigned char parameter_save()
 		}
 	}
 	IapProgramByte(IAP_ADDRESS+511, 0xEE); //写入标志位
-	return 1;
+	Delay(10);
+	//测试写入
+	for(i=0; i < 6; i++)
+	{
+		for(j=0; j < 40; j++)
+		{
+			address = i * 80 + (j<<1);
+			if(motorRotationAngle[i][j] != (WORD)((IapReadByte(IAP_ADDRESS + address) << 8) | IapReadByte(IAP_ADDRESS + address + 1)))
+			{
+				result = 0;
+			}
+		}
+		
+	}
+	return result;
 }
 
 
