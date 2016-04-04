@@ -80,8 +80,8 @@ void parameter_init()
 	motor1.isStartPosition = 1;
 	motor1.stepPWMs = 0;
 	motor1.stepPassPWMs = 0;
-	motor1.totalPWMs = 6553600;
-	motor1.currentStage = 6;
+	motor1.totalPWMs = 0;
+	motor1.currentStage = 0;
 
 	motor2.position = 0;
 	motor2.status = MOTOR_STOP;

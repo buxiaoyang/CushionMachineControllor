@@ -201,7 +201,7 @@ void anyData()
 	WORD dat = ((uartBuffer[4]<<8) | uartBuffer[5]);
 	
 
-	if(uartBuffer[2] == 0x06)//回零按钮
+	if(uartBuffer[2] == 0x07)//回零按钮
 	{
 		//pulseSettingNum =  dat;
 		//saveSetting = 1;
@@ -270,6 +270,8 @@ void refreshDisplaySetting()
 void refreshDisplayRunning()
 {
 	SendDataToScreen(0x0000, runMode);
-	SendDataToScreen(0x0002, motor1.currentStage);
-	SendLongDataToScreen(0x0004, motor1.totalPWMs);
+	SendDataToScreen(0x0001, motor1.currentStage + 1);
+	SendDataToScreen(0x0002, motor2.currentStage + 1);
+	SendLongDataToScreen(0x0003, motor1.totalPWMs);
+	SendLongDataToScreen(0x0005, motor2.totalPWMs);
 }
