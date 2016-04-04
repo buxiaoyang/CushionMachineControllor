@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   PARAMETER                                                             04/04/2016 19:25:33 PAGE 1   
+C51 COMPILER V7.50   PARAMETER                                                             04/04/2016 21:01:16 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE PARAMETER
@@ -62,7 +62,7 @@ line level    source
   51          
   52          /***************************************************************************/
   53          // 参数初始化函数
-C51 COMPILER V7.50   PARAMETER                                                             04/04/2016 19:25:33 PAGE 2   
+C51 COMPILER V7.50   PARAMETER                                                             04/04/2016 21:01:16 PAGE 2   
 
   54          // 参数：无
   55          // 返回值：无   
@@ -80,55 +80,72 @@ line level    source
   67   4                              }
   68   3                      }       
   69   2              }
-  70   1      }
-  71          
-  72          /***************************************************************************/
-  73          // 参数保存到eeprom
-  74          // 参数：无
-  75          // 返回值：0失败 1成功  
-  76          /***************************************************************************/
-  77          unsigned char parameter_save()
-  78          {
-  79   1              WORD result = 1,i,j,address;
-  80   1          Delay(10);                     //Delay
-  81   1              IapEraseSector(IAP_ADDRESS); //擦除EEPROM
-  82   1              Delay(10);  
-  83   1              //写入参数
-  84   1              for(i=0; i < 6; i++)
-  85   1              {
-  86   2                      for(j=0; j < 40; j++)
-  87   2                      {
-  88   3                              address = i * 80 + (j<<1);
-  89   3                              IapProgramByte(IAP_ADDRESS + address, (BYTE)(motorRotationAngle[i][j]>>8));
-  90   3                              IapProgramByte(IAP_ADDRESS + address+1, (BYTE)(motorRotationAngle[i][j]));
-  91   3                      }
-  92   2              }
-  93   1              IapProgramByte(IAP_ADDRESS+511, 0xEE); //写入标志位
-  94   1              Delay(10);
-  95   1              //测试写入
-  96   1              for(i=0; i < 6; i++)
-  97   1              {
-  98   2                      for(j=0; j < 40; j++)
-  99   2                      {
- 100   3                              address = i * 80 + (j<<1);
- 101   3                              if(motorRotationAngle[i][j] != (WORD)((IapReadByte(IAP_ADDRESS + address) << 8) | IapReadByte(IAP_ADDRE
+  70   1      
+  71   1              //电机参数初始化
+  72   1              motor1.position = 0;
+  73   1              motor1.status = MOTOR_STOP;
+  74   1              motor1.isStartPosition = 1;
+  75   1              motor1.stepPWMs = 0;
+  76   1              motor1.stepPassPWMs = 0;
+  77   1              motor1.totalPWMs = 0;
+  78   1              motor1.currentStage = 0;
+  79   1      
+  80   1              motor2.position = 0;
+  81   1              motor2.status = MOTOR_STOP;
+  82   1              motor2.isStartPosition = 1;
+  83   1              motor2.stepPWMs = 0;
+  84   1              motor2.stepPassPWMs = 0;
+  85   1              motor2.totalPWMs = 0;
+  86   1              motor2.currentStage = 0;
+  87   1      }
+  88          
+  89          /***************************************************************************/
+  90          // 参数保存到eeprom
+  91          // 参数：无
+  92          // 返回值：0失败 1成功  
+  93          /***************************************************************************/
+  94          unsigned char parameter_save()
+  95          {
+  96   1              WORD result = 1,i,j,address;
+  97   1          Delay(10);                     //Delay
+  98   1              IapEraseSector(IAP_ADDRESS); //擦除EEPROM
+  99   1              Delay(10);  
+ 100   1              //写入参数
+ 101   1              for(i=0; i < 6; i++)
+ 102   1              {
+ 103   2                      for(j=0; j < 40; j++)
+ 104   2                      {
+ 105   3                              address = i * 80 + (j<<1);
+ 106   3                              IapProgramByte(IAP_ADDRESS + address, (BYTE)(motorRotationAngle[i][j]>>8));
+ 107   3                              IapProgramByte(IAP_ADDRESS + address+1, (BYTE)(motorRotationAngle[i][j]));
+ 108   3                      }
+ 109   2              }
+ 110   1              IapProgramByte(IAP_ADDRESS+511, 0xEE); //写入标志位
+ 111   1              Delay(10);
+ 112   1              //测试写入
+ 113   1              for(i=0; i < 6; i++)
+ 114   1              {
+ 115   2                      for(j=0; j < 40; j++)
+C51 COMPILER V7.50   PARAMETER                                                             04/04/2016 21:01:16 PAGE 3   
+
+ 116   2                      {
+ 117   3                              address = i * 80 + (j<<1);
+ 118   3                              if(motorRotationAngle[i][j] != (WORD)((IapReadByte(IAP_ADDRESS + address) << 8) | IapReadByte(IAP_ADDRE
              -SS + address + 1)))
- 102   3                              {
- 103   4                                      result = 0;
- 104   4                              }
- 105   3                      }
- 106   2                      
- 107   2              }
- 108   1              return result;
- 109   1      }
- 110          
- 111          
+ 119   3                              {
+ 120   4                                      result = 0;
+ 121   4                              }
+ 122   3                      }
+ 123   2                      
+ 124   2              }
+ 125   1              return result;
+ 126   1      }
+ 127          
+ 128          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-C51 COMPILER V7.50   PARAMETER                                                             04/04/2016 19:25:33 PAGE 3   
-
-   CODE SIZE        =    846    ----
+   CODE SIZE        =    929    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =    515      16
    PDATA SIZE       =   ----    ----

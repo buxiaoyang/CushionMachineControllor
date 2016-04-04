@@ -15,5 +15,6 @@ void SendDataToScreen(WORD address, WORD dat);
 void SendString(char *s);
 void anyData();
 void ChangeScreenPage(WORD page);
+void refreshDisplaySetting();
 
 #endif

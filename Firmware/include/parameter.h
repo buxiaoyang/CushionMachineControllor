@@ -51,15 +51,15 @@ struct Motor //电机结构体
 	unsigned char position; //电机当前位置 0~39
 	enum MotorStatus status; //电机状态 0：停止 1：向前 2：向后
    	unsigned char isStartPosition; //电机是否在初始位置标志位
-	unsigned long stepTotalPWMs; //单步总脉冲数
-	unsigned long stepRemainPWMs; //单步剩余脉冲数
+	unsigned long stepPWMs; //单步总脉冲数
+	unsigned long stepPassPWMs; //单步已走脉冲数
 	unsigned long totalPWMs; //运行总脉冲数
 	unsigned char currentStage; //当前运行数据组 0~5
 };
 
 
 extern enum RunMode runMode; //运行模式
-//extern struct Motor motor1, motor2; //电机
+extern struct Motor motor1, motor2; //电机
 extern unsigned int motorRotationAngle[6][40]; //电机旋转角 6组数据，每组40个
 extern unsigned char motorCurrentRatationGroup; //当前设置旋转角组
 extern enum DisplayMode displayMode; //刷新屏幕标志位 0 不刷新

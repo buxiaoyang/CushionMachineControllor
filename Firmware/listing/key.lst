@@ -1,4 +1,4 @@
-C51 COMPILER V7.50   KEY                                                                   04/04/2016 19:25:33 PAGE 1   
+C51 COMPILER V7.50   KEY                                                                   04/04/2016 21:01:16 PAGE 1   
 
 
 C51 COMPILER V7.50, COMPILATION OF MODULE KEY
@@ -62,7 +62,7 @@ line level    source
   52   1                              }
   53   1                              refreshDisplay = 1;
   54   1                              Key_Scan_Steps = 3;
-C51 COMPILER V7.50   KEY                                                                   04/04/2016 19:25:33 PAGE 2   
+C51 COMPILER V7.50   KEY                                                                   04/04/2016 21:01:16 PAGE 2   
 
   55   1                      break;
   56   1                      case 3:

@@ -67,6 +67,23 @@ void parameter_init()
 			}
 		}	
 	}
+
+	//电机参数初始化
+	motor1.position = 0;
+	motor1.status = MOTOR_STOP;
+	motor1.isStartPosition = 1;
+	motor1.stepPWMs = 0;
+	motor1.stepPassPWMs = 0;
+	motor1.totalPWMs = 0;
+	motor1.currentStage = 0;
+
+	motor2.position = 0;
+	motor2.status = MOTOR_STOP;
+	motor2.isStartPosition = 1;
+	motor2.stepPWMs = 0;
+	motor2.stepPassPWMs = 0;
+	motor2.totalPWMs = 0;
+	motor2.currentStage = 0;
 }
 
 /***************************************************************************/

@@ -52,8 +52,18 @@ void main()
 	delay_ms(500);
 	parameter_init();
 	uart_init();
-	timer_init();
+	Timer0Init();
+	Timer1Init();
 	ChangeScreenPage(0x00);
+
+	motor1.stepPWMs = 32000;
+	motor1.stepPassPWMs = 0;
+	Motor1Start();
+
+	motor2.stepPWMs = 3200;
+	motor2.stepPassPWMs = 0;
+	Motor2Start();
+
 	while(1)
 	{
 		if(displayMode >= 2 && displayMode <= 7)

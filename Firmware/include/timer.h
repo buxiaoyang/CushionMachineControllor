@@ -12,8 +12,9 @@
 #ifndef __TIMER_H__
 #define __TIMER_H__
 
-extern unsigned int timer_count;
-extern unsigned int pulseSettingNumCount;
-void timer_init();
 
+void Timer0Init(void);
+void Timer1Init(void);
+void Motor1Start(void);
+void Motor2Start(void);
 #endif
