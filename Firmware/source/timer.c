@@ -38,20 +38,23 @@ void tm0_isr() interrupt 1 using 1
 	unsigned long stepRemain = motor1.stepPWMs -  motor1.stepPassPWMs;
 	if(motor1.stepPassPWMs < 259)
 	{
-		timerInit2 += timerStep[motor1.stepPassPWMs];
+		timerInit1 += timerStep[motor1.stepPassPWMs];
 	}
 	if(stepRemain < 259)
 	{
-		timerInit2 -= timerStep[stepRemain];
+		timerInit1 -= timerStep[stepRemain];
 	}
 	motor1.stepPassPWMs++;
 	if(motor1.stepPassPWMs == motor1.stepPWMs)
 	{
 	    TR0 = 0;
-		timerInit2 = TIMER_INIT;
+		timerInit1 = TIMER_INIT;
+		motor1.status = MOTOR_STOP;
+		motor1.stepPWMs = 0;
+		motor1.stepPassPWMs = 0;
 	}
-	TL0 = timerInit2;		//设置定时初值
-	TH0 = timerInit2>>8;		//设置定时初值
+	TL0 = timerInit1;		//设置定时初值
+	TH0 = timerInit1>>8;		//设置定时初值
 	ioMmotor1PWM = !ioMmotor1PWM;
 }
 
@@ -61,20 +64,23 @@ void tm1_isr() interrupt 3 using 1
 	unsigned long stepRemain = motor2.stepPWMs -  motor2.stepPassPWMs;
 	if(motor2.stepPassPWMs < 259)
 	{
-		timerInit1 += timerStep[motor2.stepPassPWMs];
+		timerInit2 += timerStep[motor2.stepPassPWMs];
 	}
 	if(stepRemain < 259)
 	{
-		timerInit1 -= timerStep[stepRemain];
+		timerInit2 -= timerStep[stepRemain];
 	}
 	motor2.stepPassPWMs++;
 	if(motor2.stepPassPWMs == motor2.stepPWMs)
 	{
 	    TR1 = 0;
-		timerInit1 = TIMER_INIT;
+		timerInit2 = TIMER_INIT;
+		motor2.status = MOTOR_STOP;
+		motor2.stepPWMs = 0;
+		motor2.stepPassPWMs = 0;
 	}
-	TL1 = timerInit1;		//设置定时初值
-	TH1 = timerInit1>>8;		//设置定时初值
+	TL1 = timerInit2;		//设置定时初值
+	TH1 = timerInit2>>8;		//设置定时初值
 	ioMmotor2PWM = !ioMmotor2PWM;
 }
 
