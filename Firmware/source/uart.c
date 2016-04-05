@@ -239,7 +239,7 @@ void anyData()
 	else if(uartBuffer[2] >= 0x12 && uartBuffer[2] <= 0x1C) //过程设置按钮
 	{
 		motorCurrentRatationGroup = (uartBuffer[2] - 0x12)>>1;
-		displayMode = motorCurrentRatationGroup + 2; //刷新显示
+		displayMode = motorCurrentRatationGroup + DISPLAY_SETTING1; //刷新显示
 	}
 	else if(uartBuffer[2] >= 0x2E && uartBuffer[2] <= 0x7C) //过程设置值
 	{

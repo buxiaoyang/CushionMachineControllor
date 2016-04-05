@@ -50,8 +50,10 @@ void main()
 			delay_ms(10);
 		}
 		//输出测试信号
-		testOutput1 = !testOutput1;
-
+		//testOutput1 = !testOutput1;
+		//按键扫描
+		Key_Scan1();
+		Key_Scan2();
 		//电机初始化状态机
 		ResetMotorDispatch();
 		//刷新显示器

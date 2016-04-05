@@ -43,7 +43,7 @@ void ResetMotorDispatch(void)
 				motor1.totalPWMs = 0;
 				motor1.currentStage = 0; 
 				
-				ioMmotor2Direction = MOTOR_BACKWARD;
+				ioMotor2Direction = MOTOR_BACKWARD;
 				motor2.status = MOTOR_BACKWARD;
 				motor2.stepPWMs = 3000000;
 				motor2.stepPassPWMs = 0;

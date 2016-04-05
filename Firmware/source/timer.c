@@ -55,7 +55,7 @@ void tm0_isr() interrupt 1 using 1
 	}
 	TL0 = timerInit1;		//设置定时初值
 	TH0 = timerInit1>>8;		//设置定时初值
-	ioMmotor1PWM = !ioMmotor1PWM;
+	ioMotor1PWM = !ioMotor1PWM;
 }
 
 /* Timer1 interrupt routine */
@@ -81,7 +81,7 @@ void tm1_isr() interrupt 3 using 1
 	}
 	TL1 = timerInit2;		//设置定时初值
 	TH1 = timerInit2>>8;		//设置定时初值
-	ioMmotor2PWM = !ioMmotor2PWM;
+	ioMotor2PWM = !ioMotor2PWM;
 }
 
 //-----------------------------------------------
