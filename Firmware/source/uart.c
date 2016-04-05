@@ -279,6 +279,6 @@ void refreshDisplayRunning()
 	SendDataToScreen(0x0000, runMode);
 	SendDataToScreen(0x0001, motor1.currentStage + 1);
 	SendDataToScreen(0x0002, motor2.currentStage + 1);
-	SendLongDataToScreen(0x0003, motor1.totalPWMs);
-	SendLongDataToScreen(0x0005, motor2.totalPWMs);
+	SendLongDataToScreen(0x0003, motor1.position +1);
+	SendLongDataToScreen(0x0005, motor2.position +1);
 }

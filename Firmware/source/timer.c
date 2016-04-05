@@ -45,7 +45,7 @@ void tm0_isr() interrupt 1 using 1
 		timerInit1 -= timerStep[stepRemain];
 	}
 	motor1.stepPassPWMs++;
-	if(motor1.stepPassPWMs == motor1.stepPWMs)
+	if(motor1.stepPassPWMs >= motor1.stepPWMs)
 	{
 	    TR0 = 0;
 		timerInit1 = TIMER_INIT;
@@ -71,7 +71,7 @@ void tm1_isr() interrupt 3 using 1
 		timerInit2 -= timerStep[stepRemain];
 	}
 	motor2.stepPassPWMs++;
-	if(motor2.stepPassPWMs == motor2.stepPWMs)
+	if(motor2.stepPassPWMs >= motor2.stepPWMs)
 	{
 	    TR1 = 0;
 		timerInit2 = TIMER_INIT;
