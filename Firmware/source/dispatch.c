@@ -79,3 +79,147 @@ void ResetMotorDispatch(void)
 			 _nop_();
 	}
 }
+
+
+void motor1Forward(void)
+{
+	if(motor1.status == MOTOR_STOP)
+	{
+		 if(motor1.currentStage % 2 == 0) //在前进过程中
+		 {
+		 	 ioMotor1Direction = MOTOR_FORWARD;
+			 motor1.status = MOTOR_FORWARD;
+			 motor1.isStartPosition = 0;
+			 motor1.stepPWMs = motorRotationAngle[motor1.currentStage][motor1.position] << 1;
+			 motor1.stepPassPWMs = 0;
+			 motor1.totalPWMs += motorRotationAngle[motor1.currentStage][motor1.position];
+			 if(motorRotationAngle[motor1.currentStage][motor1.position + 1] == 0) //下面没有步数了
+			 {
+			 	motor1.currentStage ++;
+				motor1.position = 0;
+	
+			 }
+			 else //下面还有步数
+			 {
+			 	 motor1.position ++;
+			 }
+			 Motor1Start();
+		 }
+		 else  //不在前进过程中
+		 {
+		 	displayMode = DISPLAY_MAX_POSITION;
+		 }
+	}
+}
+
+
+void motor1Backward(void)
+{
+	if(motor1.status == MOTOR_STOP)
+	{
+		 if(motor1.currentStage % 2 == 1) //在后退过程中
+		{
+			ioMotor1Direction = MOTOR_BACKWARD;
+			motor1.status = MOTOR_BACKWARD;
+			motor1.stepPWMs = motorRotationAngle[motor1.currentStage][motor1.position] << 1;
+			motor1.stepPassPWMs = 0;
+			motor1.totalPWMs -= motorRotationAngle[motor1.currentStage][motor1.position];
+			if(motorRotationAngle[motor1.currentStage][motor1.position + 1] == 0) //下面没有步数了
+			{
+				motor1.isStartPosition = 1;
+				motor1.position = 0;
+				motor1.currentStage ++;
+				if(motor1.currentStage > 5)  //三个来回走完
+				{
+					motor1.currentStage = 0;
+				}
+				else if(motorRotationAngle[motor1.currentStage][motor1.position] == 0) //下一个过程没有配置
+				{
+					motor1.currentStage = 0;
+				}
+			}
+			else //下面还有步数
+			{
+				motor1.position++;
+			}				
+			Motor1Start();
+		}
+		else  //不在后退过程中
+		{
+			displayMode = DIAPLAY_MIN_POSITION;
+		}
+	}	
+}
+
+
+void motor2Forward(void)
+{
+	if(motor2.status == MOTOR_STOP)
+	{
+		if(motor2.currentStage % 2 == 0) //在前进过程中
+		{
+		 	 ioMotor2Direction = MOTOR_FORWARD;
+			 motor2.status = MOTOR_FORWARD;
+			 motor2.isStartPosition = 0;
+			 motor2.stepPWMs = motorRotationAngle[motor2.currentStage][motor2.position] << 1;
+			 motor2.stepPassPWMs = 0;
+			 motor2.totalPWMs += motorRotationAngle[motor2.currentStage][motor2.position];
+			 if(motorRotationAngle[motor2.currentStage][motor2.position + 1] == 0) //下面没有步数了
+			 {
+			 	motor2.currentStage ++;
+				motor2.position = 0;
+		
+			 }
+			 else //下面还有步数
+			 {
+			 	 motor2.position ++;
+			 }
+			 Motor2Start();
+		 }
+		 else  //不在前进过程中
+		 {
+		 	displayMode = DISPLAY_MAX_POSITION;
+		 }	
+	}
+	
+}
+
+
+void motor2Backward(void)
+{
+	if(motor2.status == MOTOR_STOP)
+	{
+	   	if(motor2.currentStage % 2 == 1) //在后退过程中
+		{
+			ioMotor2Direction = MOTOR_BACKWARD;
+			motor2.status = MOTOR_BACKWARD;
+			motor2.stepPWMs = motorRotationAngle[motor2.currentStage][motor2.position] << 1;
+			motor2.stepPassPWMs = 0;
+			motor2.totalPWMs -= motorRotationAngle[motor2.currentStage][motor2.position];
+			if(motorRotationAngle[motor2.currentStage][motor2.position + 1] == 0) //下面没有步数了
+			{
+				motor2.isStartPosition = 1;
+				motor2.position = 0;
+				motor2.currentStage ++;
+				if(motor2.currentStage > 5)  //三个来回走完
+				{
+					motor2.currentStage = 0;
+				}
+				else if(motorRotationAngle[motor2.currentStage][motor2.position] == 0) //下一个过程没有配置
+				{
+					motor2.currentStage = 0;
+				}
+			}
+			else //下面还有步数
+			{
+				motor2.position++;
+			}				
+			Motor2Start();
+		}
+		else  //不在后退过程中
+		{
+			displayMode = DIAPLAY_MIN_POSITION;
+		}
+	}
+	
+}

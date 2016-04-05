@@ -220,13 +220,17 @@ void anyData()
 	}
 	else if(uartBuffer[2] == 0x0C) //前进按钮
 	{
-		//screwPitch =  dat;
-		//saveSetting = 1;
+		motor1Forward();
+		displayMode = DISPLAY_RUN;
+	}
+	else if(uartBuffer[2] == 0x0E) //后退按钮
+	{
+		motor1Backward();
+		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x10)	//跟随按钮
 	{
-		//motorReducGearRatio =  dat;
-		//saveSetting = 1;
+		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x1E) //保存按钮
 	{
