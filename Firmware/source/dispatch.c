@@ -8,6 +8,11 @@
 unsigned char ResetMotorDispatchSteps = 20; 
 
 
+unsigned long lastStepPWMs; //单步总脉冲数
+unsigned char lastStatus; //电机方向
+
+unsigned char isMotor2Copied = 1; //电机方向
+
 //电机回零状态机，每10毫秒调用一次，调用之前确保电机处于空闲状态。在ResetMotorDispatchSteps == 20 时设置ResetMotorDispatchSteps = 0 开始状态机
 void ResetMotorDispatch(void)
 {
@@ -83,14 +88,16 @@ void ResetMotorDispatch(void)
 
 void motor1Forward(void)
 {
-	if(motor1.status == MOTOR_STOP)
+	if(motor1.status == MOTOR_STOP && motor2.status == MOTOR_STOP && motor1.position == motor2.position && motor1.currentStage == motor2.currentStage)
 	{
 		 if(motor1.currentStage % 2 == 0) //在前进过程中
 		 {
 		 	 ioMotor1Direction = MOTOR_FORWARD;
 			 motor1.status = MOTOR_FORWARD;
+			 lastStatus =  MOTOR_FORWARD;
 			 motor1.isStartPosition = 0;
 			 motor1.stepPWMs = motorRotationAngle[motor1.currentStage][motor1.position] << 1;
+			 lastStepPWMs = motor1.stepPWMs;
 			 motor1.stepPassPWMs = 0;
 			 motor1.totalPWMs += motorRotationAngle[motor1.currentStage][motor1.position];
 			 if(motorRotationAngle[motor1.currentStage][motor1.position + 1] == 0) //下面没有步数了
@@ -104,6 +111,7 @@ void motor1Forward(void)
 			 	 motor1.position ++;
 			 }
 			 Motor1Start();
+			 isMotor2Copied = 0;
 		 }
 		 else  //不在前进过程中
 		 {
@@ -115,13 +123,15 @@ void motor1Forward(void)
 
 void motor1Backward(void)
 {
-	if(motor1.status == MOTOR_STOP)
+	if(motor1.status == MOTOR_STOP && motor2.status == MOTOR_STOP && motor1.position == motor2.position && motor1.currentStage == motor2.currentStage)
 	{
 		 if(motor1.currentStage % 2 == 1) //在后退过程中
 		{
 			ioMotor1Direction = MOTOR_BACKWARD;
 			motor1.status = MOTOR_BACKWARD;
+			lastStatus =  MOTOR_BACKWARD;
 			motor1.stepPWMs = motorRotationAngle[motor1.currentStage][motor1.position] << 1;
+			lastStepPWMs = motor1.stepPWMs;
 			motor1.stepPassPWMs = 0;
 			motor1.totalPWMs -= motorRotationAngle[motor1.currentStage][motor1.position];
 			if(motorRotationAngle[motor1.currentStage][motor1.position + 1] == 0) //下面没有步数了
@@ -143,6 +153,7 @@ void motor1Backward(void)
 				motor1.position++;
 			}				
 			Motor1Start();
+			isMotor2Copied = 0;
 		}
 		else  //不在后退过程中
 		{
@@ -221,5 +232,29 @@ void motor2Backward(void)
 			displayMode = DIAPLAY_MIN_POSITION;
 		}
 	}
-	
+}
+
+void motor2Copy(void)
+{
+	if(motor1.status == MOTOR_STOP && motor2.status == MOTOR_STOP && isMotor2Copied == 0)
+	{
+		if(motor1.position == motor2.position && motor1.currentStage == motor2.currentStage)
+		{
+			_nop_();
+		}
+		else
+		{
+			ioMotor2Direction = lastStatus;
+			motor2.position = motor1.position;
+			motor2.status = lastStatus;
+			motor2.isStartPosition = motor1.isStartPosition;
+			motor2.stepPWMs = lastStepPWMs;
+			motor2.stepPassPWMs = 0;
+			motor2.totalPWMs = motor1.totalPWMs;
+			motor2.currentStage = motor1.currentStage;
+			Motor2Start();
+			isMotor2Copied = 1;
+		}
+		
+	}
 }

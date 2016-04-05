@@ -88,11 +88,11 @@ void Key_Scan2(void)
 		case 2:
 			if(keyMotor2Forward == 0) //电机2前进
 			{
-				motor2Forward();
+				motor2Copy();
 			}
 			else if(keyMotor2Backward == 0) //电机2后退
 			{
-				motor2Backward();
+				//motor2Backward();
 			}
 			displayMode = DISPLAY_RUN;
 			Key_Scan_Steps2 = 3;

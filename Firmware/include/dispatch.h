@@ -12,4 +12,6 @@ void motor2Forward(void);
 
 void motor2Backward(void);
 
+void motor2Copy(void);
+
 #endif

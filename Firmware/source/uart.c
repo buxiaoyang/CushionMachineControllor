@@ -230,6 +230,7 @@ void anyData()
 	}
 	else if(uartBuffer[2] == 0x10)	//¸úËæ°´Å¥
 	{
+		motor2Copy();
 		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x1E) //±£´æ°´Å¥
