@@ -55,7 +55,7 @@ void main()
 		if (PCON & 0x20){
 			//testOutput1 = !testOutput1;
 			PCON &= 0xDF ;//清LVDF位
-			delay_ms(20);
+			delay_ms(10);
 			if(PCON & 0x20){
 				//testOutput1 = !testOutput1;
 				PCON &= 0xDF ;//清LVDF位

@@ -13,6 +13,7 @@
 #include <parameter.h>
 #include <eeprom.h>
 #include <basefunc.h>
+#include <dispatch.h>
 
 /***************************************************************************/
 // 参数定义
@@ -135,6 +136,8 @@ void snapshot_init()
 		motor2.totalPWMs = (unsigned long)((IapReadByte(IAP_ADDRESS2+3)<<27) | (IapReadByte(IAP_ADDRESS2+4)<<28) | (IapReadByte(IAP_ADDRESS2+5)<<29) | (IapReadByte(IAP_ADDRESS2+30)));
 		motor2.currentStage = IapReadByte(IAP_ADDRESS2+31);
 
+		//lastStatus = IapReadByte(IAP_ADDRESS2+32);
+		//lastStepPWMs = (unsigned long)((IapReadByte(IAP_ADDRESS2+3)<<33) | (IapReadByte(IAP_ADDRESS2+4)<<34) | (IapReadByte(IAP_ADDRESS2+5)<<35) | (IapReadByte(IAP_ADDRESS2+36)));
 		//初始化电机动作
 
 	}
@@ -198,6 +201,14 @@ void snapshot_save()
 	IapProgramByte(IAP_ADDRESS2+29, (BYTE)(motor2.totalPWMs>>8)); 
 	IapProgramByte(IAP_ADDRESS2+30, (BYTE)(motor2.totalPWMs));
 	IapProgramByte(IAP_ADDRESS2+31, motor2.currentStage);
+	//写入电机1上次运行参数
+	/*
+	IapProgramByte(IAP_ADDRESS2+32, lastStatus);
+	IapProgramByte(IAP_ADDRESS2+33, (BYTE)(lastStepPWMs>>24)); 
+	IapProgramByte(IAP_ADDRESS2+34, (BYTE)(lastStepPWMs>>16)); 
+	IapProgramByte(IAP_ADDRESS2+35, (BYTE)(lastStepPWMs>>8)); 
+	IapProgramByte(IAP_ADDRESS2+36, (BYTE)(lastStepPWMs));
+	*/
 	//写入标志位
 	IapProgramByte(IAP_ADDRESS2+511, 0xEE);
 	delay_ms(10);
