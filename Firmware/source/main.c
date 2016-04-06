@@ -30,7 +30,9 @@ void main()
 	uart_init();
 	Timer0Init();
 	Timer1Init();
-	ChangeScreenPage(0x00);	 
+	ChangeScreenPage(0x00);
+	snapshot_init();
+	PCON &= 0xDF ;//清LVDF位	 
 	while(1)
 	{
 		//控制主循环执行时间为10ms
@@ -51,6 +53,11 @@ void main()
 		}
 		//输出测试信号
 		//testOutput1 = !testOutput1;
+		if (PCON & 0x20){
+			PCON &= 0xDF;
+			//testOutput1 = !testOutput1;
+			snapshot_save();
+		}
 		//按键扫描
 		Key_Scan1();
 		Key_Scan2();

@@ -19,6 +19,7 @@ typedef unsigned long LONG;
 
 //Start address for STC11/10xx EEPROM
 #define IAP_ADDRESS 0x0000
+#define IAP_ADDRESS2 0x0200
 
 void Delay(BYTE n);
 void IapIdle();

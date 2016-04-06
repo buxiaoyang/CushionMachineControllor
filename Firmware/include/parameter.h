@@ -72,5 +72,7 @@ extern enum SaveMode saveMode; //±£´æEEPROM×´Ì¬Î»
 void parameter_init();
 unsigned char parameter_save();
 
+void snapshot_init();
+void snapshot_save();
 
 #endif

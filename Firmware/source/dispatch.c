@@ -11,8 +11,6 @@ unsigned char ResetMotorDispatchSteps = 20;
 unsigned long lastStepPWMs; //单步总脉冲数
 unsigned char lastStatus; //电机方向
 
-unsigned char isMotor2Copied = 1; //电机方向
-
 //电机回零状态机，每10毫秒调用一次，调用之前确保电机处于空闲状态。在ResetMotorDispatchSteps == 20 时设置ResetMotorDispatchSteps = 0 开始状态机
 void ResetMotorDispatch(void)
 {
@@ -111,7 +109,6 @@ void motor1Forward(void)
 			 	 motor1.position ++;
 			 }
 			 Motor1Start();
-			 isMotor2Copied = 0;
 		 }
 		 else  //不在前进过程中
 		 {
@@ -153,7 +150,6 @@ void motor1Backward(void)
 				motor1.position++;
 			}				
 			Motor1Start();
-			isMotor2Copied = 0;
 		}
 		else  //不在后退过程中
 		{
@@ -236,7 +232,7 @@ void motor2Backward(void)
 
 void motor2Copy(void)
 {
-	if(motor1.status == MOTOR_STOP && motor2.status == MOTOR_STOP && isMotor2Copied == 0)
+	if(motor1.status == MOTOR_STOP && motor2.status == MOTOR_STOP)
 	{
 		if(motor1.position == motor2.position && motor1.currentStage == motor2.currentStage)
 		{
@@ -253,7 +249,6 @@ void motor2Copy(void)
 			motor2.totalPWMs = motor1.totalPWMs;
 			motor2.currentStage = motor1.currentStage;
 			Motor2Start();
-			isMotor2Copied = 1;
 		}
 		
 	}
