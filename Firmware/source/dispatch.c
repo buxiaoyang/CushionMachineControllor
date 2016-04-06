@@ -109,6 +109,7 @@ void motor1Forward(void)
 			 	 motor1.position ++;
 			 }
 			 Motor1Start();
+			 displayMode = DISPLAY_RUN;
 		 }
 		 else  //不在前进过程中
 		 {
@@ -150,6 +151,7 @@ void motor1Backward(void)
 				motor1.position++;
 			}				
 			Motor1Start();
+			displayMode = DISPLAY_RUN;
 		}
 		else  //不在后退过程中
 		{
@@ -182,6 +184,7 @@ void motor2Forward(void)
 			 	 motor2.position ++;
 			 }
 			 Motor2Start();
+			 displayMode = DISPLAY_RUN;
 		 }
 		 else  //不在前进过程中
 		 {
@@ -222,6 +225,7 @@ void motor2Backward(void)
 				motor2.position++;
 			}				
 			Motor2Start();
+			displayMode = DISPLAY_RUN;
 		}
 		else  //不在后退过程中
 		{
@@ -249,6 +253,7 @@ void motor2Copy(void)
 			motor2.totalPWMs = motor1.totalPWMs;
 			motor2.currentStage = motor1.currentStage;
 			Motor2Start();
+			displayMode = DISPLAY_RUN;
 		}
 		
 	}

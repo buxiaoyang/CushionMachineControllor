@@ -221,17 +221,14 @@ void anyData()
 	else if(uartBuffer[2] == 0x0C) //前进按钮
 	{
 		motor1Forward();
-		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x0E) //后退按钮
 	{
 		motor1Backward();
-		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x10)	//跟随按钮
 	{
 		motor2Copy();
-		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x1E) //保存按钮
 	{

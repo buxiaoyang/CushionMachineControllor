@@ -51,7 +51,6 @@ void Key_Scan1(void)
 			{
 				motor1Backward();
 			}
-			displayMode = DISPLAY_RUN;
 			Key_Scan_Steps1 = 3;
 		break;
 		case 3:
@@ -94,7 +93,6 @@ void Key_Scan2(void)
 			{
 				//motor2Backward();
 			}
-			displayMode = DISPLAY_RUN;
 			Key_Scan_Steps2 = 3;
 		break;
 		case 3:

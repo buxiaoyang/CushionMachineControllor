@@ -25,6 +25,8 @@
 /***************************************************************************/
 void main()
 {
+	unsigned int timeTick = 0;
+	unsigned char isNotificationUI = 0; 
 	delay_ms(500);
 	parameter_init();
 	uart_init();
@@ -35,6 +37,12 @@ void main()
 	PCON &= 0xDF ;//清LVDF位	 
 	while(1)
 	{
+		timeTick ++;
+		if(timeTick > 100 && isNotificationUI == 1)
+		{
+		 	ChangeScreenPage(0x00);
+			isNotificationUI = 0;
+		}
 		//控制主循环执行时间为10ms
 		if( motor1.status != MOTOR_STOP && motor2.status != MOTOR_STOP)
 		{
@@ -78,6 +86,20 @@ void main()
 		{
 			 refreshDisplayRunning();
 			 displayMode = DISPLAY_NO_FRESH;
+		}
+		else if(displayMode == DISPLAY_MAX_POSITION)
+		{
+			ChangeScreenPage(0x06);
+			timeTick = 0;
+			isNotificationUI = 1;
+			displayMode = DISPLAY_NO_FRESH;
+		}
+		else if(displayMode == DIAPLAY_MIN_POSITION)
+		{
+			ChangeScreenPage(0x05);
+			timeTick = 0;
+			isNotificationUI = 1;
+			displayMode = DISPLAY_NO_FRESH;
 		}
 		else if(displayMode >= DISPLAY_SETTING1 && displayMode <= DISPLAY_SETTING6)
 		{
