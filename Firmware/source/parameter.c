@@ -180,7 +180,7 @@ void snapshot_save()
 	IapProgramByte(IAP_ADDRESS2+12, (BYTE)(motor1.totalPWMs>>16)); 
 	IapProgramByte(IAP_ADDRESS2+13, (BYTE)(motor1.totalPWMs>>8)); 
 	IapProgramByte(IAP_ADDRESS2+14, (BYTE)(motor1.totalPWMs));
-	IapProgramByte(IAP_ADDRESS2+15, motor1.currentStage); 
+	IapProgramByte(IAP_ADDRESS2+15, motor1.currentStage);
 	//写入参数 电机2
 	IapProgramByte(IAP_ADDRESS2+16, motor2.position);
 	IapProgramByte(IAP_ADDRESS2+17, motor2.status); 

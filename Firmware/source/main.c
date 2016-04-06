@@ -51,12 +51,22 @@ void main()
 			//没有电机运作
 			delay_ms(10);
 		}
-		//输出测试信号
-		//testOutput1 = !testOutput1;
+		//掉电保存数据
 		if (PCON & 0x20){
-			PCON &= 0xDF;
 			//testOutput1 = !testOutput1;
-			snapshot_save();
+			PCON &= 0xDF ;//清LVDF位
+			delay_ms(20);
+			if(PCON & 0x20){
+				//testOutput1 = !testOutput1;
+				PCON &= 0xDF ;//清LVDF位
+				snapshot_save();
+				if(PCON & 0x20){
+					while(1) //确实掉电了，等待关机
+					{
+						testOutput1 = !testOutput1;
+					};
+				}
+			}		
 		}
 		//按键扫描
 		Key_Scan1();
