@@ -35,53 +35,101 @@ unsigned int code timerStep[259] = {  0,  153,  771,  1104,  1379,  1589,  1736,
 /* Timer0 interrupt routine */
 void tm0_isr() interrupt 1 using 1
 {
-	unsigned long stepRemain = motor1.stepPWMs -  motor1.stepPassPWMs;
-	if(motor1.stepPassPWMs < 259)
+	if((motor1.status == MOTOR_BACKWARD && sensorStartPosi1 != 0)||(motor1.status == MOTOR_FORWARD && sensorEndPosi1 != 0))
 	{
-		timerInit1 += timerStep[motor1.stepPassPWMs];
+		unsigned long stepRemain = motor1.stepPWMs -  motor1.stepPassPWMs;
+		if(motor1.stepPassPWMs < 259)
+		{
+			timerInit1 += timerStep[motor1.stepPassPWMs];
+		}
+		if(stepRemain < 259)
+		{
+			timerInit1 -= timerStep[stepRemain];
+		}
+		motor1.stepPassPWMs++;
+		if(motor1.stepPassPWMs >= motor1.stepPWMs)
+		{
+		    TR0 = 0;
+			timerInit1 = TIMER_INIT;
+			motor1.status = MOTOR_STOP;
+			motor1.stepPWMs = 0;
+			motor1.stepPassPWMs = 0;
+		}
+		TL0 = timerInit1;		//设置定时初值
+		TH0 = timerInit1>>8;		//设置定时初值
+		ioMotor1PWM = !ioMotor1PWM;	
 	}
-	if(stepRemain < 259)
+	else
 	{
-		timerInit1 -= timerStep[stepRemain];
+		if(motor1.status == MOTOR_BACKWARD)
+		{
+			displayMode = DIAPLAY_MIN_POSITION;
+			TR0 = 0;
+			timerInit1 = TIMER_INIT;
+			motor1.status = MOTOR_STOP;
+			motor1.stepPWMs = 0;
+			motor1.stepPassPWMs = 0;
+		}
+		else if(motor1.status == MOTOR_FORWARD)
+		{
+			displayMode = DISPLAY_MAX_POSITION;
+			TR0 = 0;
+			timerInit1 = TIMER_INIT;
+			motor1.status = MOTOR_STOP;
+			motor1.stepPWMs = 0;
+			motor1.stepPassPWMs = 0;
+		}
 	}
-	motor1.stepPassPWMs++;
-	if(motor1.stepPassPWMs >= motor1.stepPWMs)
-	{
-	    TR0 = 0;
-		timerInit1 = TIMER_INIT;
-		motor1.status = MOTOR_STOP;
-		motor1.stepPWMs = 0;
-		motor1.stepPassPWMs = 0;
-	}
-	TL0 = timerInit1;		//设置定时初值
-	TH0 = timerInit1>>8;		//设置定时初值
-	ioMotor1PWM = !ioMotor1PWM;
 }
 
 /* Timer1 interrupt routine */
 void tm1_isr() interrupt 3 using 1
 {
-	unsigned long stepRemain = motor2.stepPWMs -  motor2.stepPassPWMs;
-	if(motor2.stepPassPWMs < 259)
+	if((motor2.status == MOTOR_BACKWARD && sensorStartPosi2 != 0)||(motor2.status == MOTOR_FORWARD && sensorEndPosi2 != 0))
 	{
-		timerInit2 += timerStep[motor2.stepPassPWMs];
+		unsigned long stepRemain = motor2.stepPWMs -  motor2.stepPassPWMs;
+		if(motor2.stepPassPWMs < 259)
+		{
+			timerInit2 += timerStep[motor2.stepPassPWMs];
+		}
+		if(stepRemain < 259)
+		{
+			timerInit2 -= timerStep[stepRemain];
+		}
+		motor2.stepPassPWMs++;
+		if(motor2.stepPassPWMs >= motor2.stepPWMs)
+		{
+		    TR1 = 0;
+			timerInit2 = TIMER_INIT;
+			motor2.status = MOTOR_STOP;
+			motor2.stepPWMs = 0;
+			motor2.stepPassPWMs = 0;
+		}
+		TL1 = timerInit2;		//设置定时初值
+		TH1 = timerInit2>>8;		//设置定时初值
+		ioMotor2PWM = !ioMotor2PWM;
 	}
-	if(stepRemain < 259)
+	else
 	{
-		timerInit2 -= timerStep[stepRemain];
+		if(motor2.status == MOTOR_BACKWARD)
+		{
+			displayMode = DIAPLAY_MIN_POSITION;
+			TR1 = 0;
+			timerInit2 = TIMER_INIT;
+			motor2.status = MOTOR_STOP;
+			motor2.stepPWMs = 0;
+			motor2.stepPassPWMs = 0;
+		}
+		else if(motor2.status == MOTOR_FORWARD)
+		{
+			displayMode = DISPLAY_MAX_POSITION;
+			TR1 = 0;
+			timerInit2 = TIMER_INIT;
+			motor2.status = MOTOR_STOP;
+			motor2.stepPWMs = 0;
+			motor2.stepPassPWMs = 0;
+		}
 	}
-	motor2.stepPassPWMs++;
-	if(motor2.stepPassPWMs >= motor2.stepPWMs)
-	{
-	    TR1 = 0;
-		timerInit2 = TIMER_INIT;
-		motor2.status = MOTOR_STOP;
-		motor2.stepPWMs = 0;
-		motor2.stepPassPWMs = 0;
-	}
-	TL1 = timerInit2;		//设置定时初值
-	TH1 = timerInit2>>8;		//设置定时初值
-	ioMotor2PWM = !ioMotor2PWM;
 }
 
 //-----------------------------------------------
@@ -111,7 +159,11 @@ void Motor1Start(void)
 void Motor1Stop(void)		
 {
 	ET0 = 0;
-	TR0 = 0;                       
+	TR0 = 0; 
+	timerInit1 = TIMER_INIT;
+	motor1.status = MOTOR_STOP;
+	motor1.stepPWMs = 0;
+	motor1.stepPassPWMs = 0;                      
 }
 
 void Timer1Init(void)		
@@ -138,5 +190,9 @@ void Motor2Start(void)
 void Motor2Stop(void)		
 {
 	TR1 = 0;
-	ET1 = 0;                       
+	ET1 = 0; 
+	timerInit2 = TIMER_INIT;
+	motor2.status = MOTOR_STOP;
+	motor2.stepPWMs = 0;
+	motor2.stepPassPWMs = 0;                      
 }

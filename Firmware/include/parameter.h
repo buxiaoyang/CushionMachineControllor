@@ -26,6 +26,8 @@ sbit keyMotor1Forward = P0^2; //电机1向前信号
 sbit keyMotor1Backward = P0^3; //电机1向后信号
 sbit keyMotor2Forward = P0^4; //电机2向前信号
 sbit keyMotor2Backward= P0^5; //电机2向后信号
+sbit sensorEndPosi1 = P0^6; //结束位置传感器1
+sbit sensorEndPosi2 = P0^7; //结束位置传感器2
 
 //输出
 sbit ioMotor1Direction = P1^0; //电机1方向
@@ -44,7 +46,7 @@ sbit testOutput4 = P1^7;
 
 enum RunMode {MODEL_STOP, MODEL_RUN};  //运行模式 0：停止 1：运行
 enum MotorStatus {MOTOR_BACKWARD, MOTOR_FORWARD, MOTOR_STOP};  //电机状态 0：向前 1：向后 2：停止
-enum DisplayMode {DISPLAY_NO_FRESH, DISPLAY_RUN, DISPLAY_MAX_POSITION, DIAPLAY_MIN_POSITION, DISPLAY_SETTING1, DISPLAY_SETTING2, DISPLAY_SETTING3, DISPLAY_SETTING4, DISPLAY_SETTING5, DISPLAY_SETTING6}; //屏幕显示模式
+enum DisplayMode {DISPLAY_NO_FRESH, DISPLAY_RUN, DISPLAY_MAX_POSITION, DIAPLAY_MIN_POSITION,DIAPLAY_MOTOR_FORWARD, DIAPLAY_MOTOR_BACKWARD,DIAPLAY_MOTOR2_OPEATION, DISPLAY_SETTING1, DISPLAY_SETTING2, DISPLAY_SETTING3, DISPLAY_SETTING4, DISPLAY_SETTING5, DISPLAY_SETTING6}; //屏幕显示模式
 enum SaveMode {SAVE_NO_SAVING, SAVE_SETTING, SAVE_SNAPSHOT}; //是否保存EEPROM状态位  0：不保存 1：保存设置值 2：保存运行状态
 
 struct Motor //电机结构体

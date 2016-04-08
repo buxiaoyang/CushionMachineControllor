@@ -216,19 +216,43 @@ void anyData()
 	else if(uartBuffer[2] == 0x0A) //停止按钮
 	{
 		runMode = MODEL_STOP;
+		//电机参数初始化
+		motor1.position = 0;
+		motor1.status = MOTOR_STOP;
+		motor1.isStartPosition = 1;
+		motor1.stepPWMs = 0;
+		motor1.stepPassPWMs = 0;
+		motor1.totalPWMs = 0;
+		motor1.currentStage = 0;
+		
+		motor2.position = 0;
+		motor2.status = MOTOR_STOP;
+		motor2.isStartPosition = 1;
+		motor2.stepPWMs = 0;
+		motor2.stepPassPWMs = 0;
+		motor2.totalPWMs = 0;
+		motor2.currentStage = 0;
 		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x0C) //前进按钮
 	{
-		motor1Forward();
+		if(runMode == MODEL_RUN)
+		{
+			motor1Forward();
+		}
 	}
 	else if(uartBuffer[2] == 0x0E) //后退按钮
 	{
-		motor1Backward();
+		if(runMode == MODEL_RUN)
+		{
+			motor1Backward();
+		}
 	}
 	else if(uartBuffer[2] == 0x10)	//跟随按钮
 	{
-		motor2Copy();
+		{
+			motor2Copy();
+		}
 	}
 	else if(uartBuffer[2] == 0x1E) //保存按钮
 	{

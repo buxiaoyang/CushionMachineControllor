@@ -66,6 +66,8 @@ void main()
 			delay_ms(10);
 			if(PCON & 0x20){
 				//testOutput1 = !testOutput1;
+				Motor1Stop();
+				Motor2Stop();
 				PCON &= 0xDF ;//清LVDF位
 				snapshot_save();
 				if(PCON & 0x20){
@@ -74,11 +76,19 @@ void main()
 						testOutput1 = !testOutput1;
 					};
 				}
+				else
+				{
+					Motor1Start();
+					Motor2Start();
+				}
 			}		
 		}
-		//按键扫描
-		Key_Scan1();
-		Key_Scan2();
+		if(runMode == MODEL_RUN)
+		{
+			//按键扫描
+			Key_Scan1();
+			Key_Scan2();
+		}
 		//电机初始化状态机
 		ResetMotorDispatch();
 		//刷新显示器
@@ -97,6 +107,27 @@ void main()
 		else if(displayMode == DIAPLAY_MIN_POSITION)
 		{
 			ChangeScreenPage(0x05);
+			timeTick = 0;
+			isNotificationUI = 1;
+			displayMode = DISPLAY_NO_FRESH;
+		}
+		else if(displayMode == DIAPLAY_MOTOR_FORWARD)
+		{
+			ChangeScreenPage(0x09);
+			timeTick = 0;
+			isNotificationUI = 1;
+			displayMode = DISPLAY_NO_FRESH;
+		}
+		else if(displayMode == DIAPLAY_MOTOR_BACKWARD)
+		{
+			ChangeScreenPage(0x0A);
+			timeTick = 0;
+			isNotificationUI = 1;
+			displayMode = DISPLAY_NO_FRESH;
+		}
+		else if(displayMode == DIAPLAY_MOTOR2_OPEATION)
+		{
+			ChangeScreenPage(0x0B);
 			timeTick = 0;
 			isNotificationUI = 1;
 			displayMode = DISPLAY_NO_FRESH;

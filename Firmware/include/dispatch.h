@@ -2,8 +2,8 @@
 #define 		__DISPATCH_H__
 
 extern unsigned char ResetMotorDispatchSteps;
-//extern unsigned long lastStepPWMs; //单步总脉冲数
-//extern unsigned char lastStatus; //电机方向
+extern unsigned long lastStepPWMs; //单步总脉冲数
+extern unsigned char lastStatus; //电机方向
 
 void ResetMotorDispatch(void);
 

@@ -113,8 +113,12 @@ void motor1Forward(void)
 		 }
 		 else  //不在前进过程中
 		 {
-		 	displayMode = DISPLAY_MAX_POSITION;
+		 	displayMode = DIAPLAY_MOTOR_BACKWARD;
 		 }
+	}
+	else
+	{
+		displayMode = DIAPLAY_MOTOR2_OPEATION;
 	}
 }
 
@@ -155,8 +159,12 @@ void motor1Backward(void)
 		}
 		else  //不在后退过程中
 		{
-			displayMode = DIAPLAY_MIN_POSITION;
+			displayMode = DIAPLAY_MOTOR_FORWARD;
 		}
+	}
+	else
+	{
+		displayMode = DIAPLAY_MOTOR2_OPEATION;
 	}	
 }
 
@@ -188,7 +196,7 @@ void motor2Forward(void)
 		 }
 		 else  //不在前进过程中
 		 {
-		 	displayMode = DISPLAY_MAX_POSITION;
+		 	displayMode = DIAPLAY_MOTOR_BACKWARD;
 		 }	
 	}
 	
@@ -229,7 +237,7 @@ void motor2Backward(void)
 		}
 		else  //不在后退过程中
 		{
-			displayMode = DIAPLAY_MIN_POSITION;
+			displayMode = DIAPLAY_MOTOR_FORWARD;
 		}
 	}
 }
