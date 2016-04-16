@@ -38,7 +38,7 @@ void main()
 	while(1)
 	{
 		timeTick ++;
-		if(timeTick > 100 && isNotificationUI == 1)
+		if(timeTick > 50 && isNotificationUI == 1)
 		{
 		 	ChangeScreenPage(0x00);
 			isNotificationUI = 0;
