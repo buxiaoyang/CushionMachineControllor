@@ -244,25 +244,22 @@ void motor2Backward(void)
 
 void motor2Copy(void)
 {
-	if(motor1.status == MOTOR_STOP && motor2.status == MOTOR_STOP)
+	if(motor1.status != MOTOR_STOP || motor2.status != MOTOR_STOP || (motor1.position == motor2.position && motor1.currentStage == motor2.currentStage))
 	{
-		if(motor1.position == motor2.position && motor1.currentStage == motor2.currentStage)
-		{
-			_nop_();
-		}
-		else
-		{
-			ioMotor2Direction = lastStatus;
-			motor2.position = motor1.position;
-			motor2.status = lastStatus;
-			motor2.isStartPosition = motor1.isStartPosition;
-			motor2.stepPWMs = lastStepPWMs;
-			motor2.stepPassPWMs = 0;
-			motor2.totalPWMs = motor1.totalPWMs;
-			motor2.currentStage = motor1.currentStage;
-			Motor2Start();
-			displayMode = DISPLAY_RUN;
-		}
-		
+		//不在电机2运动过程中
+		//displayMode = DIAPLAY_MOTOR2_OPEATION;
+	}
+	else 
+	{
+		ioMotor2Direction = lastStatus;
+		motor2.position = motor1.position;
+		motor2.status = lastStatus;
+		motor2.isStartPosition = motor1.isStartPosition;
+		motor2.stepPWMs = lastStepPWMs;
+		motor2.stepPassPWMs = 0;
+		motor2.totalPWMs = motor1.totalPWMs;
+		motor2.currentStage = motor1.currentStage;
+		Motor2Start();
+		displayMode = DISPLAY_RUN;
 	}
 }

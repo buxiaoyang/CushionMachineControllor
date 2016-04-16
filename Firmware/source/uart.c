@@ -250,6 +250,7 @@ void anyData()
 	}
 	else if(uartBuffer[2] == 0x10)	//¸úËæ°´Å¥
 	{
+		if(runMode == MODEL_RUN)
 		{
 			motor2Copy();
 		}
