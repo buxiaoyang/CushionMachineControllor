@@ -31,9 +31,9 @@ sbit sensorEndPosi2 = P0^7; //结束位置传感器2
 
 //输出
 sbit ioMotor1Direction = P1^0; //电机1方向
-sbit ioMotor1PWM = P2^6; //电机1脉冲
-sbit ioMotor2Direction = P2^0; //电机2方向
-sbit ioMotor2PWM = P2^1; //电机2脉冲
+sbit ioMotor1PWM = P1^1; //电机1脉冲
+sbit ioMotor2Direction = P2^6; //电机2方向
+sbit ioMotor2PWM = P2^5; //电机2脉冲
 
 sbit testOutput1 = P1^4;
 sbit testOutput2 = P1^5;
