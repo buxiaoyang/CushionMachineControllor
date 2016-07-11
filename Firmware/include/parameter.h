@@ -29,16 +29,24 @@ sbit keyMotor2Backward= P0^5; //电机2向后信号
 sbit sensorEndPosi1 = P0^6; //结束位置传感器1
 sbit sensorEndPosi2 = P0^7; //结束位置传感器2
 
-//输出
-sbit ioMotor1Direction = P1^0; //电机1方向
-sbit ioMotor1PWM = P2^6; //电机1脉冲
-sbit ioMotor2Direction = P2^0; //电机2方向
-sbit ioMotor2PWM = P2^1; //电机2脉冲
+//迪文屏
+//P1^2 RXD2
+//P1^3 TXD2
 
-sbit testOutput1 = P1^4;
-sbit testOutput2 = P1^5;
-sbit testOutput3 = P1^6;
-sbit testOutput4 = P1^7;
+//输出
+sbit ioMotor1Direction = P1^4; //电机1方向
+sbit ioMotor2Direction = P1^5; //电机2方向
+sbit ioMotor3Direction = P1^6; //电机3方向
+sbit ioMotor4Direction = P1^7; //电机4方向
+sbit ioMotor1PWM = P3^4; //电机1脉冲
+sbit ioMotor2PWM = P3^5; //电机2脉冲
+sbit ioMotor3PWM = P3^6; //电机3脉冲
+sbit ioMotor4PWM = P3^7; //电机4脉冲
+
+sbit testOutput1 = P1^0;
+sbit testOutput2 = P1^1;
+//sbit testOutput3 = P1^6;
+//sbit testOutput4 = P1^7;
 
 /***************************************************************************/
 // 参数声明
