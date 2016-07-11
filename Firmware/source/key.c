@@ -69,13 +69,13 @@ void Key_Scan2(void)
 	switch(Key_Scan_Steps2)
 	{
 		case 0:
-			if(keyMotor2Forward == 0 || keyMotor2Backward == 0)
+			if(keyMotor2Copy == 0)
 			{
 			   	Key_Scan_Steps2 = 1;
 			}
 		break;
 		case 1:
-			if(keyMotor2Forward == 0 || keyMotor2Backward == 0)
+			if(keyMotor2Copy == 0)
 			{
 			   	Key_Scan_Steps2 = 2;
 			}
@@ -85,18 +85,14 @@ void Key_Scan2(void)
 			}
 		break;
 		case 2:
-			if(keyMotor2Forward == 0) //电机2前进
+			if(keyMotor2Copy == 0) //电机2前进
 			{
 				motor2Copy();
-			}
-			else if(keyMotor2Backward == 0) //电机2后退
-			{
-				//motor2Backward();
 			}
 			Key_Scan_Steps2 = 3;
 		break;
 		case 3:
-			if(keyMotor2Forward == 1 && keyMotor2Backward == 1)
+			if(keyMotor2Copy == 1)
 			{
 			   	Key_Scan_Steps2 = 0;
 			}

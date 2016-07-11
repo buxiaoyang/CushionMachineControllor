@@ -24,10 +24,18 @@ sbit sensorStartPosi1 = P0^0; //初始位置传感器1
 sbit sensorStartPosi2 = P0^1; //初始位置传感器2
 sbit keyMotor1Forward = P0^2; //电机1向前信号
 sbit keyMotor1Backward = P0^3; //电机1向后信号
-sbit keyMotor2Forward = P0^4; //电机2向前信号
-sbit keyMotor2Backward= P0^5; //电机2向后信号
-sbit sensorEndPosi1 = P0^6; //结束位置传感器1
-sbit sensorEndPosi2 = P0^7; //结束位置传感器2
+sbit keyMotor2Copy = P0^4; //电机2跟随信号
+
+sbit sensorStartPosi3 = P0^5; //初始位置传感器3
+sbit sensorStartPosi4 = P0^6; //初始位置传感器4
+sbit keyMotor3Forward = P0^7; //电机3前进信号
+sbit keyMotor3Backward = P2^0; //电机3前进信号
+sbit keyMotor4Copy = P2^1; //电机4跟随信号
+
+sbit sensorEndPosi1 = P2^2; //结束位置传感器1
+sbit sensorEndPosi2 = P2^3; //结束位置传感器2
+sbit sensorEndPosi3 = P2^4; //结束位置传感器3
+sbit sensorEndPosi4 = P2^5; //结束位置传感器4
 
 //迪文屏
 //P1^2 RXD2
@@ -45,8 +53,7 @@ sbit ioMotor4PWM = P3^7; //电机4脉冲
 
 sbit testOutput1 = P1^0;
 sbit testOutput2 = P1^1;
-//sbit testOutput3 = P1^6;
-//sbit testOutput4 = P1^7;
+
 
 /***************************************************************************/
 // 参数声明
