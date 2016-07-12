@@ -254,21 +254,42 @@ void anyData()
 	{
 		if(runMode == MODEL_RUN)
 		{
-			motor1Forward();
+			if(motorCurrentRatationGroup == 1)
+			{
+				motor1Forward();
+			}
+			else
+			{
+				motor3Forward();
+			}
 		}
 	}
 	else if(uartBuffer[2] == 0x0E) //后退按钮
 	{
 		if(runMode == MODEL_RUN)
 		{
-			motor1Backward();
+			if(motorCurrentRatationGroup == 1)
+			{
+				motor1Backward();
+			}
+			else
+			{
+				motor3Backward();
+			}
 		}
 	}
 	else if(uartBuffer[2] == 0x10)	//跟随按钮
 	{
 		if(runMode == MODEL_RUN)
 		{
-			motor2Copy();
+			if(motorCurrentRatationGroup == 1)
+			{
+				motor2Copy();
+			}
+			else
+			{
+				motor4Copy();
+			}
 		}
 	}
 	else if(uartBuffer[2] == 0x1E) //保存按钮
