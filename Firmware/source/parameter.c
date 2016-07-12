@@ -21,7 +21,8 @@
 
 enum RunMode runMode; //运行模式 0：停止 1：运行
 struct Motor motor1, motor2; //电机
-unsigned int motorRotationAngle1[6][40]; //电机旋转角一组 6过程数据，每过程40个
+unsigned int xdata motorRotationAngle1[6][40]; //电机旋转角一组 6过程数据，每过程40个
+unsigned int xdata motorRotationAngle2[6][40]; //电机旋转角二组 6过程数据，每过程40个
 unsigned char motorCurrentRatationStage; //当前设置旋转角过程
 enum DisplayMode displayMode; //刷新屏幕标志位 0 不刷新
 enum SaveMode saveMode;
