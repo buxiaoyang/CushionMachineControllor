@@ -77,10 +77,11 @@ struct Motor //电机结构体
 
 
 extern enum RunMode runMode; //运行模式
-extern struct Motor motor1, motor2; //电机
+extern struct Motor motor1, motor2, motor3, motor4; //电机
 extern unsigned int xdata motorRotationAngle1[6][40]; //电机旋转角一组 6过程数据，每过程40个
 extern unsigned int xdata motorRotationAngle2[6][40]; //电机旋转角二组 6过程数据，每过程40个
 extern unsigned char motorCurrentRatationStage; //当前设置旋转角过程
+extern unsigned char motorCurrentRatationGroup; //当前设置旋转角组 1~2
 extern enum DisplayMode displayMode; //刷新屏幕标志位 0 不刷新
 extern enum SaveMode saveMode; //保存EEPROM状态位 
 

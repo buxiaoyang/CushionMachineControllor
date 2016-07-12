@@ -20,10 +20,11 @@
 /***************************************************************************/
 
 enum RunMode runMode; //运行模式 0：停止 1：运行
-struct Motor motor1, motor2; //电机
+struct Motor motor1, motor2, motor3, motor4; //电机
 unsigned int xdata motorRotationAngle1[6][40]; //电机旋转角一组 6过程数据，每过程40个
 unsigned int xdata motorRotationAngle2[6][40]; //电机旋转角二组 6过程数据，每过程40个
 unsigned char motorCurrentRatationStage; //当前设置旋转角过程
+unsigned char motorCurrentRatationGroup; //当前设置旋转角组 1~2
 enum DisplayMode displayMode; //刷新屏幕标志位 0 不刷新
 enum SaveMode saveMode;
 
@@ -36,14 +37,15 @@ unsigned char parameter_read()
 {
 	WORD result = 0,i,j,address;
 	Delay(10); 
-	if(IapReadByte(IAP_ADDRESS+511) == 0xEE)
+	if(IapReadByte(IAP_ADDRESS1+511) == 0xEE && IapReadByte(IAP_ADDRESS3+511) == 0xEE)
 	{	
 		for(i=0; i < 6; i++)
 		{
 			for(j=0; j < 40; j++)
 			{
 				address = i * 80 + (j<<1);
-				motorRotationAngle1[i][j] = (WORD)((IapReadByte(IAP_ADDRESS + address) << 8) | IapReadByte(IAP_ADDRESS + address + 1));
+				motorRotationAngle1[i][j] = (WORD)((IapReadByte(IAP_ADDRESS1 + address) << 8) | IapReadByte(IAP_ADDRESS1 + address + 1));
+				motorRotationAngle2[i][j] = (WORD)((IapReadByte(IAP_ADDRESS3 + address) << 8) | IapReadByte(IAP_ADDRESS3 + address + 1));
 			}
 			
 		}
@@ -67,12 +69,14 @@ void parameter_init()
 			for(j=0; j < 40; j++)
 			{
 				motorRotationAngle1[i][j] = 0;
+				motorRotationAngle2[i][j] = 0;
 			}
 		}	
 	}
 
 	runMode = MODEL_RUN;
 	motorCurrentRatationStage = 0;
+	motorCurrentRatationGroup = 1;
 	displayMode = DISPLAY_RUN;
 	saveMode = SAVE_NO_SAVING;
 }
@@ -86,7 +90,7 @@ unsigned char parameter_save()
 {
 	WORD result = 1,i,j,address;
     Delay(10);                     //Delay
-	IapEraseSector(IAP_ADDRESS); //擦除EEPROM
+	IapEraseSector(IAP_ADDRESS1); //擦除EEPROM
 	Delay(10);  
 	//写入参数
 	for(i=0; i < 6; i++)
@@ -94,11 +98,11 @@ unsigned char parameter_save()
 		for(j=0; j < 40; j++)
 		{
 			address = i * 80 + (j<<1);
-			IapProgramByte(IAP_ADDRESS + address, (BYTE)(motorRotationAngle1[i][j]>>8));
-			IapProgramByte(IAP_ADDRESS + address+1, (BYTE)(motorRotationAngle1[i][j]));
+			IapProgramByte(IAP_ADDRESS1 + address, (BYTE)(motorRotationAngle1[i][j]>>8));
+			IapProgramByte(IAP_ADDRESS1 + address+1, (BYTE)(motorRotationAngle1[i][j]));
 		}
 	}
-	IapProgramByte(IAP_ADDRESS+511, 0xEE); //写入标志位
+	IapProgramByte(IAP_ADDRESS1+511, 0xEE); //写入标志位
 	Delay(10);
 	//测试写入
 	for(i=0; i < 6; i++)
@@ -106,7 +110,36 @@ unsigned char parameter_save()
 		for(j=0; j < 40; j++)
 		{
 			address = i * 80 + (j<<1);
-			if(motorRotationAngle1[i][j] != (WORD)((IapReadByte(IAP_ADDRESS + address) << 8) | IapReadByte(IAP_ADDRESS + address + 1)))
+			if(motorRotationAngle1[i][j] != (WORD)((IapReadByte(IAP_ADDRESS1 + address) << 8) | IapReadByte(IAP_ADDRESS1 + address + 1)))
+			{
+				result = 0;
+			}
+		}
+		
+	}
+
+	Delay(10);                     //Delay
+	IapEraseSector(IAP_ADDRESS3); //擦除EEPROM
+	Delay(10);  
+	//写入参数
+	for(i=0; i < 6; i++)
+	{
+		for(j=0; j < 40; j++)
+		{
+			address = i * 80 + (j<<1);
+			IapProgramByte(IAP_ADDRESS3 + address, (BYTE)(motorRotationAngle2[i][j]>>8));
+			IapProgramByte(IAP_ADDRESS3 + address+1, (BYTE)(motorRotationAngle2[i][j]));
+		}
+	}
+	IapProgramByte(IAP_ADDRESS3+511, 0xEE); //写入标志位
+	Delay(10);
+	//测试写入
+	for(i=0; i < 6; i++)
+	{
+		for(j=0; j < 40; j++)
+		{
+			address = i * 80 + (j<<1);
+			if(motorRotationAngle2[i][j] != (WORD)((IapReadByte(IAP_ADDRESS3 + address) << 8) | IapReadByte(IAP_ADDRESS3 + address + 1)))
 			{
 				result = 0;
 			}
@@ -124,23 +157,22 @@ void snapshot_init()
 		motor1.position = IapReadByte(IAP_ADDRESS2);
 		motor1.status = IapReadByte(IAP_ADDRESS2+1);
 		motor1.isStartPosition = IapReadByte(IAP_ADDRESS2+2);
-		motor1.stepPWMs = (unsigned long)((IapReadByte(IAP_ADDRESS2+3)<<24) | (IapReadByte(IAP_ADDRESS2+4)<<16) | (IapReadByte(IAP_ADDRESS2+5)<<8) | (IapReadByte(IAP_ADDRESS2+6)));
-		motor1.stepPassPWMs = (unsigned long)((IapReadByte(IAP_ADDRESS2+7)<<24) | (IapReadByte(IAP_ADDRESS2+8)<<16) | (IapReadByte(IAP_ADDRESS2+9)<<8) | (IapReadByte(IAP_ADDRESS2+10)));
-		motor1.totalPWMs = (unsigned long)((IapReadByte(IAP_ADDRESS2+3)<<11) | (IapReadByte(IAP_ADDRESS2+4)<<12) | (IapReadByte(IAP_ADDRESS2+5)<<13) | (IapReadByte(IAP_ADDRESS2+14)));
-		motor1.currentStage = IapReadByte(IAP_ADDRESS2+15);
+		motor1.currentStage = IapReadByte(IAP_ADDRESS2+3);
 	
-		motor2.position = IapReadByte(IAP_ADDRESS2+16);
-		motor2.status = IapReadByte(IAP_ADDRESS2+17);
-		motor2.isStartPosition = IapReadByte(IAP_ADDRESS2+18);
-		motor2.stepPWMs = (unsigned long)((IapReadByte(IAP_ADDRESS2+3)<<19) | (IapReadByte(IAP_ADDRESS2+4)<<20) | (IapReadByte(IAP_ADDRESS2+5)<<21) | (IapReadByte(IAP_ADDRESS2+22)));
-		motor2.stepPassPWMs = (unsigned long)((IapReadByte(IAP_ADDRESS2+7)<<23) | (IapReadByte(IAP_ADDRESS2+8)<<24) | (IapReadByte(IAP_ADDRESS2+9)<<25) | (IapReadByte(IAP_ADDRESS2+26)));
-		motor2.totalPWMs = (unsigned long)((IapReadByte(IAP_ADDRESS2+3)<<27) | (IapReadByte(IAP_ADDRESS2+4)<<28) | (IapReadByte(IAP_ADDRESS2+5)<<29) | (IapReadByte(IAP_ADDRESS2+30)));
-		motor2.currentStage = IapReadByte(IAP_ADDRESS2+31);
+		motor2.position = IapReadByte(IAP_ADDRESS2+20);
+		motor2.status = IapReadByte(IAP_ADDRESS2+21);
+		motor2.isStartPosition = IapReadByte(IAP_ADDRESS2+22);
+		motor2.currentStage = IapReadByte(IAP_ADDRESS2+23);
 
-		lastStatus = IapReadByte(IAP_ADDRESS2+32);
-		lastStepPWMs = (unsigned long)((IapReadByte(IAP_ADDRESS2+33)<<24) | (IapReadByte(IAP_ADDRESS2+34)<<16) | (IapReadByte(IAP_ADDRESS2+35)<<8) | (IapReadByte(IAP_ADDRESS2+36)));
-		//初始化电机动作
-
+		motor3.position = IapReadByte(IAP_ADDRESS2+40);
+		motor3.status = IapReadByte(IAP_ADDRESS2+41);
+		motor3.isStartPosition = IapReadByte(IAP_ADDRESS2+42);
+		motor3.currentStage = IapReadByte(IAP_ADDRESS2+43);
+		
+		motor4.position = IapReadByte(IAP_ADDRESS2+60);
+		motor4.status = IapReadByte(IAP_ADDRESS2+61);
+		motor4.isStartPosition = IapReadByte(IAP_ADDRESS2+62);
+		motor4.currentStage = IapReadByte(IAP_ADDRESS2+63);
 	}
 	else
 	{
@@ -161,6 +193,22 @@ void snapshot_init()
 		motor2.totalPWMs = 0;
 		motor2.currentStage = 0;
 
+		motor3.position = 0;
+		motor3.status = MOTOR_STOP;
+		motor3.isStartPosition = 1;
+		motor3.stepPWMs = 0;
+		motor3.stepPassPWMs = 0;
+		motor3.totalPWMs = 0;
+		motor3.currentStage = 0;
+
+		motor4.position = 0;
+		motor4.status = MOTOR_STOP;
+		motor4.isStartPosition = 1;
+		motor4.stepPWMs = 0;
+		motor4.stepPassPWMs = 0;
+		motor4.totalPWMs = 0;
+		motor4.currentStage = 0;
+
 		lastStatus = MOTOR_STOP;
 		lastStepPWMs = 0;
 	}
@@ -175,43 +223,22 @@ void snapshot_save()
 	IapProgramByte(IAP_ADDRESS2, motor1.position);
 	IapProgramByte(IAP_ADDRESS2+1, motor1.status); 
 	IapProgramByte(IAP_ADDRESS2+2, motor1.isStartPosition); 
-	IapProgramByte(IAP_ADDRESS2+3, (BYTE)(motor1.stepPWMs>>24)); 
-	IapProgramByte(IAP_ADDRESS2+4, (BYTE)(motor1.stepPWMs>>16)); 
-	IapProgramByte(IAP_ADDRESS2+5, (BYTE)(motor1.stepPWMs>>8)); 
-	IapProgramByte(IAP_ADDRESS2+6, (BYTE)(motor1.stepPWMs)); 
-	IapProgramByte(IAP_ADDRESS2+7, (BYTE)(motor1.stepPassPWMs>>24)); 
-	IapProgramByte(IAP_ADDRESS2+8, (BYTE)(motor1.stepPassPWMs>>16)); 
-	IapProgramByte(IAP_ADDRESS2+9, (BYTE)(motor1.stepPassPWMs>>8)); 
-	IapProgramByte(IAP_ADDRESS2+10, (BYTE)(motor1.stepPassPWMs));
-	IapProgramByte(IAP_ADDRESS2+11, (BYTE)(motor1.totalPWMs>>24)); 
-	IapProgramByte(IAP_ADDRESS2+12, (BYTE)(motor1.totalPWMs>>16)); 
-	IapProgramByte(IAP_ADDRESS2+13, (BYTE)(motor1.totalPWMs>>8)); 
-	IapProgramByte(IAP_ADDRESS2+14, (BYTE)(motor1.totalPWMs));
-	IapProgramByte(IAP_ADDRESS2+15, motor1.currentStage);
+	IapProgramByte(IAP_ADDRESS2+3, motor1.currentStage);
 	//写入参数 电机2
-	IapProgramByte(IAP_ADDRESS2+16, motor2.position);
-	IapProgramByte(IAP_ADDRESS2+17, motor2.status); 
-	IapProgramByte(IAP_ADDRESS2+18, motor2.isStartPosition); 
-	IapProgramByte(IAP_ADDRESS2+19, (BYTE)(motor2.stepPWMs>>24)); 
-	IapProgramByte(IAP_ADDRESS2+20, (BYTE)(motor2.stepPWMs>>16)); 
-	IapProgramByte(IAP_ADDRESS2+21, (BYTE)(motor2.stepPWMs>>8)); 
-	IapProgramByte(IAP_ADDRESS2+22, (BYTE)(motor2.stepPWMs)); 
-	IapProgramByte(IAP_ADDRESS2+23, (BYTE)(motor2.stepPassPWMs>>24)); 
-	IapProgramByte(IAP_ADDRESS2+24, (BYTE)(motor2.stepPassPWMs>>16)); 
-	IapProgramByte(IAP_ADDRESS2+25, (BYTE)(motor2.stepPassPWMs>>8)); 
-	IapProgramByte(IAP_ADDRESS2+26, (BYTE)(motor2.stepPassPWMs));
-	IapProgramByte(IAP_ADDRESS2+27, (BYTE)(motor2.totalPWMs>>24)); 
-	IapProgramByte(IAP_ADDRESS2+28, (BYTE)(motor2.totalPWMs>>16)); 
-	IapProgramByte(IAP_ADDRESS2+29, (BYTE)(motor2.totalPWMs>>8)); 
-	IapProgramByte(IAP_ADDRESS2+30, (BYTE)(motor2.totalPWMs));
-	IapProgramByte(IAP_ADDRESS2+31, motor2.currentStage);
-	//写入电机1上次运行参数
-
-	IapProgramByte(IAP_ADDRESS2+32, lastStatus);
-	IapProgramByte(IAP_ADDRESS2+33, (BYTE)(lastStepPWMs>>24)); 
-	IapProgramByte(IAP_ADDRESS2+34, (BYTE)(lastStepPWMs>>16)); 
-	IapProgramByte(IAP_ADDRESS2+35, (BYTE)(lastStepPWMs>>8)); 
-	IapProgramByte(IAP_ADDRESS2+36, (BYTE)(lastStepPWMs));
+	IapProgramByte(IAP_ADDRESS2+20, motor2.position);
+	IapProgramByte(IAP_ADDRESS2+21, motor2.status); 
+	IapProgramByte(IAP_ADDRESS2+22, motor2.isStartPosition); 
+	IapProgramByte(IAP_ADDRESS2+23, motor2.currentStage);
+	//写入参数 电机3
+	IapProgramByte(IAP_ADDRESS2+40, motor3.position);
+	IapProgramByte(IAP_ADDRESS2+41, motor3.status); 
+	IapProgramByte(IAP_ADDRESS2+42, motor3.isStartPosition); 
+	IapProgramByte(IAP_ADDRESS2+43, motor3.currentStage);
+	//写入参数 电机2
+	IapProgramByte(IAP_ADDRESS2+60, motor4.position);
+	IapProgramByte(IAP_ADDRESS2+61, motor4.status); 
+	IapProgramByte(IAP_ADDRESS2+62, motor4.isStartPosition); 
+	IapProgramByte(IAP_ADDRESS2+63, motor4.currentStage);
 
 	//写入标志位
 	IapProgramByte(IAP_ADDRESS2+511, 0xEE);

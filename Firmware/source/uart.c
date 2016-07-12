@@ -232,6 +232,22 @@ void anyData()
 		motor2.stepPassPWMs = 0;
 		motor2.totalPWMs = 0;
 		motor2.currentStage = 0;
+
+		motor3.position = 0;
+		motor3.status = MOTOR_STOP;
+		motor3.isStartPosition = 1;
+		motor3.stepPWMs = 0;
+		motor3.stepPassPWMs = 0;
+		motor3.totalPWMs = 0;
+		motor3.currentStage = 0;
+
+		motor4.position = 0;
+		motor4.status = MOTOR_STOP;
+		motor4.isStartPosition = 1;
+		motor4.stepPWMs = 0;
+		motor4.stepPassPWMs = 0;
+		motor4.totalPWMs = 0;
+		motor4.currentStage = 0;
 		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x0C) //前进按钮
@@ -263,6 +279,18 @@ void anyData()
 	{
 
 	}
+	else if(uartBuffer[2] == 0x84) //切换组别按钮
+	{
+		if(motorCurrentRatationGroup == 1)
+		{
+			motorCurrentRatationGroup = 2;
+		}
+		else
+		{
+			motorCurrentRatationGroup = 1;
+		}
+		displayMode = motorCurrentRatationStage + DISPLAY_SETTING1; //刷新显示
+	}
 	else if(uartBuffer[2] >= 0x12 && uartBuffer[2] <= 0x1C) //过程设置按钮
 	{
 		motorCurrentRatationStage = (uartBuffer[2] - 0x12)>>1;
@@ -270,9 +298,15 @@ void anyData()
 	}
 	else if(uartBuffer[2] >= 0x2E && uartBuffer[2] <= 0x7C) //过程设置值
 	{
-		motorRotationAngle1[motorCurrentRatationStage][(uartBuffer[2] - 0x2E)>>1] = dat;
+		if(motorCurrentRatationGroup == 1)
+		{
+			motorRotationAngle1[motorCurrentRatationStage][(uartBuffer[2] - 0x2E)>>1] = dat;
+		}
+		else
+		{
+			motorRotationAngle2[motorCurrentRatationStage][(uartBuffer[2] - 0x2E)>>1] = dat;
+		}	
 	}
-
 	uartReceiveOK = 1;	
 }
 
@@ -288,19 +322,34 @@ void refreshDisplaySetting()
 	SendDataToScreen(0x002C, 0);
 	//设置按钮显示当前选中
 	SendDataToScreen((motorCurrentRatationStage<<1)+0x22, 1);
+	//设置当前组别
+	SendDataToScreen(0x0085, motorCurrentRatationGroup);
 	//当组设置值
 	for(i=0; i < 40; i++)
 	{
-		SendDataToScreen(0x002E + (i<<1) ,motorRotationAngle1[motorCurrentRatationStage][i]);
-	   	
+		if(motorCurrentRatationGroup == 1)
+		{
+			SendDataToScreen(0x002E + (i<<1) ,motorRotationAngle1[motorCurrentRatationStage][i]);
+		}
+		else
+		{
+			SendDataToScreen(0x002E + (i<<1) ,motorRotationAngle2[motorCurrentRatationStage][i]);
+		}
 	}
 }
 
 void refreshDisplayRunning()
 {
 	SendDataToScreen(0x0000, runMode);
+	SendDataToScreen(0x0085, motorCurrentRatationGroup);
+
 	SendDataToScreen(0x0001, motor1.currentStage + 1);
 	SendDataToScreen(0x0002, motor2.currentStage + 1);
-	SendLongDataToScreen(0x0003, motor1.position +1);
-	SendLongDataToScreen(0x0005, motor2.position +1);
+	SendDataToScreen(0x0003, motor1.position +1);
+	SendDataToScreen(0x0005, motor2.position +1);
+
+	SendDataToScreen(0x0080, motor3.currentStage + 1);
+	SendDataToScreen(0x0081, motor4.currentStage + 1);
+	SendDataToScreen(0x0082, motor3.position +1);
+	SendDataToScreen(0x0083, motor4.position +1);
 }
