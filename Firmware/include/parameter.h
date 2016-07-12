@@ -1,13 +1,13 @@
 /***************************************************************************/
-// ³ÌĞò£º15ĞÍ×ùµæ»ú¿ØÖÆÏµÍ³
-// Ä£¿é£º²ÎÊıÍ·ÎÄ¼ş
-// ÎÄ¼ş£ºparameter.h
-// ×÷Õß£º²·Ïş•D
-// °æ±¾£ºV0.01
-// ÈÕÆÚ£º2016Äê4ÔÂ3ÈÕ
-// ¹¦ÄÜ£ºÖ÷º¯Êı
-// Ğ¾Æ¬£ºSTC12C5A60S2
-// ±àÒë£ºKeil uVision3 V3.90
+// ç¨‹åºï¼š15å‹åº§å«æœºæ§åˆ¶ç³»ç»Ÿ
+// æ¨¡å—ï¼šå‚æ•°å¤´æ–‡ä»¶
+// æ–‡ä»¶ï¼šparameter.h
+// ä½œè€…ï¼šåœæ™“æ—¸
+// ç‰ˆæœ¬ï¼šV0.01
+// æ—¥æœŸï¼š2016å¹´4æœˆ3æ—¥
+// åŠŸèƒ½ï¼šä¸»å‡½æ•°
+// èŠ¯ç‰‡ï¼šSTC12C5A60S2
+// ç¼–è¯‘ï¼šKeil uVision3 V3.90
 /***************************************************************************/
 
 
@@ -17,74 +17,74 @@
 #include <reg52.h>
 
 /***************************************************************************/
-// Òı½Å¶¨Òå
+// å¼•è„šå®šä¹‰
 /***************************************************************************/
-//ÊäÈë
-sbit sensorStartPosi1 = P0^0; //³õÊ¼Î»ÖÃ´«¸ĞÆ÷1
-sbit sensorStartPosi2 = P0^1; //³õÊ¼Î»ÖÃ´«¸ĞÆ÷2
-sbit keyMotor1Forward = P0^2; //µç»ú1ÏòÇ°ĞÅºÅ
-sbit keyMotor1Backward = P0^3; //µç»ú1ÏòºóĞÅºÅ
-sbit keyMotor2Copy = P0^4; //µç»ú2¸úËæĞÅºÅ
+//è¾“å…¥
+sbit sensorStartPosi1 = P0^0; //åˆå§‹ä½ç½®ä¼ æ„Ÿå™¨1
+sbit sensorStartPosi2 = P0^1; //åˆå§‹ä½ç½®ä¼ æ„Ÿå™¨2
+sbit keyMotor1Forward = P0^2; //ç”µæœº1å‘å‰ä¿¡å·
+sbit keyMotor1Backward = P0^3; //ç”µæœº1å‘åä¿¡å·
+sbit keyMotor2Copy = P0^4; //ç”µæœº2è·Ÿéšä¿¡å·
 
-sbit sensorStartPosi3 = P0^5; //³õÊ¼Î»ÖÃ´«¸ĞÆ÷3
-sbit sensorStartPosi4 = P0^6; //³õÊ¼Î»ÖÃ´«¸ĞÆ÷4
-sbit keyMotor3Forward = P0^7; //µç»ú3Ç°½øĞÅºÅ
-sbit keyMotor3Backward = P2^0; //µç»ú3Ç°½øĞÅºÅ
-sbit keyMotor4Copy = P2^1; //µç»ú4¸úËæĞÅºÅ
+sbit sensorStartPosi3 = P0^5; //åˆå§‹ä½ç½®ä¼ æ„Ÿå™¨3
+sbit sensorStartPosi4 = P0^6; //åˆå§‹ä½ç½®ä¼ æ„Ÿå™¨4
+sbit keyMotor3Forward = P0^7; //ç”µæœº3å‰è¿›ä¿¡å·
+sbit keyMotor3Backward = P2^0; //ç”µæœº3åé€€ä¿¡å·
+sbit keyMotor4Copy = P2^1; //ç”µæœº4è·Ÿéšä¿¡å·
 
-sbit sensorEndPosi1 = P2^2; //½áÊøÎ»ÖÃ´«¸ĞÆ÷1
-sbit sensorEndPosi2 = P2^3; //½áÊøÎ»ÖÃ´«¸ĞÆ÷2
-sbit sensorEndPosi3 = P2^4; //½áÊøÎ»ÖÃ´«¸ĞÆ÷3
-sbit sensorEndPosi4 = P2^5; //½áÊøÎ»ÖÃ´«¸ĞÆ÷4
+sbit sensorEndPosi1 = P2^2; //ç»“æŸä½ç½®ä¼ æ„Ÿå™¨1
+sbit sensorEndPosi2 = P2^3; //ç»“æŸä½ç½®ä¼ æ„Ÿå™¨2
+sbit sensorEndPosi3 = P2^4; //ç»“æŸä½ç½®ä¼ æ„Ÿå™¨3
+sbit sensorEndPosi4 = P2^5; //ç»“æŸä½ç½®ä¼ æ„Ÿå™¨4
 
-//µÏÎÄÆÁ
+//è¿ªæ–‡å±
 //P1^2 RXD2
 //P1^3 TXD2
 
-//Êä³ö
-sbit ioMotor1Direction = P1^4; //µç»ú1·½Ïò
-sbit ioMotor2Direction = P1^5; //µç»ú2·½Ïò
-sbit ioMotor3Direction = P1^6; //µç»ú3·½Ïò
-sbit ioMotor4Direction = P1^7; //µç»ú4·½Ïò
-sbit ioMotor1PWM = P3^4; //µç»ú1Âö³å
-sbit ioMotor2PWM = P3^5; //µç»ú2Âö³å
-sbit ioMotor3PWM = P3^6; //µç»ú3Âö³å
-sbit ioMotor4PWM = P3^7; //µç»ú4Âö³å
+//è¾“å‡º
+sbit ioMotor1Direction = P1^4; //ç”µæœº1æ–¹å‘
+sbit ioMotor2Direction = P1^5; //ç”µæœº2æ–¹å‘
+sbit ioMotor3Direction = P1^6; //ç”µæœº3æ–¹å‘
+sbit ioMotor4Direction = P1^7; //ç”µæœº4æ–¹å‘
+sbit ioMotor1PWM = P3^4; //ç”µæœº1è„‰å†²
+sbit ioMotor2PWM = P3^5; //ç”µæœº2è„‰å†²
+sbit ioMotor3PWM = P3^6; //ç”µæœº3è„‰å†²
+sbit ioMotor4PWM = P3^7; //ç”µæœº4è„‰å†²
 
 sbit testOutput1 = P1^0;
 sbit testOutput2 = P1^1;
 
 
 /***************************************************************************/
-// ²ÎÊıÉùÃ÷
+// å‚æ•°å£°æ˜
 /***************************************************************************/
 
-enum RunMode {MODEL_STOP, MODEL_RUN};  //ÔËĞĞÄ£Ê½ 0£ºÍ£Ö¹ 1£ºÔËĞĞ
-enum MotorStatus {MOTOR_BACKWARD, MOTOR_FORWARD, MOTOR_STOP};  //µç»ú×´Ì¬ 0£ºÏòÇ° 1£ºÏòºó 2£ºÍ£Ö¹
-enum DisplayMode {DISPLAY_NO_FRESH, DISPLAY_RUN, DISPLAY_MAX_POSITION, DIAPLAY_MIN_POSITION,DIAPLAY_MOTOR_FORWARD, DIAPLAY_MOTOR_BACKWARD,DIAPLAY_MOTOR2_OPEATION, DISPLAY_SETTING1, DISPLAY_SETTING2, DISPLAY_SETTING3, DISPLAY_SETTING4, DISPLAY_SETTING5, DISPLAY_SETTING6}; //ÆÁÄ»ÏÔÊ¾Ä£Ê½
-enum SaveMode {SAVE_NO_SAVING, SAVE_SETTING, SAVE_SNAPSHOT}; //ÊÇ·ñ±£´æEEPROM×´Ì¬Î»  0£º²»±£´æ 1£º±£´æÉèÖÃÖµ 2£º±£´æÔËĞĞ×´Ì¬
+enum RunMode {MODEL_STOP, MODEL_RUN};  //è¿è¡Œæ¨¡å¼ 0ï¼šåœæ­¢ 1ï¼šè¿è¡Œ
+enum MotorStatus {MOTOR_BACKWARD, MOTOR_FORWARD, MOTOR_STOP};  //ç”µæœºçŠ¶æ€ 0ï¼šå‘å‰ 1ï¼šå‘å 2ï¼šåœæ­¢
+enum DisplayMode {DISPLAY_NO_FRESH, DISPLAY_RUN, DISPLAY_MAX_POSITION, DIAPLAY_MIN_POSITION,DIAPLAY_MOTOR_FORWARD, DIAPLAY_MOTOR_BACKWARD,DIAPLAY_MOTOR2_OPEATION, DISPLAY_SETTING1, DISPLAY_SETTING2, DISPLAY_SETTING3, DISPLAY_SETTING4, DISPLAY_SETTING5, DISPLAY_SETTING6}; //å±å¹•æ˜¾ç¤ºæ¨¡å¼
+enum SaveMode {SAVE_NO_SAVING, SAVE_SETTING, SAVE_SNAPSHOT}; //æ˜¯å¦ä¿å­˜EEPROMçŠ¶æ€ä½  0ï¼šä¸ä¿å­˜ 1ï¼šä¿å­˜è®¾ç½®å€¼ 2ï¼šä¿å­˜è¿è¡ŒçŠ¶æ€
 
-struct Motor //µç»ú½á¹¹Ìå
+struct Motor //ç”µæœºç»“æ„ä½“
 {
-	unsigned char position; //µç»úµ±Ç°Î»ÖÃ 0~39
-	enum MotorStatus status; //µç»ú×´Ì¬ 0£ºÍ£Ö¹ 1£ºÏòÇ° 2£ºÏòºó
-   	unsigned char isStartPosition; //µç»úÊÇ·ñÔÚ³õÊ¼Î»ÖÃ±êÖ¾Î»
-	unsigned long stepPWMs; //µ¥²½×ÜÂö³åÊı
-	unsigned long stepPassPWMs; //µ¥²½ÒÑ×ßÂö³åÊı
-	unsigned long totalPWMs; //ÔËĞĞ×ÜÂö³åÊı
-	unsigned char currentStage; //µ±Ç°ÔËĞĞÊı¾İ×é 0~5
+	unsigned char position; //ç”µæœºå½“å‰ä½ç½® 0~39
+	enum MotorStatus status; //ç”µæœºçŠ¶æ€ 0ï¼šåœæ­¢ 1ï¼šå‘å‰ 2ï¼šå‘å
+   	unsigned char isStartPosition; //ç”µæœºæ˜¯å¦åœ¨åˆå§‹ä½ç½®æ ‡å¿—ä½
+	unsigned long stepPWMs; //å•æ­¥æ€»è„‰å†²æ•°
+	unsigned long stepPassPWMs; //å•æ­¥å·²èµ°è„‰å†²æ•°
+	unsigned long totalPWMs; //è¿è¡Œæ€»è„‰å†²æ•°
+	unsigned char currentStage; //å½“å‰è¿è¡Œæ•°æ®ç»„ 0~5
 };
 
 
-extern enum RunMode runMode; //ÔËĞĞÄ£Ê½
-extern struct Motor motor1, motor2; //µç»ú
-extern unsigned int motorRotationAngle[6][40]; //µç»úĞı×ª½Ç 6×éÊı¾İ£¬Ã¿×é40¸ö
-extern unsigned char motorCurrentRatationGroup; //µ±Ç°ÉèÖÃĞı×ª½Ç×é
-extern enum DisplayMode displayMode; //Ë¢ĞÂÆÁÄ»±êÖ¾Î» 0 ²»Ë¢ĞÂ
-extern enum SaveMode saveMode; //±£´æEEPROM×´Ì¬Î» 
+extern enum RunMode runMode; //è¿è¡Œæ¨¡å¼
+extern struct Motor motor1, motor2; //ç”µæœº
+extern unsigned int motorRotationAngle[6][40]; //ç”µæœºæ—‹è½¬è§’ 6ç»„æ•°æ®ï¼Œæ¯ç»„40ä¸ª
+extern unsigned char motorCurrentRatationGroup; //å½“å‰è®¾ç½®æ—‹è½¬è§’ç»„
+extern enum DisplayMode displayMode; //åˆ·æ–°å±å¹•æ ‡å¿—ä½ 0 ä¸åˆ·æ–°
+extern enum SaveMode saveMode; //ä¿å­˜EEPROMçŠ¶æ€ä½ 
 
 /***************************************************************************/
-// º¯ÊıÉùÃ÷
+// å‡½æ•°å£°æ˜
 /***************************************************************************/
 void parameter_init();
 unsigned char parameter_save();
