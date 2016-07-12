@@ -265,12 +265,12 @@ void anyData()
 	}
 	else if(uartBuffer[2] >= 0x12 && uartBuffer[2] <= 0x1C) //过程设置按钮
 	{
-		motorCurrentRatationGroup = (uartBuffer[2] - 0x12)>>1;
-		displayMode = motorCurrentRatationGroup + DISPLAY_SETTING1; //刷新显示
+		motorCurrentRatationStage = (uartBuffer[2] - 0x12)>>1;
+		displayMode = motorCurrentRatationStage + DISPLAY_SETTING1; //刷新显示
 	}
 	else if(uartBuffer[2] >= 0x2E && uartBuffer[2] <= 0x7C) //过程设置值
 	{
-		motorRotationAngle[motorCurrentRatationGroup][(uartBuffer[2] - 0x2E)>>1] = dat;
+		motorRotationAngle1[motorCurrentRatationStage][(uartBuffer[2] - 0x2E)>>1] = dat;
 	}
 
 	uartReceiveOK = 1;	
@@ -287,11 +287,11 @@ void refreshDisplaySetting()
 	SendDataToScreen(0x002A, 0);
 	SendDataToScreen(0x002C, 0);
 	//设置按钮显示当前选中
-	SendDataToScreen((motorCurrentRatationGroup<<1)+0x22, 1);
+	SendDataToScreen((motorCurrentRatationStage<<1)+0x22, 1);
 	//当组设置值
 	for(i=0; i < 40; i++)
 	{
-		SendDataToScreen(0x002E + (i<<1) ,motorRotationAngle[motorCurrentRatationGroup][i]);
+		SendDataToScreen(0x002E + (i<<1) ,motorRotationAngle1[motorCurrentRatationStage][i]);
 	   	
 	}
 }

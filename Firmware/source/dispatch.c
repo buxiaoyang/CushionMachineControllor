@@ -94,11 +94,11 @@ void motor1Forward(void)
 			 motor1.status = MOTOR_FORWARD;
 			 lastStatus =  MOTOR_FORWARD;
 			 motor1.isStartPosition = 0;
-			 motor1.stepPWMs = motorRotationAngle[motor1.currentStage][motor1.position] << 1;
+			 motor1.stepPWMs = motorRotationAngle1[motor1.currentStage][motor1.position] << 1;
 			 lastStepPWMs = motor1.stepPWMs;
 			 motor1.stepPassPWMs = 0;
-			 motor1.totalPWMs += motorRotationAngle[motor1.currentStage][motor1.position];
-			 if(motorRotationAngle[motor1.currentStage][motor1.position + 1] == 0) //下面没有步数了
+			 motor1.totalPWMs += motorRotationAngle1[motor1.currentStage][motor1.position];
+			 if(motorRotationAngle1[motor1.currentStage][motor1.position + 1] == 0) //下面没有步数了
 			 {
 			 	motor1.currentStage ++;
 				motor1.position = 0;
@@ -132,11 +132,11 @@ void motor1Backward(void)
 			ioMotor1Direction = MOTOR_BACKWARD;
 			motor1.status = MOTOR_BACKWARD;
 			lastStatus =  MOTOR_BACKWARD;
-			motor1.stepPWMs = motorRotationAngle[motor1.currentStage][motor1.position] << 1;
+			motor1.stepPWMs = motorRotationAngle1[motor1.currentStage][motor1.position] << 1;
 			lastStepPWMs = motor1.stepPWMs;
 			motor1.stepPassPWMs = 0;
-			motor1.totalPWMs -= motorRotationAngle[motor1.currentStage][motor1.position];
-			if(motorRotationAngle[motor1.currentStage][motor1.position + 1] == 0) //下面没有步数了
+			motor1.totalPWMs -= motorRotationAngle1[motor1.currentStage][motor1.position];
+			if(motorRotationAngle1[motor1.currentStage][motor1.position + 1] == 0) //下面没有步数了
 			{
 				motor1.isStartPosition = 1;
 				motor1.position = 0;
@@ -145,7 +145,7 @@ void motor1Backward(void)
 				{
 					motor1.currentStage = 0;
 				}
-				else if(motorRotationAngle[motor1.currentStage][motor1.position] == 0) //下一个过程没有配置
+				else if(motorRotationAngle1[motor1.currentStage][motor1.position] == 0) //下一个过程没有配置
 				{
 					motor1.currentStage = 0;
 				}
@@ -178,10 +178,10 @@ void motor2Forward(void)
 		 	 ioMotor2Direction = MOTOR_FORWARD;
 			 motor2.status = MOTOR_FORWARD;
 			 motor2.isStartPosition = 0;
-			 motor2.stepPWMs = motorRotationAngle[motor2.currentStage][motor2.position] << 1;
+			 motor2.stepPWMs = motorRotationAngle1[motor2.currentStage][motor2.position] << 1;
 			 motor2.stepPassPWMs = 0;
-			 motor2.totalPWMs += motorRotationAngle[motor2.currentStage][motor2.position];
-			 if(motorRotationAngle[motor2.currentStage][motor2.position + 1] == 0) //下面没有步数了
+			 motor2.totalPWMs += motorRotationAngle1[motor2.currentStage][motor2.position];
+			 if(motorRotationAngle1[motor2.currentStage][motor2.position + 1] == 0) //下面没有步数了
 			 {
 			 	motor2.currentStage ++;
 				motor2.position = 0;
@@ -211,10 +211,10 @@ void motor2Backward(void)
 		{
 			ioMotor2Direction = MOTOR_BACKWARD;
 			motor2.status = MOTOR_BACKWARD;
-			motor2.stepPWMs = motorRotationAngle[motor2.currentStage][motor2.position] << 1;
+			motor2.stepPWMs = motorRotationAngle1[motor2.currentStage][motor2.position] << 1;
 			motor2.stepPassPWMs = 0;
-			motor2.totalPWMs -= motorRotationAngle[motor2.currentStage][motor2.position];
-			if(motorRotationAngle[motor2.currentStage][motor2.position + 1] == 0) //下面没有步数了
+			motor2.totalPWMs -= motorRotationAngle1[motor2.currentStage][motor2.position];
+			if(motorRotationAngle1[motor2.currentStage][motor2.position + 1] == 0) //下面没有步数了
 			{
 				motor2.isStartPosition = 1;
 				motor2.position = 0;
@@ -223,7 +223,7 @@ void motor2Backward(void)
 				{
 					motor2.currentStage = 0;
 				}
-				else if(motorRotationAngle[motor2.currentStage][motor2.position] == 0) //下一个过程没有配置
+				else if(motorRotationAngle1[motor2.currentStage][motor2.position] == 0) //下一个过程没有配置
 				{
 					motor2.currentStage = 0;
 				}

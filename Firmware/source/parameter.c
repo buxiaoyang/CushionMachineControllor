@@ -21,8 +21,8 @@
 
 enum RunMode runMode; //运行模式 0：停止 1：运行
 struct Motor motor1, motor2; //电机
-unsigned int motorRotationAngle[6][40]; //电机旋转角 6组数据，每组40个
-unsigned char motorCurrentRatationGroup; //当前设置旋转角组
+unsigned int motorRotationAngle1[6][40]; //电机旋转角一组 6过程数据，每过程40个
+unsigned char motorCurrentRatationStage; //当前设置旋转角过程
 enum DisplayMode displayMode; //刷新屏幕标志位 0 不刷新
 enum SaveMode saveMode;
 
@@ -42,7 +42,7 @@ unsigned char parameter_read()
 			for(j=0; j < 40; j++)
 			{
 				address = i * 80 + (j<<1);
-				motorRotationAngle[i][j] = (WORD)((IapReadByte(IAP_ADDRESS + address) << 8) | IapReadByte(IAP_ADDRESS + address + 1));
+				motorRotationAngle1[i][j] = (WORD)((IapReadByte(IAP_ADDRESS + address) << 8) | IapReadByte(IAP_ADDRESS + address + 1));
 			}
 			
 		}
@@ -65,13 +65,13 @@ void parameter_init()
 		{
 			for(j=0; j < 40; j++)
 			{
-				motorRotationAngle[i][j] = 0;
+				motorRotationAngle1[i][j] = 0;
 			}
 		}	
 	}
 
 	runMode = MODEL_RUN;
-	motorCurrentRatationGroup = 0;
+	motorCurrentRatationStage = 0;
 	displayMode = DISPLAY_RUN;
 	saveMode = SAVE_NO_SAVING;
 }
@@ -93,8 +93,8 @@ unsigned char parameter_save()
 		for(j=0; j < 40; j++)
 		{
 			address = i * 80 + (j<<1);
-			IapProgramByte(IAP_ADDRESS + address, (BYTE)(motorRotationAngle[i][j]>>8));
-			IapProgramByte(IAP_ADDRESS + address+1, (BYTE)(motorRotationAngle[i][j]));
+			IapProgramByte(IAP_ADDRESS + address, (BYTE)(motorRotationAngle1[i][j]>>8));
+			IapProgramByte(IAP_ADDRESS + address+1, (BYTE)(motorRotationAngle1[i][j]));
 		}
 	}
 	IapProgramByte(IAP_ADDRESS+511, 0xEE); //写入标志位
@@ -105,7 +105,7 @@ unsigned char parameter_save()
 		for(j=0; j < 40; j++)
 		{
 			address = i * 80 + (j<<1);
-			if(motorRotationAngle[i][j] != (WORD)((IapReadByte(IAP_ADDRESS + address) << 8) | IapReadByte(IAP_ADDRESS + address + 1)))
+			if(motorRotationAngle1[i][j] != (WORD)((IapReadByte(IAP_ADDRESS + address) << 8) | IapReadByte(IAP_ADDRESS + address + 1)))
 			{
 				result = 0;
 			}
