@@ -173,6 +173,12 @@ void snapshot_init()
 		motor4.status = IapReadByte(IAP_ADDRESS2+61);
 		motor4.isStartPosition = IapReadByte(IAP_ADDRESS2+62);
 		motor4.currentStage = IapReadByte(IAP_ADDRESS2+63);
+
+		lastStatus1 = IapReadByte(IAP_ADDRESS2+82);
+		lastStepPWMs1 = (unsigned long)((IapReadByte(IAP_ADDRESS2+83)<<24) | (IapReadByte(IAP_ADDRESS2+84)<<16) | (IapReadByte(IAP_ADDRESS2+85)<<8) | (IapReadByte(IAP_ADDRESS2+86)));
+
+		lastStatus2 = IapReadByte(IAP_ADDRESS2+87);
+		lastStepPWMs2 = (unsigned long)((IapReadByte(IAP_ADDRESS2+88)<<24) | (IapReadByte(IAP_ADDRESS2+89)<<16) | (IapReadByte(IAP_ADDRESS2+90)<<8) | (IapReadByte(IAP_ADDRESS2+91)));
 	}
 	else
 	{
@@ -209,6 +215,12 @@ void snapshot_init()
 		motor4.totalPWMs = 0;
 		motor4.currentStage = 0;
 
+		lastStatus1 = MOTOR_STOP;
+		lastStepPWMs1 = 0;
+
+		lastStatus2 = MOTOR_STOP;
+		lastStepPWMs2 = 0;
+
 	}
 	displayMode = DISPLAY_RUN;
 }
@@ -237,6 +249,19 @@ void snapshot_save()
 	IapProgramByte(IAP_ADDRESS2+61, motor4.status); 
 	IapProgramByte(IAP_ADDRESS2+62, motor4.isStartPosition); 
 	IapProgramByte(IAP_ADDRESS2+63, motor4.currentStage);
+
+
+	IapProgramByte(IAP_ADDRESS2+82, lastStatus1);
+	IapProgramByte(IAP_ADDRESS2+83, (BYTE)(lastStepPWMs1>>24)); 
+	IapProgramByte(IAP_ADDRESS2+84, (BYTE)(lastStepPWMs1>>16)); 
+	IapProgramByte(IAP_ADDRESS2+85, (BYTE)(lastStepPWMs1>>8)); 
+	IapProgramByte(IAP_ADDRESS2+86, (BYTE)(lastStepPWMs1));
+
+	IapProgramByte(IAP_ADDRESS2+87, lastStatus2);
+	IapProgramByte(IAP_ADDRESS2+88, (BYTE)(lastStepPWMs2>>24)); 
+	IapProgramByte(IAP_ADDRESS2+89, (BYTE)(lastStepPWMs2>>16)); 
+	IapProgramByte(IAP_ADDRESS2+90, (BYTE)(lastStepPWMs2>>8)); 
+	IapProgramByte(IAP_ADDRESS2+91, (BYTE)(lastStepPWMs2));
 
 	//写入标志位
 	IapProgramByte(IAP_ADDRESS2+511, 0xEE);
