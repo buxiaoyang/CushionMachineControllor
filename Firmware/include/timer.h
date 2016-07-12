@@ -15,8 +15,8 @@
 
 void Timer0Init(void);
 void Timer1Init(void);
-void Motor1Start(void);
-void Motor2Start(void);
-void Motor1Stop(void);
-void Motor2Stop(void);
+void MotorGroup1Start(void);
+void MotorGroup2Start(void);
+void MotorGroup1Stop(void);
+void MotorGroup2Stop(void);
 #endif

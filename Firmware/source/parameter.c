@@ -209,8 +209,6 @@ void snapshot_init()
 		motor4.totalPWMs = 0;
 		motor4.currentStage = 0;
 
-		lastStatus = MOTOR_STOP;
-		lastStepPWMs = 0;
 	}
 	displayMode = DISPLAY_RUN;
 }

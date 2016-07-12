@@ -66,8 +66,8 @@ void main()
 			delay_ms(10);
 			if(PCON & 0x20){
 				//testOutput1 = !testOutput1;
-				Motor1Stop();
-				Motor2Stop();
+				MotorGroup1Stop();
+				MotorGroup2Stop();
 				PCON &= 0xDF ;//«ÂLVDFŒª
 				snapshot_save();
 				if(PCON & 0x20){
@@ -78,8 +78,8 @@ void main()
 				}
 				else
 				{
-					Motor1Start();
-					Motor2Start();
+					MotorGroup1Start();
+					MotorGroup2Start();
 				}
 			}		
 		}
