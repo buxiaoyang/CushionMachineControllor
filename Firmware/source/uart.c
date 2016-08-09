@@ -208,12 +208,13 @@ void anyData()
 			ResetMotorDispatchSteps = 0;	
 		}
 	}
-	else if(uartBuffer[2] == 0x08) //运行按钮
+	else if(uartBuffer[2] == 0x17) //运行按钮
 	{
+		testOutput1 = !testOutput1;
 		runMode = MODEL_RUN;
 		displayMode = DISPLAY_RUN;
 	}
-	else if(uartBuffer[2] == 0x0A) //停止按钮
+	else if(uartBuffer[2] == 0x18) //停止按钮
 	{
 		runMode = MODEL_STOP;
 		//电机参数初始化
@@ -361,7 +362,7 @@ void refreshDisplaySetting()
 
 void refreshDisplayRunning()
 {
-	SendDataToScreen(0x0000, runMode);
+	SendDataToScreen(0x000F, runMode);
 	SendDataToScreen(0x0085, motorCurrentRatationGroup);
 
 	SendDataToScreen(0x0001, motor1.currentStage + 1);
