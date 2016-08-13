@@ -12,6 +12,7 @@
 
 #include <parameter.h>
 #include <eeprom.h>
+#include <at24c256.h>
 #include <basefunc.h>
 #include <dispatch.h>
 

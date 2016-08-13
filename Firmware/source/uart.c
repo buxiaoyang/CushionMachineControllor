@@ -198,6 +198,7 @@ void ReceiveData(BYTE dat)
 
 void anyData()
 {
+	WORD i;
 	WORD dat = ((uartBuffer[4]<<8) | uartBuffer[5]);
 	
 

@@ -41,6 +41,10 @@ sbit sensorEndPosi4 = P2^5; //结束位置传感器4
 //P1^2 RXD2
 //P1^3 TXD2
 
+//存储
+sbit storageSCL = P2^6; //eeprom存储 SLC
+sbit storageSDA = P2^7; //eeprom存储 SDA
+
 //输出
 sbit ioMotor1Direction = P1^4; //电机1方向
 sbit ioMotor2Direction = P1^5; //电机2方向
