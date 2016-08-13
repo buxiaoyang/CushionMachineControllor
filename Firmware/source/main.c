@@ -111,33 +111,10 @@ void main()
 			isNotificationUI = 1;
 			displayMode = DISPLAY_NO_FRESH;
 		}
-		else if(displayMode == DIAPLAY_MOTOR_FORWARD)
-		{
-			ChangeScreenPage(0x09);
-			timeTick = 0;
-			isNotificationUI = 1;
-			displayMode = DISPLAY_NO_FRESH;
-		}
-		else if(displayMode == DIAPLAY_MOTOR_BACKWARD)
-		{
-			ChangeScreenPage(0x0A);
-			timeTick = 0;
-			isNotificationUI = 1;
-			displayMode = DISPLAY_NO_FRESH;
-		}
-		else if(displayMode == DIAPLAY_MOTOR2_OPEATION)
-		{
-			ChangeScreenPage(0x0B);
-			timeTick = 0;
-			isNotificationUI = 1;
-			displayMode = DISPLAY_NO_FRESH;
-		}
-		else if(displayMode >= DISPLAY_SETTING1 && displayMode <= DISPLAY_SETTING6)
-		{
-			 refreshDisplaySetting();
-			 displayMode = DISPLAY_NO_FRESH;
-		}
+
+		
 		//±£´æÉèÖÃÖµ
+		/*
 		if(saveMode == SAVE_SETTING) 
 		{
 			ChangeScreenPage(0x04);
@@ -153,6 +130,7 @@ void main()
 			}
 			saveMode = SAVE_NO_SAVING;
 		}
+		*/
 	}   
 
 }

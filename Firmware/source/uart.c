@@ -198,7 +198,6 @@ void ReceiveData(BYTE dat)
 
 void anyData()
 {
-	WORD i;
 	WORD dat = ((uartBuffer[4]<<8) | uartBuffer[5]);
 	
 
@@ -219,84 +218,23 @@ void anyData()
 	{
 		runMode = MODEL_STOP;
 		//电机参数初始化
-		motor1.position = 0;
 		motor1.status = MOTOR_STOP;
-		motor1.isStartPosition = 1;
 		motor1.stepPWMs = 0;
 		motor1.stepPassPWMs = 0;
-		motor1.totalPWMs = 0;
-		motor1.currentStage = 0;
 		
-		motor2.position = 0;
 		motor2.status = MOTOR_STOP;
-		motor2.isStartPosition = 1;
 		motor2.stepPWMs = 0;
 		motor2.stepPassPWMs = 0;
-		motor2.totalPWMs = 0;
-		motor2.currentStage = 0;
 
-		motor3.position = 0;
 		motor3.status = MOTOR_STOP;
-		motor3.isStartPosition = 1;
 		motor3.stepPWMs = 0;
 		motor3.stepPassPWMs = 0;
-		motor3.totalPWMs = 0;
-		motor3.currentStage = 0;
 
-		motor4.position = 0;
 		motor4.status = MOTOR_STOP;
-		motor4.isStartPosition = 1;
 		motor4.stepPWMs = 0;
 		motor4.stepPassPWMs = 0;
-		motor4.totalPWMs = 0;
-		motor4.currentStage = 0;
+
 		displayMode = DISPLAY_RUN;
-	}
-	else if(uartBuffer[2] == 0x0C) //前进按钮
-	{
-		if(runMode == MODEL_RUN)
-		{
-			if(motorCurrentRatationGroup == 1)
-			{
-				motor1Forward();
-			}
-			else
-			{
-				motor3Forward();
-			}
-		}
-	}
-	else if(uartBuffer[2] == 0x0E) //后退按钮
-	{
-		if(runMode == MODEL_RUN)
-		{
-			if(motorCurrentRatationGroup == 1)
-			{
-				motor1Backward();
-			}
-			else
-			{
-				motor3Backward();
-			}
-		}
-	}
-	else if(uartBuffer[2] == 0x10)	//跟随按钮
-	{
-		if(runMode == MODEL_RUN)
-		{
-			if(motorCurrentRatationGroup == 1)
-			{
-				motor2Copy();
-			}
-			else
-			{
-				motor4Copy();
-			}
-		}
-	}
-	else if(uartBuffer[2] == 0x1E) //保存按钮
-	{
-		saveMode = SAVE_SETTING;
 	}
 	else if(uartBuffer[2] == 0x20) //返回按钮
 	{
@@ -304,75 +242,21 @@ void anyData()
 	}
 	else if(uartBuffer[2] == 0x84) //切换组别按钮
 	{
-		if(motorCurrentRatationGroup == 1)
-		{
-			motorCurrentRatationGroup = 2;
-		}
-		else
-		{
-			motorCurrentRatationGroup = 1;
-		}
-		displayMode = motorCurrentRatationStage + DISPLAY_SETTING1; //刷新显示
+		
 	}
 	else if(uartBuffer[2] >= 0x12 && uartBuffer[2] <= 0x1C) //过程设置按钮
 	{
-		motorCurrentRatationStage = (uartBuffer[2] - 0x12)>>1;
-		displayMode = motorCurrentRatationStage + DISPLAY_SETTING1; //刷新显示
+		
 	}
 	else if(uartBuffer[2] >= 0x2E && uartBuffer[2] <= 0x7C) //过程设置值
 	{
-		if(motorCurrentRatationGroup == 1)
-		{
-			motorRotationAngle1[motorCurrentRatationStage][(uartBuffer[2] - 0x2E)>>1] = dat;
-		}
-		else
-		{
-			motorRotationAngle2[motorCurrentRatationStage][(uartBuffer[2] - 0x2E)>>1] = dat;
-		}	
+	
 	}
 	uartReceiveOK = 1;	
-}
-
-void refreshDisplaySetting()
-{
-	BYTE i;
-	//设置按钮显示非选中
-	SendDataToScreen(0x0022, 0);
-	SendDataToScreen(0x0024, 0);
-	SendDataToScreen(0x0026, 0);
-	SendDataToScreen(0x0028, 0);
-	SendDataToScreen(0x002A, 0);
-	SendDataToScreen(0x002C, 0);
-	//设置按钮显示当前选中
-	SendDataToScreen((motorCurrentRatationStage<<1)+0x22, 1);
-	//设置当前组别
-	SendDataToScreen(0x0085, motorCurrentRatationGroup);
-	//当组设置值
-	for(i=0; i < 40; i++)
-	{
-		if(motorCurrentRatationGroup == 1)
-		{
-			SendDataToScreen(0x002E + (i<<1) ,motorRotationAngle1[motorCurrentRatationStage][i]);
-		}
-		else
-		{
-			SendDataToScreen(0x002E + (i<<1) ,motorRotationAngle2[motorCurrentRatationStage][i]);
-		}
-	}
 }
 
 void refreshDisplayRunning()
 {
 	SendDataToScreen(0x000F, runMode);
-	SendDataToScreen(0x0085, motorCurrentRatationGroup);
 
-	SendDataToScreen(0x0001, motor1.currentStage + 1);
-	SendDataToScreen(0x0002, motor2.currentStage + 1);
-	SendDataToScreen(0x0003, motor1.position +1);
-	SendDataToScreen(0x0005, motor2.position +1);
-
-	SendDataToScreen(0x0080, motor3.currentStage + 1);
-	SendDataToScreen(0x0081, motor4.currentStage + 1);
-	SendDataToScreen(0x0082, motor3.position +1);
-	SendDataToScreen(0x0083, motor4.position +1);
 }

@@ -18,10 +18,8 @@ typedef unsigned int WORD;
 typedef unsigned long LONG;
 
 //Start address for STC11/10xx EEPROM
-#define IAP_ADDRESS1 0x0000
-#define IAP_ADDRESS2 0x0200
-#define IAP_ADDRESS3 0x0400
-#define IAP_ADDRESS4 0x0600
+#define IAP_ADDRESS 0x0000
+
 
 void Delay(BYTE n);
 void IapIdle();
