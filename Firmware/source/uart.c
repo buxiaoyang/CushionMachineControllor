@@ -255,7 +255,8 @@ void anyData()
 	uartReceiveOK = 1;	
 }
 
-void refreshDisplayRunning()
+
+void refreshDisplay()
 {
 	SendDataToScreen(0x000F, runMode);
 

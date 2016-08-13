@@ -32,7 +32,7 @@ void main()
 	uart_init();
 	Timer0Init();
 	Timer1Init();
-	ChangeScreenPage(0x00);
+	ChangeScreenPage(0x01);
 	snapshot_init();
 	PCON &= 0xDF ;//清LVDF位	 
 	while(1)
@@ -40,7 +40,7 @@ void main()
 		timeTick ++;
 		if(timeTick > 50 && isNotificationUI == 1)
 		{
-		 	ChangeScreenPage(0x00);
+		 	ChangeScreenPage(0x01);
 			isNotificationUI = 0;
 		}
 		//控制主循环执行时间为10ms
@@ -87,7 +87,6 @@ void main()
 		{
 			//按键扫描
 			Key_Scan1();
-			Key_Scan2();
 		}
 		//电机初始化状态机
 		ResetMotorDispatch();
