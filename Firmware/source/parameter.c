@@ -125,7 +125,7 @@ unsigned char parameter_read()
 {
 	WORD result = 1, baseAddress, stepAddress;
 	
-	setting.currentMood = RdFromROM(0x0000);
+	//setting.currentMood = RdFromROM(0x0000);
 
 	baseAddress = (setting.currentMood - 1) * MOOD_STORAGE_SIZE + 2;
 	setting.totalSteps = (WORD)((RdFromROM(baseAddress) << 8) | RdFromROM(baseAddress + 1));

@@ -37,7 +37,7 @@ void main()
 	PCON &= 0xDF ;//ÇåLVDFÎ» 
 	while(1)
 	{
-		delay_ms(5);
+		delay_ms(10);
 		timeTick ++;
 		if(timeTick > 500 && isNotificationUI == 1)
 		{

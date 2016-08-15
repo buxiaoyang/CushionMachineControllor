@@ -131,7 +131,7 @@ void WrToROM(unsigned int Address, unsigned char Data)
 	Send(Data);
 	Ack();
 	Stop();
-	mDelay(5);
+	mDelay(15);
 }
 
 unsigned char RdFromROM(unsigned int Address)
@@ -151,6 +151,7 @@ unsigned char RdFromROM(unsigned int Address)
 	storageSCL=0;
 	NoAck();
 	Stop();
+	//mDelay(5);
 	return i;
 }
 
