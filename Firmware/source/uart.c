@@ -200,13 +200,122 @@ void anyData()
 {
 	WORD dat = ((uartBuffer[4]<<8) | uartBuffer[5]);
 	
-
+	/*
 	if(uartBuffer[2] == 0x07)//回零按钮
 	{
 		if(ResetMotorDispatchSteps == 20)
 		{
 			ResetMotorDispatchSteps = 0;	
 		}
+	}
+	else 
+	*/
+	if(uartBuffer[2] == 0x02) //当前花样号
+	{
+		if(dat > MAX_MOOD)
+		{
+			dat = MAX_MOOD;
+		}
+		setting.currentMood = (BYTE)dat;
+		saveMode = SAVE_SETTING_WITH_READ;
+		displayMode = DISPLAY_RUN;
+	}
+	else if(uartBuffer[2] == 0x0A) //总花样数
+	{
+		setting.totalMood = (BYTE)dat;
+		displayMode = DISPLAY_RUN;
+	}
+	else if(uartBuffer[2] == 0x03) //当前步数
+	{
+		if(dat > setting.totalSteps)
+		{
+			dat = setting.totalSteps;
+		}
+		setting.currentStep = dat;
+		saveMode = SAVE_SETTING_WITH_READ;
+		displayMode = DISPLAY_RUN;
+	}
+	else if(uartBuffer[2] == 0x04) //总步数
+	{
+		if(dat > MAX_STEP)
+		{
+			dat = MAX_STEP;
+		}
+		setting.totalSteps = dat;
+		saveMode = SAVE_SETTING_WITH_READ;
+		displayMode = DISPLAY_RUN;
+	}
+	else if(uartBuffer[2] == 0x05) //电机步数1
+	{
+		setting.motor1Steps = dat;
+		saveMode = SAVE_SETTING;
+		displayMode = DISPLAY_RUN;
+	}
+	else if(uartBuffer[2] == 0x06) //电机步数2
+	{
+		setting.motor2Steps = dat;
+		saveMode = SAVE_SETTING;
+		displayMode = DISPLAY_RUN;
+	}
+	else if(uartBuffer[2] == 0x07) //电机步数3
+	{
+		setting.motor3Steps = dat;
+		saveMode = SAVE_SETTING;
+		displayMode = DISPLAY_RUN;
+	}
+	else if(uartBuffer[2] == 0x08) //电机步数4
+	{
+		setting.motor4Steps = dat;
+		saveMode = SAVE_SETTING;
+		displayMode = DISPLAY_RUN;
+	}
+	else if(uartBuffer[2] == 0x09) //电磁铁1~16
+	{
+		setting.moodStatus[0] = dat;
+		saveMode = SAVE_SETTING;
+		displayMode = DISPLAY_RUN;
+	}
+	else if(uartBuffer[2] == 0x10) //电磁铁17~32
+	{	
+		setting.moodStatus[1] = dat;
+		saveMode = SAVE_SETTING;
+		displayMode = DISPLAY_RUN;
+	}
+	else if(uartBuffer[2] == 0x11) //电磁铁33~48
+	{
+		setting.moodStatus[2] = dat;
+		saveMode = SAVE_SETTING;
+		displayMode = DISPLAY_RUN;
+	}
+	else if(uartBuffer[2] == 0x12) //电磁铁49~64
+	{
+		setting.moodStatus[3] = dat;
+		saveMode = SAVE_SETTING;
+		displayMode = DISPLAY_RUN;
+	}
+	else if(uartBuffer[2] == 0x13) //电磁铁65~80
+	{
+		setting.moodStatus[4] = dat;
+		saveMode = SAVE_SETTING;
+		displayMode = DISPLAY_RUN;
+	}
+	else if(uartBuffer[2] == 0x14) //电磁铁81~96
+	{
+		setting.moodStatus[5] = dat;
+		saveMode = SAVE_SETTING;
+		displayMode = DISPLAY_RUN;
+	}
+	else if(uartBuffer[2] == 0x15) //电磁铁97~112
+	{
+		setting.moodStatus[6] = dat;
+		saveMode = SAVE_SETTING;
+		displayMode = DISPLAY_RUN;
+	}
+	else if(uartBuffer[2] == 0x16) //电磁铁113~128
+	{
+		setting.moodStatus[7] = dat;
+		saveMode = SAVE_SETTING;
+		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x17) //运行按钮
 	{
@@ -236,21 +345,85 @@ void anyData()
 
 		displayMode = DISPLAY_RUN;
 	}
-	else if(uartBuffer[2] == 0x20) //返回按钮
+	else if(uartBuffer[2] == 0x19) //选花按钮
 	{
 
 	}
-	else if(uartBuffer[2] == 0x84) //切换组别按钮
+	else if(uartBuffer[2] == 0x20) //外卡按钮
+	{
+
+	}
+	else if(uartBuffer[2] == 0x21) //内卡复制到外卡按钮
+	{
+
+	}
+	else if(uartBuffer[2] == 0x22) //外卡复制到内卡按钮
+	{
+
+	}
+	else if(uartBuffer[2] == 0x23) //编程按钮
+	{
+
+	}
+	else if(uartBuffer[2] == 0x24) //上一花样按钮
+	{
+		setting.currentMood --;
+		if(setting.currentMood > MAX_MOOD || setting.currentMood == 0)
+		{
+			setting.currentMood = 1;
+		}
+		saveMode = SAVE_SETTING_WITH_READ;
+		displayMode = DISPLAY_RUN;
+	}
+	else if(uartBuffer[2] == 0x25) //下一花样按钮
+	{
+		setting.currentMood ++;
+		if(setting.currentMood > MAX_MOOD)
+		{
+			setting.currentMood = MAX_MOOD;
+		}
+		saveMode = SAVE_SETTING_WITH_READ;
+		displayMode = DISPLAY_RUN;
+	}
+	else if(uartBuffer[2] == 0x26) //上一步按钮
+	{
+		setting.currentStep --;
+		if(setting.currentStep > setting.totalSteps || setting.currentStep == 0)
+		{
+			setting.currentStep = 1;
+		}
+		saveMode = SAVE_SETTING_WITH_READ;
+		displayMode = DISPLAY_RUN;
+	}
+	else if(uartBuffer[2] == 0x27) //下一步按钮
+	{
+		setting.currentStep ++;
+		if(setting.currentStep > setting.totalSteps)
+		{
+			setting.currentStep = setting.totalSteps;
+		}
+		saveMode = SAVE_SETTING_WITH_READ;
+		displayMode = DISPLAY_RUN;
+	}
+	else if(uartBuffer[2] == 0x28) //加步按钮
+	{
+
+	}
+	else if(uartBuffer[2] == 0x29) //减步按钮
+	{
+
+	}
+	else if(uartBuffer[2] == 0x30) //增花按钮
 	{
 		
 	}
-	else if(uartBuffer[2] >= 0x12 && uartBuffer[2] <= 0x1C) //过程设置按钮
+	else if(uartBuffer[2] == 0x31) //删花按钮
 	{
 		
 	}
-	else if(uartBuffer[2] >= 0x2E && uartBuffer[2] <= 0x7C) //过程设置值
+	else if(uartBuffer[2] == 0x32) //返回按钮
 	{
-	
+		
 	}
 	uartReceiveOK = 1;	
 }
@@ -259,5 +432,23 @@ void anyData()
 void refreshDisplay()
 {
 	SendDataToScreen(0x000F, runMode);
+
+	SendDataToScreen(0x0001, productNum);
+	SendDataToScreen(0x0002, setting.currentMood);
+	SendDataToScreen(0x000A, setting.totalMood);
+	SendDataToScreen(0x0003, setting.currentStep);
+	SendDataToScreen(0x0004, setting.totalSteps);
+	SendDataToScreen(0x0005, setting.motor1Steps);
+	SendDataToScreen(0x0006, setting.motor2Steps);
+	SendDataToScreen(0x0007, setting.motor3Steps);
+	SendDataToScreen(0x0008, setting.motor4Steps);
+	SendDataToScreen(0x0009, setting.moodStatus[0]);
+	SendDataToScreen(0x0010, setting.moodStatus[1]);
+	SendDataToScreen(0x0011, setting.moodStatus[2]);
+	SendDataToScreen(0x0012, setting.moodStatus[3]);
+	SendDataToScreen(0x0013, setting.moodStatus[4]);
+	SendDataToScreen(0x0014, setting.moodStatus[5]);
+	SendDataToScreen(0x0015, setting.moodStatus[6]);
+	SendDataToScreen(0x0016, setting.moodStatus[7]);
 
 }

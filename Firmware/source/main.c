@@ -34,30 +34,14 @@ void main()
 	Timer1Init();
 	ChangeScreenPage(0x01);
 	snapshot_init();
-	PCON &= 0xDF ;//清LVDF位	 
+	PCON &= 0xDF ;//清LVDF位 
 	while(1)
 	{
 		timeTick ++;
-		if(timeTick > 50 && isNotificationUI == 1)
+		if(timeTick > 500 && isNotificationUI == 1)
 		{
 		 	ChangeScreenPage(0x01);
 			isNotificationUI = 0;
-		}
-		//控制主循环执行时间为10ms
-		if( motor1.status != MOTOR_STOP && motor2.status != MOTOR_STOP)
-		{
-			//两个电机一起运作
-			delay_ms(4);
-		}
-		else if(motor1.status != MOTOR_STOP || motor2.status != MOTOR_STOP)
-		{
-			//只有一个电机运作
-			delay_ms(6);
-		}
-		else
-		{
-			//没有电机运作
-			delay_ms(10);
 		}
 		//掉电保存数据
 		if (PCON & 0x20){
@@ -78,24 +62,25 @@ void main()
 				}
 				else
 				{
-					MotorGroup1Start();
-					MotorGroup2Start();
+					//MotorGroup1Start();
+					//MotorGroup2Start();
 				}
 			}		
 		}
 		if(runMode == MODEL_RUN)
 		{
 			//按键扫描
-			Key_Scan1();
+			//Key_Scan1();
 		}
 		//电机初始化状态机
-		ResetMotorDispatch();
+		//ResetMotorDispatch();
 		//刷新显示器
 		if(displayMode == DISPLAY_RUN)
 		{
-			 refreshDisplayRunning();
+			 refreshDisplay();
 			 displayMode = DISPLAY_NO_FRESH;
 		}
+		/*
 		else if(displayMode == DISPLAY_MAX_POSITION)
 		{
 			ChangeScreenPage(0x06);
@@ -110,26 +95,24 @@ void main()
 			isNotificationUI = 1;
 			displayMode = DISPLAY_NO_FRESH;
 		}
-
+		*/
 		
 		//保存设置值
-		/*
 		if(saveMode == SAVE_SETTING) 
 		{
-			ChangeScreenPage(0x04);
-			if(!parameter_save())
-			{
-				//ERROR
-				ChangeScreenPage(0x02);
-			}
-			else
-			{
-				//succeed
-				ChangeScreenPage(0x02);
-			}
+			ChangeScreenPage(0x05);
+			parameter_save_step();
 			saveMode = SAVE_NO_SAVING;
+			ChangeScreenPage(0x03);
 		}
-		*/
+		else if(saveMode == SAVE_SETTING_WITH_READ) 
+		{
+			ChangeScreenPage(0x05);
+			parameter_save();
+			parameter_read();
+			saveMode = SAVE_NO_SAVING;
+			ChangeScreenPage(0x03);
+		}
 	}   
 
 }
