@@ -217,7 +217,7 @@ void anyData()
 			dat = MAX_MOOD;
 		}
 		setting.currentMood = (BYTE)dat;
-		saveMode = SAVE_SETTING_WITH_READ;
+		saveMode = SAVE_SETTING_MOOD;
 		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x0A) //总花样数
@@ -232,7 +232,7 @@ void anyData()
 			dat = setting.totalSteps;
 		}
 		setting.currentStep = dat;
-		saveMode = SAVE_SETTING_WITH_READ;
+		saveMode = SAVE_SETTING_STEP;
 		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x04) //总步数
@@ -242,7 +242,7 @@ void anyData()
 			dat = MAX_STEP;
 		}
 		setting.totalSteps = dat;
-		saveMode = SAVE_SETTING_WITH_READ;
+		saveMode = SAVE_SETTING;
 		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x05) //电机步数1
@@ -347,7 +347,16 @@ void anyData()
 	}
 	else if(uartBuffer[2] == 0x19) //选花按钮
 	{
-
+		if(displayMode == DISPLAY_NO_FRESH && saveMode == SAVE_NO_SAVING)
+		{
+			setting.currentMood ++;
+			if(setting.currentMood > MAX_MOOD)
+			{
+				setting.currentMood = 1;
+			}
+			saveMode = SAVE_SETTING_MOOD;
+			displayMode = DISPLAY_RUN;
+		}
 	}
 	else if(uartBuffer[2] == 0x20) //外卡按钮
 	{
@@ -363,47 +372,77 @@ void anyData()
 	}
 	else if(uartBuffer[2] == 0x23) //编程按钮
 	{
+		runMode = MODEL_STOP;
+		//电机参数初始化
+		motor1.status = MOTOR_STOP;
+		motor1.stepPWMs = 0;
+		motor1.stepPassPWMs = 0;
+		
+		motor2.status = MOTOR_STOP;
+		motor2.stepPWMs = 0;
+		motor2.stepPassPWMs = 0;
 
+		motor3.status = MOTOR_STOP;
+		motor3.stepPWMs = 0;
+		motor3.stepPassPWMs = 0;
+
+		motor4.status = MOTOR_STOP;
+		motor4.stepPWMs = 0;
+		motor4.stepPassPWMs = 0;
+
+		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x24) //上一花样按钮
 	{
-		setting.currentMood --;
-		if(setting.currentMood > MAX_MOOD || setting.currentMood == 0)
+		if(displayMode == DISPLAY_NO_FRESH)
 		{
-			setting.currentMood = 1;
+			setting.currentMood --;
+			if(setting.currentMood > MAX_MOOD || setting.currentMood == 0)
+			{
+				setting.currentMood = 1;
+			}
+			saveMode = SAVE_SETTING_MOOD;
+			displayMode = DISPLAY_RUN;
 		}
-		saveMode = SAVE_SETTING_WITH_READ;
-		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x25) //下一花样按钮
 	{
-		setting.currentMood ++;
-		if(setting.currentMood > MAX_MOOD)
+		if(displayMode == DISPLAY_NO_FRESH)
 		{
-			setting.currentMood = MAX_MOOD;
+			setting.currentMood ++;
+			if(setting.currentMood > MAX_MOOD)
+			{
+				setting.currentMood = MAX_MOOD;
+			}
+			saveMode = SAVE_SETTING_MOOD;
+			displayMode = DISPLAY_RUN;
 		}
-		saveMode = SAVE_SETTING_WITH_READ;
-		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x26) //上一步按钮
 	{
-		setting.currentStep --;
-		if(setting.currentStep > setting.totalSteps || setting.currentStep == 0)
+		if(displayMode == DISPLAY_NO_FRESH)
 		{
-			setting.currentStep = 1;
+			setting.currentStep --;
+			if(setting.currentStep > setting.totalSteps || setting.currentStep == 0)
+			{
+				setting.currentStep = 1;
+			}
+			saveMode = SAVE_SETTING_STEP;
+			displayMode = DISPLAY_RUN;
 		}
-		saveMode = SAVE_SETTING_WITH_READ;
-		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x27) //下一步按钮
 	{
-		setting.currentStep ++;
-		if(setting.currentStep > setting.totalSteps)
+		if(displayMode == DISPLAY_NO_FRESH)
 		{
-			setting.currentStep = setting.totalSteps;
+			setting.currentStep ++;
+			if(setting.currentStep > setting.totalSteps)
+			{
+				setting.currentStep = setting.totalSteps;
+			}
+			saveMode = SAVE_SETTING_STEP;
+			displayMode = DISPLAY_RUN;
 		}
-		saveMode = SAVE_SETTING_WITH_READ;
-		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x28) //加步按钮
 	{

@@ -67,19 +67,48 @@ void main()
 				}
 			}		
 		}
+
+		//保存设置值
+		if(saveMode == SAVE_SETTING) 
+		{
+			//ChangeScreenPage(0x05);
+			parameter_save();
+			saveMode = SAVE_NO_SAVING;
+			//ChangeScreenPage(0x03);
+		}
+		else if(saveMode == SAVE_SETTING_MOOD) 
+		{
+			//ChangeScreenPage(0x05);
+			parameter_save_mood();
+			delay_ms(5);
+			parameter_read();
+			saveMode = SAVE_NO_SAVING;
+			//ChangeScreenPage(0x03);
+		}
+		else if(saveMode == SAVE_SETTING_STEP) 
+		{
+			//ChangeScreenPage(0x05);
+			parameter_read();
+			saveMode = SAVE_NO_SAVING;
+			//ChangeScreenPage(0x03);
+		}
+
 		if(runMode == MODEL_RUN)
 		{
 			//按键扫描
 			//Key_Scan1();
 		}
+
 		//电机初始化状态机
 		//ResetMotorDispatch();
+
 		//刷新显示器
 		if(displayMode == DISPLAY_RUN)
 		{
 			 refreshDisplay();
 			 displayMode = DISPLAY_NO_FRESH;
 		}
+
 		/*
 		else if(displayMode == DISPLAY_MAX_POSITION)
 		{
@@ -97,22 +126,7 @@ void main()
 		}
 		*/
 		
-		//保存设置值
-		if(saveMode == SAVE_SETTING) 
-		{
-			ChangeScreenPage(0x05);
-			parameter_save_step();
-			saveMode = SAVE_NO_SAVING;
-			ChangeScreenPage(0x03);
-		}
-		else if(saveMode == SAVE_SETTING_WITH_READ) 
-		{
-			ChangeScreenPage(0x05);
-			parameter_save();
-			parameter_read();
-			saveMode = SAVE_NO_SAVING;
-			ChangeScreenPage(0x03);
-		}
+		
 	}   
 
 }

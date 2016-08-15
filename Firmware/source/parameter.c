@@ -68,42 +68,10 @@ void parameter_init()
 // 参数：无
 // 返回值：0失败 1成功	
 /***************************************************************************/
-unsigned char parameter_save()
+unsigned char parameter_save_mood()
 {
-	WORD result = 1, baseAddress, stepAddress;
+	WORD result = 1;
 	WrToROM(0x0000, setting.currentMood);
-	WrToROM(0x0001, setting.totalMood);
-	
-	baseAddress = (setting.currentMood - 1) * MOOD_STORAGE_SIZE + 2;
-	WrToROM(baseAddress, (BYTE)(setting.totalSteps >> 8));
-	WrToROM(baseAddress+1, (BYTE)setting.totalSteps);
-	/*	
-	stepAddress =  baseAddress + 24 * (setting.currentStep-1) + 2;
-	WrToROM(stepAddress, (BYTE)(setting.motor1Steps >> 8));
-	WrToROM(stepAddress+1, (BYTE)setting.motor1Steps);
-	WrToROM(stepAddress+2, (BYTE)(setting.motor2Steps >> 8));
-	WrToROM(stepAddress+3, (BYTE)setting.motor2Steps);
-	WrToROM(stepAddress+4, (BYTE)(setting.motor3Steps >> 8));
-	WrToROM(stepAddress+5, (BYTE)setting.motor3Steps);
-	WrToROM(stepAddress+6, (BYTE)(setting.motor4Steps >> 8));
-	WrToROM(stepAddress+7, (BYTE)setting.motor4Steps);
-	WrToROM(stepAddress+8, (BYTE)(setting.moodStatus[0] >> 8));
-	WrToROM(stepAddress+9, (BYTE)setting.moodStatus[0]);
-	WrToROM(stepAddress+10, (BYTE)(setting.moodStatus[1] >> 8));
-	WrToROM(stepAddress+11, (BYTE)setting.moodStatus[1]);
-	WrToROM(stepAddress+12, (BYTE)(setting.moodStatus[2] >> 8));
-	WrToROM(stepAddress+13, (BYTE)setting.moodStatus[2]);
-	WrToROM(stepAddress+14, (BYTE)(setting.moodStatus[3] >> 8));
-	WrToROM(stepAddress+15, (BYTE)setting.moodStatus[3]);
-	WrToROM(stepAddress+16, (BYTE)(setting.moodStatus[4] >> 8));
-	WrToROM(stepAddress+17, (BYTE)setting.moodStatus[4]);
-	WrToROM(stepAddress+18, (BYTE)(setting.moodStatus[5] >> 8));
-	WrToROM(stepAddress+19, (BYTE)setting.moodStatus[5]);
-	WrToROM(stepAddress+20, (BYTE)(setting.moodStatus[6] >> 8));
-	WrToROM(stepAddress+21, (BYTE)setting.moodStatus[6]);
-	WrToROM(stepAddress+22, (BYTE)(setting.moodStatus[7] >> 8));
-	WrToROM(stepAddress+23, (BYTE)setting.moodStatus[7]);
-	*/
 	return result;
 }
 
@@ -112,15 +80,13 @@ unsigned char parameter_save()
 // 参数：无
 // 返回值：0失败 1成功	
 /***************************************************************************/
-unsigned char parameter_save_step()
+unsigned char parameter_save()
 {
 	WORD result = 1, baseAddress, stepAddress;
-	//WrToROM(0x0000, setting.currentMood);
-	//WrToROM(0x0001, setting.totalMood);
-	
+
 	baseAddress = (setting.currentMood - 1) * MOOD_STORAGE_SIZE + 2;
-	//WrToROM(baseAddress, (BYTE)(setting.totalSteps >> 8));
-	//WrToROM(baseAddress+1, (BYTE)setting.totalSteps);
+	WrToROM(baseAddress, (BYTE)(setting.totalSteps >> 8));
+	WrToROM(baseAddress+1, (BYTE)setting.totalSteps);
 	
 	stepAddress =  baseAddress + 24 * (setting.currentStep-1) + 2;
 	WrToROM(stepAddress, (BYTE)(setting.motor1Steps >> 8));
@@ -158,8 +124,8 @@ unsigned char parameter_save_step()
 unsigned char parameter_read()
 {
 	WORD result = 1, baseAddress, stepAddress;
+	
 	setting.currentMood = RdFromROM(0x0000);
-	setting.totalMood = RdFromROM(0x0001);
 
 	baseAddress = (setting.currentMood - 1) * MOOD_STORAGE_SIZE + 2;
 	setting.totalSteps = (WORD)((RdFromROM(baseAddress) << 8) | RdFromROM(baseAddress + 1));

@@ -72,7 +72,7 @@ sbit testOutput1 = P1^0;
 enum RunMode {MODEL_STOP, MODEL_RUN};  //运行模式 0：停止 1：运行
 enum MotorStatus {MOTOR_BACKWARD, MOTOR_FORWARD, MOTOR_STOP};  //电机状态 0：向前 1：向后 2：停止
 enum DisplayMode {DISPLAY_NO_FRESH, DISPLAY_RUN, DISPLAY_MAX_POSITION, DIAPLAY_MIN_POSITION, DIAPLAY_SAVING}; //屏幕显示模式
-enum SaveMode {SAVE_NO_SAVING, SAVE_SETTING,SAVE_SETTING_WITH_READ, SAVE_SNAPSHOT}; //是否保存EEPROM状态位  0：不保存 1：保存设置值 2：保存设置值并且读取设置 3：保存运行状态
+enum SaveMode {SAVE_NO_SAVING, SAVE_SETTING_MOOD, SAVE_SETTING_STEP, SAVE_SETTING, SAVE_SNAPSHOT}; //是否保存EEPROM状态位  0：不保存 1：保存设置值 2：保存设置值并且读取设置 3：保存运行状态
 
 struct Motor //电机结构体
 {
@@ -110,7 +110,7 @@ extern unsigned int productNum; //生产件数
 /***************************************************************************/
 void parameter_init();
 unsigned char parameter_save();
-unsigned char parameter_save_step();
+unsigned char parameter_save_mood();
 unsigned char parameter_read();
 
 void snapshot_init();
