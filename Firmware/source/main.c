@@ -37,6 +37,7 @@ void main()
 	PCON &= 0xDF ;//清LVDF位 
 	while(1)
 	{
+		delay_ms(5);
 		timeTick ++;
 		if(timeTick > 500 && isNotificationUI == 1)
 		{
@@ -68,6 +69,13 @@ void main()
 			}		
 		}
 
+		if(runMode == MODEL_RUN)
+		{
+			//按键扫描
+			Key_Scan1();
+		}
+
+
 		//保存设置值
 		if(saveMode == SAVE_SETTING) 
 		{
@@ -80,7 +88,6 @@ void main()
 		{
 			//ChangeScreenPage(0x05);
 			parameter_save_mood();
-			delay_ms(5);
 			parameter_read();
 			saveMode = SAVE_NO_SAVING;
 			//ChangeScreenPage(0x03);
@@ -93,21 +100,17 @@ void main()
 			//ChangeScreenPage(0x03);
 		}
 
-		if(runMode == MODEL_RUN)
-		{
-			//按键扫描
-			//Key_Scan1();
-		}
-
-		//电机初始化状态机
-		//ResetMotorDispatch();
-
 		//刷新显示器
 		if(displayMode == DISPLAY_RUN)
 		{
 			 refreshDisplay();
 			 displayMode = DISPLAY_NO_FRESH;
 		}
+
+		//电机初始化状态机
+		//ResetMotorDispatch();
+
+		
 
 		/*
 		else if(displayMode == DISPLAY_MAX_POSITION)
