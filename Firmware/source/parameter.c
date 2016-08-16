@@ -35,11 +35,12 @@ unsigned int productNum; //生产件数
 /***************************************************************************/
 void parameter_init()
 {	
+	setting.currentMood = RdFromROM(0x0000);
+	setting.currentStep = 1;
+	setting.totalMood = 2;
 	if(!parameter_read())
 	{
 		setting.currentMood = 1;
-		setting.totalMood = 2;
-		setting.currentStep = 3;
 		setting.totalSteps = 600;
 	
 		setting.motor1Steps = 100;
@@ -56,7 +57,7 @@ void parameter_init()
 		setting.moodStatus[6] = 0xFFFF;
 		setting.moodStatus[7] = 0xFFFF;
 	}
-	productNum = 0;
+
 
 	runMode = MODEL_RUN;
 	displayMode = DISPLAY_RUN;
@@ -124,9 +125,6 @@ unsigned char parameter_save()
 unsigned char parameter_read()
 {
 	WORD result = 1, baseAddress, stepAddress;
-	
-	//setting.currentMood = RdFromROM(0x0000);
-
 	baseAddress = (setting.currentMood - 1) * MOOD_STORAGE_SIZE + 2;
 	setting.totalSteps = (WORD)((RdFromROM(baseAddress) << 8) | RdFromROM(baseAddress + 1));
 

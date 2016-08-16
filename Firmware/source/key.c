@@ -37,29 +37,23 @@ void Key_Scan1(void)
 		case 2:
 			if(sensorRun1 == 0)
 			{
-				if(displayMode == DISPLAY_NO_FRESH)
+				setting.currentStep ++;
+				if(setting.currentStep > setting.totalSteps)
 				{
-					setting.currentStep ++;
-					if(setting.currentStep > setting.totalSteps)
-					{
-						setting.currentStep = 1;
-					}
-					saveMode = SAVE_SETTING_STEP;
-					displayMode = DISPLAY_RUN;
+					setting.currentStep = 1;
 				}
+				saveMode = SAVE_SETTING_STEP;
+				displayMode = DISPLAY_RUN;
 			}
 			else if(sensorRun2 == 0)
 			{
-				if(displayMode == DISPLAY_NO_FRESH)
+				setting.currentStep ++;
+				if(setting.currentStep > setting.totalSteps)
 				{
-					setting.currentStep ++;
-					if(setting.currentStep > setting.totalSteps)
-					{
-						setting.currentStep = 1;
-					}
-					saveMode = SAVE_SETTING_STEP;
-					displayMode = DISPLAY_RUN;
+					setting.currentStep = 1;
 				}
+				saveMode = SAVE_SETTING_STEP;
+				displayMode = DISPLAY_RUN;
 			}
 			Key_Scan_Steps1 = 3;
 		break;

@@ -8,11 +8,6 @@
 unsigned char ResetMotorDispatchSteps = 20; 
 
 
-unsigned long xdata lastStepPWMs1; //单步总脉冲数1
-unsigned char xdata lastStatus1; //电机方向1
-
-unsigned long xdata lastStepPWMs2; //单步总脉冲数1
-unsigned char xdata lastStatus2; //电机方向1
 
 //电机回零状态机，每10毫秒调用一次，调用之前确保电机处于空闲状态。在ResetMotorDispatchSteps == 20 时设置ResetMotorDispatchSteps = 0 开始状态机
 void ResetMotorDispatch(void)

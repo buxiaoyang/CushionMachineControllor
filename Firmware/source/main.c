@@ -63,8 +63,8 @@ void main()
 				}
 				else
 				{
-					//MotorGroup1Start();
-					//MotorGroup2Start();
+					MotorGroup1Start();
+					MotorGroup2Start();
 				}
 			}		
 		}
@@ -79,10 +79,10 @@ void main()
 		//保存设置值
 		if(saveMode == SAVE_SETTING) 
 		{
-			//ChangeScreenPage(0x05);
+			ChangeScreenPage(0x05);
 			parameter_save();
 			saveMode = SAVE_NO_SAVING;
-			//ChangeScreenPage(0x03);
+			ChangeScreenPage(0x03);
 		}
 		else if(saveMode == SAVE_SETTING_MOOD) 
 		{
@@ -108,7 +108,7 @@ void main()
 		}
 
 		//电机初始化状态机
-		//ResetMotorDispatch();
+		ResetMotorDispatch();
 
 		
 

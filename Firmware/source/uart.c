@@ -242,80 +242,80 @@ void anyData()
 			dat = MAX_STEP;
 		}
 		setting.totalSteps = dat;
-		saveMode = SAVE_SETTING;
+		//saveMode = SAVE_SETTING;
 		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x05) //电机步数1
 	{
 		setting.motor1Steps = dat;
-		saveMode = SAVE_SETTING;
-		displayMode = DISPLAY_RUN;
+		//saveMode = SAVE_SETTING;
+		//displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x06) //电机步数2
 	{
 		setting.motor2Steps = dat;
-		saveMode = SAVE_SETTING;
-		displayMode = DISPLAY_RUN;
+		//saveMode = SAVE_SETTING;
+		//displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x07) //电机步数3
 	{
 		setting.motor3Steps = dat;
-		saveMode = SAVE_SETTING;
-		displayMode = DISPLAY_RUN;
+		//saveMode = SAVE_SETTING;
+		//displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x08) //电机步数4
 	{
 		setting.motor4Steps = dat;
-		saveMode = SAVE_SETTING;
-		displayMode = DISPLAY_RUN;
+		//saveMode = SAVE_SETTING;
+		//displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x09) //电磁铁1~16
 	{
 		setting.moodStatus[0] = dat;
-		saveMode = SAVE_SETTING;
-		displayMode = DISPLAY_RUN;
+		//saveMode = SAVE_SETTING;
+		//displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x10) //电磁铁17~32
 	{	
 		setting.moodStatus[1] = dat;
-		saveMode = SAVE_SETTING;
-		displayMode = DISPLAY_RUN;
+		//saveMode = SAVE_SETTING;
+		//displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x11) //电磁铁33~48
 	{
 		setting.moodStatus[2] = dat;
-		saveMode = SAVE_SETTING;
-		displayMode = DISPLAY_RUN;
+		//saveMode = SAVE_SETTING;
+		//displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x12) //电磁铁49~64
 	{
 		setting.moodStatus[3] = dat;
-		saveMode = SAVE_SETTING;
-		displayMode = DISPLAY_RUN;
+		//saveMode = SAVE_SETTING;
+		//displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x13) //电磁铁65~80
 	{
 		setting.moodStatus[4] = dat;
-		saveMode = SAVE_SETTING;
-		displayMode = DISPLAY_RUN;
+		//saveMode = SAVE_SETTING;
+		//displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x14) //电磁铁81~96
 	{
 		setting.moodStatus[5] = dat;
-		saveMode = SAVE_SETTING;
-		displayMode = DISPLAY_RUN;
+		//saveMode = SAVE_SETTING;
+		//displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x15) //电磁铁97~112
 	{
 		setting.moodStatus[6] = dat;
-		saveMode = SAVE_SETTING;
-		displayMode = DISPLAY_RUN;
+		//saveMode = SAVE_SETTING;
+		//displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x16) //电磁铁113~128
 	{
 		setting.moodStatus[7] = dat;
-		saveMode = SAVE_SETTING;
-		displayMode = DISPLAY_RUN;
+		//saveMode = SAVE_SETTING;
+		//displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x17) //运行按钮
 	{
@@ -343,6 +343,8 @@ void anyData()
 		motor4.stepPWMs = 0;
 		motor4.stepPassPWMs = 0;
 
+		setting.currentStep = 1;
+		saveMode = SAVE_SETTING_STEP;
 		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x19) //选花按钮
@@ -444,21 +446,43 @@ void anyData()
 			displayMode = DISPLAY_RUN;
 		}
 	}
-	else if(uartBuffer[2] == 0x28) //加步按钮
+	else if(uartBuffer[2] == 0x28) //保存按钮
 	{
-
+		saveMode = SAVE_SETTING;
+		displayMode = DISPLAY_RUN;
 	}
-	else if(uartBuffer[2] == 0x29) //减步按钮
+	else if(uartBuffer[2] == 0x29) //清除按钮
 	{
-
+		setting.moodStatus[0] = 0x0000;
+		setting.moodStatus[1] = 0x0000;
+		setting.moodStatus[2] = 0x0000;
+		setting.moodStatus[3] = 0x0000;
+		setting.moodStatus[4] = 0x0000;
+		setting.moodStatus[5] = 0x0000;
+		setting.moodStatus[6] = 0x0000;
+		setting.moodStatus[7] = 0x0000;
+		//saveMode = SAVE_SETTING;
+		displayMode = DISPLAY_RUN;
 	}
-	else if(uartBuffer[2] == 0x30) //增花按钮
+	else if(uartBuffer[2] == 0x30) //全选按钮
 	{
-		
+		setting.moodStatus[0] = 0xFFFF;
+		setting.moodStatus[1] = 0xFFFF;
+		setting.moodStatus[2] = 0xFFFF;
+		setting.moodStatus[3] = 0xFFFF;
+		setting.moodStatus[4] = 0xFFFF;
+		setting.moodStatus[5] = 0xFFFF;
+		setting.moodStatus[6] = 0xFFFF;
+		setting.moodStatus[7] = 0xFFFF;
+		//saveMode = SAVE_SETTING;
+		displayMode = DISPLAY_RUN;
 	}
-	else if(uartBuffer[2] == 0x31) //删花按钮
+	else if(uartBuffer[2] == 0x31) //电机回零
 	{
-		
+		if(ResetMotorDispatchSteps == 20)
+		{
+			ResetMotorDispatchSteps = 0;	
+		}
 	}
 	else if(uartBuffer[2] == 0x32) //返回按钮
 	{
