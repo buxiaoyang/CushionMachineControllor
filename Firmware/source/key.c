@@ -37,20 +37,24 @@ void Key_Scan1(void)
 		case 2:
 			if(sensorRun1 == 0)
 			{
+				//步数递增
 				setting.currentStep ++;
 				if(setting.currentStep > setting.totalSteps)
 				{
 					setting.currentStep = 1;
+					productNum ++;
 				}
 				saveMode = SAVE_SETTING_STEP;
 				displayMode = DISPLAY_RUN;
 			}
 			else if(sensorRun2 == 0)
 			{
+				//步数递增
 				setting.currentStep ++;
 				if(setting.currentStep > setting.totalSteps)
 				{
 					setting.currentStep = 1;
+					productNum ++;
 				}
 				saveMode = SAVE_SETTING_STEP;
 				displayMode = DISPLAY_RUN;

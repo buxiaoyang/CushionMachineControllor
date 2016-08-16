@@ -149,7 +149,7 @@ unsigned char parameter_read()
 void snapshot_init()
 {
 	Delay(10); 
-	if(IapReadByte(IAP_ADDRESS+511) == 0xEE)
+	if(IapReadByte(IAP_ADDRESS+511) == 0xAA)
 	{	
 		productNum = (WORD)((IapReadByte(IAP_ADDRESS + 8) << 8) | IapReadByte(IAP_ADDRESS + 9));
 	}
@@ -166,6 +166,6 @@ void snapshot_save()
 	Delay(10);  
 	IapProgramByte(IAP_ADDRESS + 8, (BYTE)(productNum>>8));
 	IapProgramByte(IAP_ADDRESS + 9, (BYTE)productNum);
-	IapProgramByte(IAP_ADDRESS+511, 0xEE); //写入标志位
+	IapProgramByte(IAP_ADDRESS+511, 0xAA); //写入标志位
 	Delay(10);
 }

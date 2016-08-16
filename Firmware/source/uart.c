@@ -496,7 +496,7 @@ void refreshDisplay()
 {
 	SendDataToScreen(0x000F, runMode);
 
-	SendDataToScreen(0x0001, productNum);
+	SendDataToScreen(0x000E, productNum);
 	SendDataToScreen(0x0002, setting.currentMood);
 	SendDataToScreen(0x000A, setting.totalMood);
 	SendDataToScreen(0x0003, setting.currentStep);
