@@ -60,6 +60,7 @@ void parameter_init()
 
 
 	runMode = MODEL_RUN;
+	ioAllowMotorStart = 0;
 	displayMode = DISPLAY_RUN;
 	saveMode = SAVE_NO_SAVING;
 }
