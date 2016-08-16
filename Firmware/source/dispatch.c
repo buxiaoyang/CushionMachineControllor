@@ -105,4 +105,58 @@ void ResetMotorDispatch(void)
 	}
 }
 
+void OutPut595(void)
+{
+	unsigned char i, j;
+	//1~64路继电器
+	for(i = 0; i < 4; i++)
+	{
+		for(j = 0; j < 16; j++)
+		{
+			ioRelays1SCK = 0;
+			ioRelays1DATA  = setting.moodStatus[i] & 0x80;
+			ioRelays1SCK = 1;			
+			setting.moodStatus[i] <<= 1;
+		}	
+	}
+	ioRelays1LAT = 0;
+	ioRelays1LAT = 1;
+	//65~128路继电器
+	for(i = 4; i < 8; i++)
+	{
+		for(j = 0; j < 16; j++)
+		{
+			ioRelays2SCK = 0;
+			ioRelays2DATA  = setting.moodStatus[i] & 0x80;
+			ioRelays2SCK = 1;			
+			setting.moodStatus[i] <<= 1;
+		}	
+	}
+	ioRelays2LAT = 0;
+	ioRelays2LAT = 1;
+}
+/*
+控制74HC595输出数据
+void Output(void)
+{
+    RCK = 0;
+    RCK = 1;
+}
+
+
+写入一字节数据
+void Write_Byte(unsigned char dat)
+{
+    unsigned char i = 0;
+   
+    for(i=0; i<8; i++)
+    {
+        SCK = 0;
+        SI  = dat & 0x80;
+        SCK = 1;
+       
+        dat <<= 1;      
+    }
+}
+*/
 

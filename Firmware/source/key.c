@@ -58,6 +58,8 @@ void Key_Scan1(void)
 
 void KeyRunPress(void)
 {
+	//继电器输出
+	OutPut595();
 	//电机运动
 	if(motor1.status == MOTOR_STOP && motor2.status == MOTOR_STOP)
 	{
