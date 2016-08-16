@@ -27,7 +27,7 @@ void main()
 {
 	unsigned int timeTick = 0;
 	unsigned char isNotificationUI = 0; 
-	delay_ms(500);
+	delay_ms(2000);
 	parameter_init();
 	uart_init();
 	Timer0Init();
@@ -46,11 +46,11 @@ void main()
 		}
 		//掉电保存数据
 		if (PCON & 0x20){
-			//testOutput1 = !testOutput1;
+			testOutput1 = !testOutput1;
 			PCON &= 0xDF ;//清LVDF位
 			delay_ms(10);
 			if(PCON & 0x20){
-				//testOutput1 = !testOutput1;
+				testOutput1 = !testOutput1;
 				MotorGroup1Stop();
 				MotorGroup2Stop();
 				PCON &= 0xDF ;//清LVDF位
@@ -75,6 +75,8 @@ void main()
 			Key_Scan1();
 		}
 
+		//电机初始化状态机
+		ResetMotorDispatch();
 
 		//保存设置值
 		if(saveMode == SAVE_SETTING) 
@@ -106,28 +108,20 @@ void main()
 			 refreshDisplay();
 			 displayMode = DISPLAY_NO_FRESH;
 		}
-
-		//电机初始化状态机
-		ResetMotorDispatch();
-
-		
-
-		/*
 		else if(displayMode == DISPLAY_MAX_POSITION)
 		{
-			ChangeScreenPage(0x06);
+			ChangeScreenPage(0x08);
 			timeTick = 0;
 			isNotificationUI = 1;
 			displayMode = DISPLAY_NO_FRESH;
 		}
 		else if(displayMode == DIAPLAY_MIN_POSITION)
 		{
-			ChangeScreenPage(0x05);
+			ChangeScreenPage(0x07);
 			timeTick = 0;
 			isNotificationUI = 1;
 			displayMode = DISPLAY_NO_FRESH;
 		}
-		*/
 		
 		
 	}   

@@ -319,13 +319,14 @@ void anyData()
 	}
 	else if(uartBuffer[2] == 0x17) //运行按钮
 	{
-		testOutput1 = !testOutput1;
+		ioAllowMotorStart = 0;
 		runMode = MODEL_RUN;
 		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x18) //停止按钮
 	{
 		runMode = MODEL_STOP;
+		ioAllowMotorStart = 1;
 		//电机参数初始化
 		motor1.status = MOTOR_STOP;
 		motor1.stepPWMs = 0;

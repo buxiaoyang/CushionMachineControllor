@@ -58,9 +58,13 @@ sbit ioMotor4PWM = P3^7; //电机4脉冲
 
 sbit ioAllowMotorStart = P1^1;  //允许电机启动信号
 
-sbit ioRelaysSCK = P2^3;  //继电器输出595 SCK信号
-sbit ioRelaysLAT = P2^4;  //继电器输出595 LAT信号
-sbit ioRelaysDATA = P2^5;  //继电器输出595 DATA信号
+sbit ioRelays1SCK = P2^3;  //继电器输出595 SCK信号
+sbit ioRelays1LAT = P2^4;  //继电器输出595 LAT信号
+sbit ioRelays1DATA = P2^5;  //继电器输出595 DATA信号
+
+sbit ioRelays2SCK = P2^2;  //继电器输出595二 SCK信号
+sbit ioRelays2LAT = P3^2;  //继电器输出595二 LAT信号
+sbit ioRelays2DATA = P3^3;  //继电器输出595二 DATA信号
 
 sbit testOutput1 = P1^0;
 
