@@ -114,7 +114,7 @@ void OutPut595(void)
 		for(j = 0; j < 16; j++)
 		{
 			ioRelays1SCK = 0;
-			ioRelays1DATA  = setting.moodStatus[i] & 0x80;
+			ioRelays1DATA  = !(setting.moodStatus[i] & 0x8000);
 			ioRelays1SCK = 1;			
 			setting.moodStatus[i] <<= 1;
 		}	
@@ -127,7 +127,7 @@ void OutPut595(void)
 		for(j = 0; j < 16; j++)
 		{
 			ioRelays2SCK = 0;
-			ioRelays2DATA  = setting.moodStatus[i] & 0x80;
+			ioRelays2DATA  = !(setting.moodStatus[i] & 0x8000);
 			ioRelays2SCK = 1;			
 			setting.moodStatus[i] <<= 1;
 		}	
