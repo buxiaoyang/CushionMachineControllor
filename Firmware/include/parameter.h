@@ -24,7 +24,7 @@
 /***************************************************************************/
 // 引脚定义
 /***************************************************************************/
-//输入
+  //输入
 sbit sensorStartPosi1 = P0^0; //电机1初始位置传感器
 sbit sensorStartPosi2 = P0^1; //电机2初始位置传感器
 sbit sensorStartPosi3 = P0^2; //电机3初始位置传感器
@@ -48,13 +48,13 @@ sbit storageSDA = P2^7; //at24c256 存储 SDA
 
 //输出
 sbit ioMotor1Direction = P1^4; //电机1方向
-sbit ioMotor2Direction = P1^5; //电机2方向
-sbit ioMotor3Direction = P1^6; //电机3方向
-sbit ioMotor4Direction = P1^7; //电机4方向
-sbit ioMotor1PWM = P3^4; //电机1脉冲
-sbit ioMotor2PWM = P3^5; //电机2脉冲
-sbit ioMotor3PWM = P3^6; //电机3脉冲
-sbit ioMotor4PWM = P3^7; //电机4脉冲
+sbit ioMotor2Direction = P1^6; //电机2方向
+sbit ioMotor3Direction = P3^3; //电机3方向
+sbit ioMotor4Direction = P3^5; //电机4方向
+sbit ioMotor1PWM = P1^5; //电机1脉冲
+sbit ioMotor2PWM = P1^7; //电机2脉冲
+sbit ioMotor3PWM = P3^4; //电机3脉冲
+sbit ioMotor4PWM = P3^6; //电机4脉冲
 
 sbit ioAllowMotorStart = P1^1;  //允许电机启动信号
 
@@ -62,9 +62,9 @@ sbit ioRelays1SCK = P2^3;  //继电器输出595 SCK信号
 sbit ioRelays1LAT = P2^4;  //继电器输出595 LAT信号
 sbit ioRelays1DATA = P2^5;  //继电器输出595 DATA信号
 
-sbit ioRelays2SCK = P2^2;  //继电器输出595二 SCK信号
-sbit ioRelays2LAT = P3^2;  //继电器输出595二 LAT信号
-sbit ioRelays2DATA = P3^3;  //继电器输出595二 DATA信号
+sbit ioRelays2SCK = P3^0;  //继电器输出595二 SCK信号
+sbit ioRelays2LAT = P3^1;  //继电器输出595二 LAT信号
+sbit ioRelays2DATA = P3^2;  //继电器输出595二 DATA信号
 
 sbit testOutput1 = P1^0;
 
