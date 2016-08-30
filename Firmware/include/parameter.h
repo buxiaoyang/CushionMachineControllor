@@ -43,8 +43,8 @@ sbit sensorRun2 = P2^1; //接近开关信号2
 //P1^3 TXD2
 
 //存储
-sbit storageSCL = P2^6; //at24c256 存储 SLC
-sbit storageSDA = P2^7; //at24c256 存储 SDA
+sbit storageSCL = P2^7; //at24c256 存储 SLC
+sbit storageSDA = P2^6; //at24c256 存储 SDA
 
 //输出
 sbit ioMotor1Direction = P1^4; //电机1方向
