@@ -7,8 +7,17 @@
 
 
 void Key_Scan1(void); //接近开关送信号X2 按键扫描
+void Key_Scan2(void); //接近开关送信号X2 按键扫描
 
 unsigned char Key_Scan_Steps1 = 0; 		//0：初始状态 如果有按键按下则进入1
+										//1：延迟10ms
+										//2：如果按键确实按下则进入3
+										//3：确定按键
+										//4：如果按键释放则进入0
+
+
+
+unsigned char Key_Scan_Steps2 = 0; 		//0：初始状态 如果有按键按下则进入1
 										//1：延迟10ms
 										//2：如果按键确实按下则进入3
 										//3：确定按键
@@ -51,6 +60,44 @@ void Key_Scan1(void)
 			if(sensorRun1 == 1 && sensorRun2 == 1)
 			{
 			   	Key_Scan_Steps1 = 0;
+			}
+		break;
+		default:
+			 _nop_();
+	}
+}
+
+void Key_Scan2(void)
+{
+	switch(Key_Scan_Steps2)
+	{
+		case 0:
+			if(powerOffSave == 0)
+			{
+			   	Key_Scan_Steps2 = 1;
+			}
+		break;
+		case 1:
+			if(powerOffSave == 0)
+			{
+			   	Key_Scan_Steps2 = 2;
+			}
+			else
+			{
+				Key_Scan_Steps2 = 0;
+			}
+		break;
+		case 2:
+			if(powerOffSave == 0)
+			{
+				saveMode = SAVE_SNAPSHOT;
+			}
+			Key_Scan_Steps2 = 3;
+		break;
+		case 3:
+			if(powerOffSave == 1)
+			{
+			   	Key_Scan_Steps2 = 0;
 			}
 		break;
 		default:

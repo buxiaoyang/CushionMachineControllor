@@ -496,6 +496,10 @@ void anyData()
 	{
 		
 	}
+	else if(uartBuffer[2] == 0x33)
+	{
+		saveMode = SAVE_SNAPSHOT;
+	}
 	uartReceiveOK = 1;	
 }
 

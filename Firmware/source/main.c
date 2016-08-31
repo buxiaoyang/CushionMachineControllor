@@ -35,10 +35,10 @@ void main()
 	Timer0Init();
 	Timer1Init();
 	ChangeScreenPage(0x01);
-	
 	PCON &= 0xDF ;//清LVDF位 
 	while(1)
 	{
+//		testOutput1 = !testOutput1;
 		delay_ms(10);
 		timeTick ++;
 		if(timeTick > 500 && isNotificationUI == 1)
@@ -47,26 +47,19 @@ void main()
 			isNotificationUI = 0;
 		}
 		//掉电保存数据
-		if (PCON & 0x20){
-			testOutput1 = !testOutput1;
+		if (PCON & 0x20){	
 			PCON &= 0xDF ;//清LVDF位
 			delay_ms(10);
 			if(PCON & 0x20){
-				testOutput1 = !testOutput1;
-				MotorGroup1Stop();
-				MotorGroup2Stop();
-				PCON &= 0xDF ;//清LVDF位
+//				testOutput2 = !testOutput2;
+				PCON &= 0xDF ;
+				//清LVDF位
 				snapshot_save();
 				if(PCON & 0x20){
 					while(1) //确实掉电了，等待关机
 					{
-						testOutput1 = !testOutput1;
-					};
-				}
-				else
-				{
-					MotorGroup1Start();
-					MotorGroup2Start();
+//						testOutput3 = !testOutput3;
+					}
 				}
 			}		
 		}
@@ -75,7 +68,9 @@ void main()
 		{
 			//按键扫描
 			Key_Scan1();
+		
 		}
+		Key_Scan2();
 
 		//电机初始化状态机
 		ResetMotorDispatch();
@@ -118,6 +113,13 @@ void main()
 			parameter_read();
 			KeyRunPress();
 			saveMode = SAVE_NO_SAVING;
+		}
+		else if(saveMode == SAVE_SNAPSHOT)
+		{
+			ChangeScreenPage(0x05);
+			snapshot_save();
+			saveMode = SAVE_NO_SAVING;
+			ChangeScreenPage(0x01);
 		}
 		if(saveMode == SAVE_SETTING_STEP) 
 		{
