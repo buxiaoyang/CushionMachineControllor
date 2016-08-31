@@ -29,14 +29,14 @@ void main()
 	unsigned char isNotificationUI = 0; 
 	delay_ms(2000);
 	Init595();
+	snapshot_init();
 	parameter_init();
 	uart_init();
 	Timer0Init();
 	Timer1Init();
 	ChangeScreenPage(0x01);
-	snapshot_init();
+	
 	PCON &= 0xDF ;//清LVDF位 
-	KeyRunPress();
 	while(1)
 	{
 		delay_ms(10);
@@ -102,6 +102,19 @@ void main()
 			parameter_read();
 			saveMode = SAVE_NO_SAVING;
 			//ChangeScreenPage(0x03);
+		}
+		else if(saveMode == READ_STEP) 
+		{
+			//步数递增
+			setting.currentStep ++;
+			if(setting.currentStep > setting.totalSteps)
+			{
+				setting.currentStep = 1;
+				productNum ++;
+			}
+			parameter_read();
+			KeyRunPress();
+			saveMode = SAVE_NO_SAVING;
 		}
 
 		//刷新显示器

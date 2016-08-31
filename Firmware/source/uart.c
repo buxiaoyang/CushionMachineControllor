@@ -4,6 +4,7 @@
 #include <parameter.h>
 #include <dispatch.h>
 #include <timer.h>
+#include <key.h>
 
 #define FOSC 11059200L      //System frequency
 #define BAUD 115200         //UART baudrate
@@ -321,6 +322,7 @@ void anyData()
 	{
 		ioAllowMotorStart = 0;
 		runMode = MODEL_RUN;
+		KeyRunPress();
 		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x18) //停止按钮
@@ -347,6 +349,7 @@ void anyData()
 		setting.currentStep = 1;
 		saveMode = SAVE_SETTING_STEP;
 		displayMode = DISPLAY_RUN;
+		Init595();
 	}
 	else if(uartBuffer[2] == 0x19) //选花按钮
 	{

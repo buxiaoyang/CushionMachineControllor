@@ -37,11 +37,13 @@ void Key_Scan1(void)
 		case 2:
 			if(sensorRun1 == 0)
 			{
-				KeyRunPress();
+				saveMode = READ_STEP;
+				displayMode = DISPLAY_RUN;
 			}
 			else if(sensorRun2 == 0)
 			{
-				KeyRunPress();
+				saveMode = READ_STEP;
+				displayMode = DISPLAY_RUN;
 			}
 			Key_Scan_Steps1 = 3;
 		break;
@@ -136,13 +138,4 @@ void KeyRunPress(void)
 			 MotorGroup2Start();
 		}
 	}
-	//²½ÊýµÝÔö
-	setting.currentStep ++;
-	if(setting.currentStep > setting.totalSteps)
-	{
-		setting.currentStep = 1;
-		productNum ++;
-	}
-	saveMode = SAVE_SETTING_STEP;
-	displayMode = DISPLAY_RUN;
 }
