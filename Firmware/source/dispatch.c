@@ -107,16 +107,18 @@ void ResetMotorDispatch(void)
 
 void OutPut595(void)
 {
+	unsigned int currentMoodStatus;
 	char i, j;
 	//1~64路继电器
 	for(i = 7; i >= 4; i--)
 	{
+		currentMoodStatus = setting.moodStatus[i];
 		for(j = 0; j < 16; j++)
 		{
 			ioRelays2SCK = 0;
-			ioRelays2DATA  = !(setting.moodStatus[i] & 0x0001);
+			ioRelays2DATA  = !(currentMoodStatus & 0x0001);
 			ioRelays2SCK = 1;			
-			setting.moodStatus[i] >>= 1;
+			currentMoodStatus >>= 1;
 		}	
 	}
 	ioRelays1LAT = 0;
@@ -124,12 +126,13 @@ void OutPut595(void)
 	//65~128路继电器
 	for(i = 3; i >= 0; i--)
 	{
+		currentMoodStatus = setting.moodStatus[i];
 		for(j = 0; j < 16; j++)
 		{
 			ioRelays1SCK = 0;
-			ioRelays1DATA  = !(setting.moodStatus[i] & 0x0001);
+			ioRelays1DATA  = !(currentMoodStatus & 0x0001);
 			ioRelays1SCK = 1;			
-			setting.moodStatus[i] >>= 1;
+			currentMoodStatus >>= 1;
 		}	
 	}
 	ioRelays2LAT = 0;
