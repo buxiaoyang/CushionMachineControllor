@@ -457,6 +457,10 @@ void anyData()
 	}
 	else if(uartBuffer[2] == 0x29) //Çå³ý°´Å¥
 	{
+		setting.motor1Steps = 0;
+		setting.motor2Steps = 0;
+		setting.motor3Steps = 0;
+		setting.motor4Steps = 0;
 		setting.moodStatus[0] = 0x0000;
 		setting.moodStatus[1] = 0x0000;
 		setting.moodStatus[2] = 0x0000;
@@ -509,6 +513,7 @@ void refreshDisplay()
 	SendDataToScreen(0x0006, setting.motor2Steps);
 	SendDataToScreen(0x0007, setting.motor3Steps);
 	SendDataToScreen(0x0008, setting.motor4Steps);
+	
 	SendDataToScreen(0x0009, setting.moodStatus[0]);
 	SendDataToScreen(0x0010, setting.moodStatus[1]);
 	SendDataToScreen(0x0011, setting.moodStatus[2]);
@@ -517,5 +522,4 @@ void refreshDisplay()
 	SendDataToScreen(0x0014, setting.moodStatus[5]);
 	SendDataToScreen(0x0015, setting.moodStatus[6]);
 	SendDataToScreen(0x0016, setting.moodStatus[7]);
-
 }
