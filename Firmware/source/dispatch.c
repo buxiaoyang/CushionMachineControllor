@@ -109,7 +109,7 @@ void OutPut595(void)
 {
 	unsigned int currentMoodStatus;
 	char i, j;
-	//1~64路继电器
+	//65~128路继电器
 	for(i = 7; i >= 4; i--)
 	{
 		currentMoodStatus = setting.moodStatus[i];
@@ -121,9 +121,9 @@ void OutPut595(void)
 			currentMoodStatus >>= 1;
 		}	
 	}
-	ioRelays1LAT = 0;
-	ioRelays1LAT = 1;
-	//65~128路继电器
+	ioRelays2LAT = 0;
+	ioRelays2LAT = 1;
+	//1~64路继电器
 	for(i = 3; i >= 0; i--)
 	{
 		currentMoodStatus = setting.moodStatus[i];
@@ -135,8 +135,8 @@ void OutPut595(void)
 			currentMoodStatus >>= 1;
 		}	
 	}
-	ioRelays2LAT = 0;
-	ioRelays2LAT = 1;
+	ioRelays1LAT = 0;
+	ioRelays1LAT = 1;
 }
 
 void Init595(void)
@@ -150,7 +150,6 @@ void Init595(void)
 			ioRelays1SCK = 0;
 			ioRelays1DATA  = 1;
 			ioRelays1SCK = 1;			
-			setting.moodStatus[i] <<= 1;
 		}	
 	}
 	ioRelays1LAT = 0;
@@ -163,7 +162,6 @@ void Init595(void)
 			ioRelays2SCK = 0;
 			ioRelays2DATA  = 1;
 			ioRelays2SCK = 1;			
-			setting.moodStatus[i] <<= 1;
 		}	
 	}
 	ioRelays2LAT = 0;
