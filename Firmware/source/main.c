@@ -28,6 +28,7 @@ void main()
 	unsigned int timeTick = 0;
 	unsigned char isNotificationUI = 0; 
 	delay_ms(2000);
+	Init595();
 	parameter_init();
 	uart_init();
 	Timer0Init();
@@ -35,6 +36,7 @@ void main()
 	ChangeScreenPage(0x01);
 	snapshot_init();
 	PCON &= 0xDF ;//«ÂLVDFŒª 
+	KeyRunPress();
 	while(1)
 	{
 		delay_ms(10);

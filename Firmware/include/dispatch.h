@@ -9,4 +9,6 @@ void ResetMotorDispatch(void);
 
 void OutPut595(void);
 
+void Init595(void);
+
 #endif
