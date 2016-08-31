@@ -36,7 +36,7 @@ unsigned int productNum; //生产件数
 void parameter_init()
 {	
 	setting.currentMood = RdFromROM(0x0000);
-	setting.currentStep = 1;
+	//setting.currentStep = 1;
 	setting.totalMood = 2;
 	if(!parameter_read())
 	{
@@ -153,20 +153,31 @@ void snapshot_init()
 	if(IapReadByte(IAP_ADDRESS+511) == 0xAA)
 	{	
 		productNum = (WORD)((IapReadByte(IAP_ADDRESS + 8) << 8) | IapReadByte(IAP_ADDRESS + 9));
+		setting.currentStep = (WORD)((IapReadByte(IAP_ADDRESS + 10) << 8) | IapReadByte(IAP_ADDRESS + 11));
 	}
 	else
 	{
 		productNum = 0;	
+		setting.currentStep = 1;
 	}
 }
 
 void snapshot_save()
 {
+	//步数递增
+	setting.currentStep ++;
+	if(setting.currentStep > setting.totalSteps)
+	{
+		setting.currentStep = 1;
+		productNum ++;
+	}
    	Delay(10);
 	IapEraseSector(IAP_ADDRESS); //擦除EEPROM
 	Delay(10);  
 	IapProgramByte(IAP_ADDRESS + 8, (BYTE)(productNum>>8));
 	IapProgramByte(IAP_ADDRESS + 9, (BYTE)productNum);
+	IapProgramByte(IAP_ADDRESS + 10, (BYTE)(setting.currentStep>>8));
+	IapProgramByte(IAP_ADDRESS + 11, (BYTE)setting.currentStep);
 	IapProgramByte(IAP_ADDRESS+511, 0xAA); //写入标志位
 	Delay(10);
 }

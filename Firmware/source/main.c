@@ -27,9 +27,9 @@ void main()
 {
 	unsigned int timeTick = 0;
 	unsigned char isNotificationUI = 0; 
-	delay_ms(2000);
-	Init595();
+	delay_ms(10);
 	snapshot_init();
+	Init595();
 	parameter_init();
 	uart_init();
 	Timer0Init();
