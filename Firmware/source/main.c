@@ -87,6 +87,16 @@ void main()
 			parameter_save();
 			saveMode = SAVE_NO_SAVING;
 			ChangeScreenPage(0x03);
+			//if(displayMode == DISPLAY_NO_FRESH)
+			//{
+				setting.currentStep ++;
+				if(setting.currentStep > setting.totalSteps)
+				{
+					setting.currentStep = setting.totalSteps;
+				}
+				saveMode = SAVE_SETTING_STEP;
+				displayMode = DISPLAY_RUN;
+			//}
 		}
 		else if(saveMode == SAVE_SETTING_MOOD) 
 		{
@@ -95,14 +105,7 @@ void main()
 			parameter_read();
 			saveMode = SAVE_NO_SAVING;
 			//ChangeScreenPage(0x03);
-		}
-		else if(saveMode == SAVE_SETTING_STEP) 
-		{
-			//ChangeScreenPage(0x05);
-			parameter_read();
-			saveMode = SAVE_NO_SAVING;
-			//ChangeScreenPage(0x03);
-		}
+		} 
 		else if(saveMode == READ_STEP) 
 		{
 			//步数递增
@@ -115,6 +118,13 @@ void main()
 			parameter_read();
 			KeyRunPress();
 			saveMode = SAVE_NO_SAVING;
+		}
+		if(saveMode == SAVE_SETTING_STEP) 
+		{
+			//ChangeScreenPage(0x05);
+			parameter_read();
+			saveMode = SAVE_NO_SAVING;
+			//ChangeScreenPage(0x03);
 		}
 
 		//刷新显示器
