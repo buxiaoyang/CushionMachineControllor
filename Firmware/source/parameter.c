@@ -149,7 +149,8 @@ unsigned char parameter_read()
 
 void snapshot_init()
 {
-	Delay(10); 
+	Delay(10);
+	/* 
 	if(IapReadByte(IAP_ADDRESS+511) == 0xAA)
 	{	
 		productNum = (WORD)((IapReadByte(IAP_ADDRESS + 8) << 8) | IapReadByte(IAP_ADDRESS + 9));
@@ -160,10 +161,9 @@ void snapshot_init()
 		productNum = 0;	
 		setting.currentStep = 1;
 	}
-}
-
-void snapshot_save()
-{
+	*/
+	productNum = (WORD)((RdFromROM(32760) << 8) | RdFromROM(32761));
+	setting.currentStep = (WORD)((RdFromROM(32762) << 8) | RdFromROM(32763));
 	//步数递增
 	setting.currentStep ++;
 	if(setting.currentStep > setting.totalSteps)
@@ -171,6 +171,11 @@ void snapshot_save()
 		setting.currentStep = 1;
 		productNum ++;
 	}
+}
+
+void snapshot_save()
+{
+	/*
    	Delay(10);
 	IapEraseSector(IAP_ADDRESS); //擦除EEPROM
 	Delay(10);  
@@ -180,4 +185,9 @@ void snapshot_save()
 	IapProgramByte(IAP_ADDRESS + 11, (BYTE)setting.currentStep);
 	IapProgramByte(IAP_ADDRESS+511, 0xAA); //写入标志位
 	Delay(10);
+	*/
+	WrToROM(32760, (BYTE)(productNum >> 8));
+	WrToROM(32761, (BYTE)productNum);
+	WrToROM(32762, (BYTE)(setting.currentStep >> 8));
+	WrToROM(32763, (BYTE)setting.currentStep);
 }

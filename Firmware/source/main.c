@@ -48,20 +48,10 @@ void main()
 		}
 		//掉电保存数据
 		if (PCON & 0x20){	
+			//ChangeScreenPage(0x05);
 			PCON &= 0xDF ;//清LVDF位
-			delay_ms(10);
-			if(PCON & 0x20){
-//				testOutput2 = !testOutput2;
-				PCON &= 0xDF ;
-				//清LVDF位
-				snapshot_save();
-				if(PCON & 0x20){
-					while(1) //确实掉电了，等待关机
-					{
-//						testOutput3 = !testOutput3;
-					}
-				}
-			}		
+			//snapshot_save();
+			//ChangeScreenPage(0x01);	
 		}
 
 		if(runMode == MODEL_RUN)
@@ -112,6 +102,7 @@ void main()
 			}
 			parameter_read();
 			KeyRunPress();
+			snapshot_save();
 			saveMode = SAVE_NO_SAVING;
 		}
 		else if(saveMode == SAVE_SNAPSHOT)
