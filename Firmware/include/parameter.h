@@ -115,6 +115,8 @@ extern enum SaveMode saveMode; //保存EEPROM状态位
 extern struct Setting setting; //参数设置 
 extern unsigned int productNum; //生产件数 
 
+extern unsigned int activeSensorRun; //当前有效运行感应器
+
 /***************************************************************************/
 // 函数声明
 /***************************************************************************/

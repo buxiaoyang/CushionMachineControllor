@@ -27,6 +27,7 @@ enum SaveMode saveMode; //保存模式
 struct Setting setting; //参数设置
 unsigned int productNum; //生产件数 
 
+unsigned int activeSensorRun; //当前有效运行感应器  1:一号传感器  2：二号传感器
 
 /***************************************************************************/
 // 参数初始化函数
@@ -63,6 +64,8 @@ void parameter_init()
 	ioAllowMotorStart = 0;
 	displayMode = DISPLAY_RUN;
 	saveMode = SAVE_NO_SAVING;
+
+	activeSensorRun = 3; //设置当前有效传感器为空
 }
 
 /***************************************************************************/

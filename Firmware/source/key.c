@@ -44,15 +44,17 @@ void Key_Scan1(void)  //运行接近开关控制
 			}
 		break;
 		case 2:
-			if(sensorRun1 == 0)
+			if(sensorRun1 == 0 && activeSensorRun != 1)	 //感应器1
 			{
 				saveMode = READ_STEP;
 				displayMode = DISPLAY_RUN;
+				activeSensorRun = 1;
 			}
-			else if(sensorRun2 == 0)
+			else if(sensorRun2 == 0 && activeSensorRun != 2) //感应器2
 			{
 				saveMode = READ_STEP;
 				displayMode = DISPLAY_RUN;
+				activeSensorRun = 2;
 			}
 			Key_Scan_Steps1 = 3;
 		break;
