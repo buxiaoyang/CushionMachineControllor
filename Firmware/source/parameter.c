@@ -59,8 +59,25 @@ void parameter_init()
 		setting.moodStatus[7] = 0xFFFF;
 	}
 
+	//电机参数初始化
+	motor1.status = MOTOR_STOP;
+	motor1.stepPWMs = 0;
+	motor1.stepPassPWMs = 0;
+	
+	motor2.status = MOTOR_STOP;
+	motor2.stepPWMs = 0;
+	motor2.stepPassPWMs = 0;
 
-	runMode = MODEL_STOP;
+	motor3.status = MOTOR_STOP;
+	motor3.stepPWMs = 0;
+	motor3.stepPassPWMs = 0;
+
+	motor4.status = MOTOR_STOP;
+	motor4.stepPWMs = 0;
+	motor4.stepPassPWMs = 0;
+
+
+	runMode = MODEL_RUN;
 	ioAllowMotorStart = 0;
 	displayMode = DISPLAY_RUN;
 	saveMode = SAVE_NO_SAVING;
