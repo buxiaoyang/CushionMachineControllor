@@ -23,7 +23,7 @@ unsigned char Key_Scan_Steps2 = 0; 		//0：初始状态 如果有按键按下则进入1
 										//3：确定按键
 										//4：如果按键释放则进入0
 
-void Key_Scan1(void)
+void Key_Scan1(void)  //运行接近开关控制
 {
 	switch(Key_Scan_Steps1)
 	{
@@ -110,7 +110,7 @@ void KeyRunPress(void)
 	//继电器输出
 	OutPut595();
 	//电机运动
-	if(motor1.status == MOTOR_STOP && motor2.status == MOTOR_STOP)
+	if(motor1.status == MOTOR_STOP && motor2.status == MOTOR_STOP && motorEnable == 0)
 	{
 		if(setting.motor1Steps != 0)
 		{
@@ -148,7 +148,7 @@ void KeyRunPress(void)
 		}
 	}
 
-	if(motor3.status == MOTOR_STOP && motor4.status == MOTOR_STOP)
+	if(motor3.status == MOTOR_STOP && motor4.status == MOTOR_STOP && motorEnable == 0)
 	{
 		if(setting.motor3Steps != 0)
 		{

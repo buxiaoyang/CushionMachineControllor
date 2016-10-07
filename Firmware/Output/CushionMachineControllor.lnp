@@ -1,0 +1,13 @@
+".\output\STARTUP.obj",
+".\output\main.obj",
+".\output\basefunc.obj",
+".\output\parameter.obj",
+".\output\eeprom.obj",
+".\output\uart.obj",
+".\output\key.obj",
+".\output\dispatch.obj",
+".\output\timer.obj",
+".\output\at24c256.obj" 
+TO ".\output\CushionMachineControllor" 
+PRINT(".\listing\CushionMachineControllor.m51") RAMSIZE(256) 
+XDATA( 0X0000-0X03FE )

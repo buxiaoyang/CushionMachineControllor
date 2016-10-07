@@ -40,6 +40,8 @@ sbit sensorRun2 = P2^1; //接近开关信号2
 
 sbit powerOffSave = P2^2; //掉电保存
 
+sbit motorEnable = P1^0; //电机使能
+
 //迪文屏
 //P1^2 RXD2
 //P1^3 TXD2
@@ -69,7 +71,6 @@ sbit ioRelays2SCK = P3^0;  //继电器输出595二 SCK信号
 sbit ioRelays2LAT = P3^1;  //继电器输出595二 LAT信号
 sbit ioRelays2DATA = P3^2;  //继电器输出595二 DATA信号
 
-//sbit testOutput1 = P1^0;
 //sbit testOutput2 = P3^7;
 
 
