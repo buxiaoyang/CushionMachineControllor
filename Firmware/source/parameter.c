@@ -184,6 +184,8 @@ void snapshot_init()
 	*/
 	productNum = (WORD)((RdFromROM(32760) << 8) | RdFromROM(32761));
 	setting.currentStep = (WORD)((RdFromROM(32762) << 8) | RdFromROM(32763));
+	
+	/*
 	//²½ÊýµÝÔö
 	setting.currentStep ++;
 	if(setting.currentStep > setting.totalSteps)
@@ -191,6 +193,7 @@ void snapshot_init()
 		setting.currentStep = 1;
 		productNum ++;
 	}
+	*/
 }
 
 void snapshot_save()
