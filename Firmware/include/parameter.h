@@ -21,6 +21,9 @@
 //24 * MAX_STEP + 2
 #define MOOD_STORAGE_SIZE 14402
 
+//定义电机和继电器同时运行模式
+#define RUN_MODE_SIMU
+
 /***************************************************************************/
 // 引脚定义
 /***************************************************************************/
@@ -38,9 +41,8 @@ sbit sensorEndPosi4 = P0^7; //电机4结束位置传感器
 sbit sensorRun1 = P2^0; //接近开关信号1
 sbit sensorRun2 = P2^1; //接近开关信号2
 
-sbit powerOffSave = P2^2; //掉电保存
-
-sbit motorEnable = P1^0; //电机使能
+sbit sensorRunMotor1 = P1^0; //电机运行接近开关信号1
+sbit sensorRunMotor2 = P2^2; //电机运行接近开关信号1
 
 //迪文屏
 //P1^2 RXD2

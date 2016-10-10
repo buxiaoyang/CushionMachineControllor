@@ -74,13 +74,13 @@ void Key_Scan2(void)
 	switch(Key_Scan_Steps2)
 	{
 		case 0:
-			if(powerOffSave == 0)
+			if(sensorRunMotor1 == 0 || sensorRunMotor2 == 0)
 			{
 			   	Key_Scan_Steps2 = 1;
 			}
 		break;
 		case 1:
-			if(powerOffSave == 0)
+			if(sensorRunMotor1 == 0 || sensorRunMotor2 == 0)
 			{
 			   	Key_Scan_Steps2 = 2;
 			}
@@ -90,14 +90,20 @@ void Key_Scan2(void)
 			}
 		break;
 		case 2:
-			if(powerOffSave == 0)
+			if(sensorRunMotor1 == 0 && activeSensorRun == 1)  //电机运行感应器1
 			{
-				saveMode = SAVE_SNAPSHOT;
+				KeyRunPress();
+				displayMode = DISPLAY_RUN;
+			}
+			else if(sensorRunMotor2 == 0 && activeSensorRun == 2)  //电机运行感应器2
+			{
+				KeyRunPress();
+				displayMode = DISPLAY_RUN;
 			}
 			Key_Scan_Steps2 = 3;
 		break;
 		case 3:
-			if(powerOffSave == 1)
+			if(sensorRunMotor1 == 1)
 			{
 			   	Key_Scan_Steps2 = 0;
 			}
@@ -110,9 +116,12 @@ void Key_Scan2(void)
 void KeyRunPress(void)
 {
 	//继电器输出
-	OutPut595();
+	#ifdef RUN_MODE_SIMU
+    	OutPut595();
+	#endif
+	
 	//电机运动
-	if(motor1.status == MOTOR_STOP && motor2.status == MOTOR_STOP && motorEnable == 0)
+	if(motor1.status == MOTOR_STOP && motor2.status == MOTOR_STOP )
 	{
 		if(setting.motor1Steps != 0)
 		{
@@ -150,7 +159,7 @@ void KeyRunPress(void)
 		}
 	}
 
-	if(motor3.status == MOTOR_STOP && motor4.status == MOTOR_STOP && motorEnable == 0)
+	if(motor3.status == MOTOR_STOP && motor4.status == MOTOR_STOP)
 	{
 		if(setting.motor3Steps != 0)
 		{

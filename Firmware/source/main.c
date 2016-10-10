@@ -36,6 +36,9 @@ void main()
 	Timer1Init();
 	ChangeScreenPage(0x01);
 	PCON &= 0xDF ;//清LVDF位 
+
+	OutPut595(); //开机默认输出595
+
 	while(1)
 	{
 //		testOutput1 = !testOutput1;
@@ -58,10 +61,10 @@ void main()
 		{
 			//按键扫描
 			Key_Scan1();
-		
+			#ifndef RUN_MODE_SIMU
+				Key_Scan2();
+			#endif
 		}
-		Key_Scan2();
-
 		//电机初始化状态机
 		ResetMotorDispatch();
 
@@ -101,7 +104,12 @@ void main()
 				productNum ++;
 			}
 			parameter_read();
-			KeyRunPress();
+			//继电器输出
+			#ifdef RUN_MODE_SIMU
+		    	KeyRunPress();
+			#else
+				OutPut595();
+			#endif
 			snapshot_save();
 			saveMode = SAVE_NO_SAVING;
 		}
