@@ -113,6 +113,26 @@ void main()
 			snapshot_save();
 			saveMode = SAVE_NO_SAVING;
 		}
+		else if(saveMode == READ_STEP_SIM) 
+		{
+			//步数递增
+			/*
+			setting.currentStep ++;
+			if(setting.currentStep > setting.totalSteps)
+			{
+				setting.currentStep = 1;
+				productNum ++;
+			}
+			*/
+			parameter_read();
+			//继电器输出
+			#ifndef RUN_MODE_SIMU
+				OutPut595();
+			#endif
+			KeyRunPress();
+			//snapshot_save();
+			saveMode = SAVE_NO_SAVING;
+		}
 		else if(saveMode == SAVE_SNAPSHOT)
 		{
 			ChangeScreenPage(0x05);

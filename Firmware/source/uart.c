@@ -340,7 +340,7 @@ void anyData()
 		motor4.stepPWMs = 0;
 		motor4.stepPassPWMs = 0;
 
-		//KeyRunPress();
+		saveMode = READ_STEP_SIM;
 		displayMode = DISPLAY_RUN;
 	}
 	else if(uartBuffer[2] == 0x18) //Í£Ö¹°´Å¥
