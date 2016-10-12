@@ -22,7 +22,7 @@
 #define MOOD_STORAGE_SIZE 14402
 
 //定义电机和继电器同时运行模式
-//#define RUN_MODE_SIMU
+#define RUN_MODE_SIMU
 
 /***************************************************************************/
 // 引脚定义
@@ -35,14 +35,14 @@ sbit sensorStartPosi4 = P0^3; //电机4初始位置传感器
 
 sbit sensorEndPosi1 = P0^4; //电机1结束位置传感器
 sbit sensorEndPosi2 = P0^5; //电机2结束位置传感器
-sbit sensorEndPosi3 = P0^6; //电机3结束位置传感器
-sbit sensorEndPosi4 = P0^7; //电机4结束位置传感器
+sbit sensorEndPosi3 = P2^4; //电机3结束位置传感器
+sbit sensorEndPosi4 = P2^5; //电机4结束位置传感器
 
 sbit sensorRun1 = P2^0; //接近开关信号1
 sbit sensorRun2 = P2^1; //接近开关信号2
 
-sbit sensorRunMotor1 = P1^0; //电机运行接近开关信号1
-sbit sensorRunMotor2 = P2^2; //电机运行接近开关信号1
+sbit sensorRunMotor1 = P0^6; //电机运行接近开关信号1
+sbit sensorRunMotor2 = P0^7; //电机运行接近开关信号1
 
 //迪文屏
 //P1^2 RXD2
@@ -54,26 +54,25 @@ sbit storageSDA = P2^6; //at24c256 存储 SDA
 
 
 //输出
-sbit ioMotor1Direction = P1^4; //电机1方向
-sbit ioMotor2Direction = P1^6; //电机2方向
-sbit ioMotor3Direction = P3^3; //电机3方向
-sbit ioMotor4Direction = P3^5; //电机4方向
-sbit ioMotor1PWM = P1^5; //电机1脉冲
+sbit ioMotor1Direction = P1^0; //电机1方向
+sbit ioMotor2Direction = P1^1; //电机2方向
+sbit ioMotor3Direction = P1^4; //电机3方向
+sbit ioMotor4Direction = P1^5; //电机4方向
+sbit ioMotor1PWM = P1^6; //电机1脉冲
 sbit ioMotor2PWM = P1^7; //电机2脉冲
-sbit ioMotor3PWM = P3^4; //电机3脉冲
-sbit ioMotor4PWM = P3^6; //电机4脉冲
+sbit ioMotor3PWM = P3^0; //电机3脉冲
+sbit ioMotor4PWM = P3^1; //电机4脉冲	                                     
+sbit ioRelays1SCK = P3^2;  //继电器输出595 SCK信号
+sbit ioRelays1LAT = P3^3;  //继电器输出595 LAT信号
+sbit ioRelays1DATA = P3^4;  //继电器输出595 DATA信号
 
-sbit ioAllowMotorStart = P1^1;  //允许电机启动信号
-												                                    
-sbit ioRelays1SCK = P2^3;  //继电器输出595 SCK信号
-sbit ioRelays1LAT = P2^4;  //继电器输出595 LAT信号
-sbit ioRelays1DATA = P2^5;  //继电器输出595 DATA信号
+sbit ioRelays2SCK = P3^5;  //继电器输出595二 SCK信号
+sbit ioRelays2LAT = P3^6;  //继电器输出595二 LAT信号
+sbit ioRelays2DATA = P3^7;  //继电器输出595二 DATA信号
 
-sbit ioRelays2SCK = P3^0;  //继电器输出595二 SCK信号
-sbit ioRelays2LAT = P3^1;  //继电器输出595二 LAT信号
-sbit ioRelays2DATA = P3^2;  //继电器输出595二 DATA信号
+sbit ioAllowMotorStart = P2^2;  //允许电机启动信号
 
-//sbit testOutput2 = P3^7;
+//sbit testOutput2 = P2^3;
 
 
 
