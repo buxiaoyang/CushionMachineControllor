@@ -22,7 +22,7 @@
 #define MOOD_STORAGE_SIZE 14402
 
 //定义电机和继电器同时运行模式
-#define RUN_MODE_SIMU
+//#define RUN_MODE_SIMU
 
 /***************************************************************************/
 // 引脚定义
@@ -62,13 +62,13 @@ sbit ioMotor1PWM = P1^6; //电机1脉冲
 sbit ioMotor2PWM = P1^7; //电机2脉冲
 sbit ioMotor3PWM = P3^0; //电机3脉冲
 sbit ioMotor4PWM = P3^1; //电机4脉冲	                                     
-sbit ioRelays1SCK = P3^2;  //继电器输出595 SCK信号
+sbit ioRelays1SCK = P3^4;  //继电器输出595 SCK信号
 sbit ioRelays1LAT = P3^3;  //继电器输出595 LAT信号
-sbit ioRelays1DATA = P3^4;  //继电器输出595 DATA信号
+sbit ioRelays1DATA = P3^2;  //继电器输出595 DATA信号
 
-sbit ioRelays2SCK = P3^5;  //继电器输出595二 SCK信号
+sbit ioRelays2SCK = P3^7;  //继电器输出595二 SCK信号
 sbit ioRelays2LAT = P3^6;  //继电器输出595二 LAT信号
-sbit ioRelays2DATA = P3^7;  //继电器输出595二 DATA信号
+sbit ioRelays2DATA = P3^5;  //继电器输出595二 DATA信号
 
 sbit ioAllowMotorStart = P2^2;  //允许电机启动信号
 
