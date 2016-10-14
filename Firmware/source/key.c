@@ -103,7 +103,7 @@ void Key_Scan2(void)
 			Key_Scan_Steps2 = 3;
 		break;
 		case 3:
-			if(sensorRunMotor1 == 1)
+			if(sensorRunMotor1 == 1 && sensorRunMotor2 == 1)
 			{
 			   	Key_Scan_Steps2 = 0;
 			}
