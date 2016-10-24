@@ -57,13 +57,13 @@ void main()
 			//ChangeScreenPage(0x01);	
 		}
 
-		#ifndef RUN_MODE_SIMU
+		#ifdef RUN_MODE_SIMU
 			if(sensorRun1 == 1 && sensorRun2 == 1)
 			{
 				 sensorRunCheck = 1;
 			}
 		#else
-			if(sensorRun1 == 1 && sensorRun1 == 2 && sensorRunMotor1 == 1 && sensorRunMotor2 == 1)
+			if(sensorRun1 == 1 && sensorRun2 == 1 && sensorRunMotor1 == 1 && sensorRunMotor2 == 1)
 			{
 				 sensorRunCheck = 1;
 			}
