@@ -57,7 +57,19 @@ void main()
 			//ChangeScreenPage(0x01);	
 		}
 
-		if(runMode == MODEL_RUN)
+		#ifndef RUN_MODE_SIMU
+			if(sensorRun1 == 1 && sensorRun2 == 1)
+			{
+				 sensorRunCheck = 1;
+			}
+		#else
+			if(sensorRun1 == 1 && sensorRun1 == 2 && sensorRunMotor1 == 1 && sensorRunMotor2 == 1)
+			{
+				 sensorRunCheck = 1;
+			}
+		#endif
+
+		if(runMode == MODEL_RUN && sensorRunCheck == 1)
 		{
 			//°´¼üÉ¨Ãè
 			Key_Scan1();
