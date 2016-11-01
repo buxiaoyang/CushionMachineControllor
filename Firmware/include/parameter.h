@@ -119,6 +119,8 @@ extern unsigned int productNum; //生产件数
 extern unsigned char activeSensorRun; //当前有效运行感应器
 extern unsigned char sensorRunCheck;
 
+extern unsigned char powerOnStepStatus; //开机当前时多少布 1：奇数步2号感应器有效  2：偶数步1号感应器有效  3：正常运行
+
 /***************************************************************************/
 // 函数声明
 /***************************************************************************/

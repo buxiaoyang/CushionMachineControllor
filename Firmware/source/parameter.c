@@ -31,6 +31,8 @@ unsigned char activeSensorRun; //当前有效运行感应器  1:一号传感器  2：二号传感器
 
 unsigned char sensorRunCheck; //开机检测是否刚好在传感器位置标志位允许运行标志位  0:不允许运行  1:允许运行
 
+unsigned char powerOnStepStatus; //开机当前时多少布 1：奇数步2号感应器有效  2：偶数步1号感应器有效  3：正常运行
+
 /***************************************************************************/
 // 参数初始化函数
 // 参数：无
@@ -188,6 +190,16 @@ void snapshot_init()
 	productNum = (WORD)((RdFromROM(32760) << 8) | RdFromROM(32761));
 	setting.currentStep = (WORD)((RdFromROM(32762) << 8) | RdFromROM(32763));
 	
+	if(setting.currentStep%2 == 0)//偶数步
+	{
+		 powerOnStepStatus = 2;
+	}
+	else //奇数步
+	{
+		 powerOnStepStatus = 1;
+	}
+	
+
 	/*
 	//步数递增
 	setting.currentStep ++;
