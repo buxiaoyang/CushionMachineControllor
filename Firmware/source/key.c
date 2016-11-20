@@ -92,14 +92,16 @@ void Key_Scan2(void)
 			}
 		break;
 		case 2:
-			if(sensorRunMotor1 == 0 && activeSensorRun == 1)  //电机运行感应器1
+			if(sensorRunMotor1 == 0 && activeSensorRun != 3)  //电机运行感应器1
 			{
 				KeyRunPress();
+				activeSensorRun = 3;
 				displayMode = DISPLAY_RUN;
 			}
-			else if(sensorRunMotor2 == 0 && activeSensorRun == 2)  //电机运行感应器2
+			else if(sensorRunMotor2 == 0 && activeSensorRun != 4)  //电机运行感应器2
 			{
 				KeyRunPress();
+				activeSensorRun = 4;
 				displayMode = DISPLAY_RUN;
 			}
 			Key_Scan_Steps2 = 3;

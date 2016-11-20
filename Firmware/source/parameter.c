@@ -27,7 +27,7 @@ enum SaveMode saveMode; //保存模式
 struct Setting setting; //参数设置
 unsigned int productNum; //生产件数 
 
-unsigned char activeSensorRun; //当前有效运行感应器  1:一号传感器  2：二号传感器
+unsigned char activeSensorRun; //当前有效运行感应器  1:一号传感器  2：二号传感器 3：三号传感器 4：四号传感器
 
 unsigned char sensorRunCheck; //开机检测是否刚好在传感器位置标志位允许运行标志位  0:不允许运行  1:允许运行
 
@@ -86,7 +86,7 @@ void parameter_init()
 	displayMode = DISPLAY_RUN;
 	saveMode = SAVE_NO_SAVING;
 
-	activeSensorRun = 3; //设置当前有效传感器为空
+	activeSensorRun = 0; //设置当前有效传感器为空
 	sensorRunCheck = 0; //假设在传感器位置不允许运行
 }
 

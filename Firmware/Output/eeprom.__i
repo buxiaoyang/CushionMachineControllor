@@ -1,0 +1,1 @@
+"source\eeprom.c" LARGE BROWSE INCDIR(.\include\) DEBUG OBJECTEXTEND PRINT(.\listing\eeprom.lst) OBJECT(.\output\eeprom.obj)

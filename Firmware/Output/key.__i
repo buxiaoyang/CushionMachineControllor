@@ -1,0 +1,1 @@
+"source\key.c" LARGE BROWSE INCDIR(.\include\) DEBUG OBJECTEXTEND PRINT(.\listing\key.lst) OBJECT(.\output\key.obj)

@@ -1,0 +1,1 @@
+"source\parameter.c" LARGE BROWSE INCDIR(.\include\) DEBUG OBJECTEXTEND PRINT(.\listing\parameter.lst) OBJECT(.\output\parameter.obj)

@@ -1,0 +1,1 @@
+"source\at24c256.c" LARGE BROWSE INCDIR(.\include\) DEBUG OBJECTEXTEND PRINT(.\listing\at24c256.lst) OBJECT(.\output\at24c256.obj)

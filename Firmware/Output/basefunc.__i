@@ -1,0 +1,1 @@
+"source\basefunc.c" LARGE BROWSE INCDIR(.\include\) DEBUG OBJECTEXTEND PRINT(.\listing\basefunc.lst) OBJECT(.\output\basefunc.obj)

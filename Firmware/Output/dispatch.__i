@@ -1,0 +1,1 @@
+"source\dispatch.c" LARGE BROWSE INCDIR(.\include\) DEBUG OBJECTEXTEND PRINT(.\listing\dispatch.lst) OBJECT(.\output\dispatch.obj)
